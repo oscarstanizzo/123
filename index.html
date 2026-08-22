@@ -7,7 +7,7 @@
 <title>Blandi Land — Landscaping in Etobicoke | Yard cleanups, mulch &amp; interlock</title>
 <meta name="description" content="Landscaping in Etobicoke, Toronto. Yard cleanup and junk removal, mulch installation, river rock and interlock, planting, fence staining and weekly bed maintenance. Straight quotes, one crew. Call 437-922-8301.">
 <link rel="canonical" href="https://blandiland.ca/">
-<meta name="theme-color" content="#10261A">
+<meta name="theme-color" content="#1F2E16">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
@@ -28,31 +28,27 @@
 @font-face{font-family:'Public Sans';src:url(fonts/publicsans-var-latin.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
-  /* Logo greens */
-  --forest-900:#10261A;
-  --forest-700:#1B4630;
-  --leaf-500:#6BAE3C;
-  --leaf-400:#8CC85E;
-  /* Neutrals drawn from the work */
-  --mulch-950:#14110F;
-  --cedar-600:#8A5C34;
-  --river-050:#EDEFEC;
-  --river-200:#D7DBD5;
-  --stone-500:#636A61;
-  --stone-300:#9AA398;
-  --paper:#FBFCFA;
+  /* Sampled from the logo: the wordmark's near-black green, the deep leaf
+     and hill green, and the lighter leaf. */
+  --ink:#242823;
+  --forest:#476932;
+  --forest-deep:#1F2E16;
+  --leaf-light:#B3C97F;
+  /* Neutrals drawn from the work: river rock, wet stone. */
+  --paper:#FCFCFA;
+  --stone:#F1F2ED;
+  --line:#E2E4DD;
+  --muted:#63685E;
+  --muted-dark:#A8AE9F;
   /* Focus indicator: dark on light ground, light on dark ground. */
-  --focus:var(--forest-700);
+  --focus:var(--forest);
 
   --font-head:'Archivo','Helvetica Neue',Arial,sans-serif;
   --font-body:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
 
-  --radius-sm:6px;
-  --radius:10px;
-  --radius-lg:14px;
   --t:.25s;
   --ease:cubic-bezier(.2,.6,.3,1);
-  --header-h:4.5rem;
+  --header-h:6rem;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -60,7 +56,7 @@ html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
   background:var(--paper);
-  color:var(--mulch-950);
+  color:var(--ink);
   font-family:var(--font-body);
   font-size:1.0625rem;
   line-height:1.65;
@@ -74,125 +70,105 @@ a{color:inherit}
 :where(a,button,input,textarea,select,summary):focus-visible{
   outline:3px solid var(--focus);
   outline-offset:2px;
-  border-radius:2px;
 }
 
-/* Dark grounds flip the ring; the light form inside the dark contact
-   section flips it back. */
-.hero,.section--forest,.section--mulch,.footer,.skip{--focus:var(--leaf-400)}
-.form{--focus:var(--forest-700)}
+/* Dark grounds flip the ring. */
+.hero,.section--deep{--focus:var(--leaf-light)}
 
 /* Anchor targets must clear the sticky header. */
 :where(section,[id]):target,section[id],main[id]{scroll-margin-top:calc(var(--header-h) + 1.25rem)}
 
-.container{width:min(100% - 2.5rem,76rem);margin-inline:auto}
-@media (max-width:26rem){.container{width:min(100% - 1.75rem,76rem)}}
+.container{width:min(100% - 2.5rem,74rem);margin-inline:auto}
+@media (max-width:26rem){.container{width:min(100% - 1.75rem,74rem)}}
 
 .skip{
   position:absolute;left:-9999px;top:0;z-index:100;
-  padding:.75rem 1.25rem;background:var(--forest-700);color:var(--paper);
+  padding:.75rem 1.25rem;background:var(--forest);color:var(--paper);
   font-weight:600;text-decoration:none;
 }
 .skip:focus{left:0}
 
-/* Brand lockup */
-.brand{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;color:inherit}
-.brand svg{width:2.15rem;height:2.15rem;flex:none}
-.brand .mark-leaf{fill:var(--leaf-500)}
-.brand .mark-hill{fill:var(--forest-700)}
-.brand .mark-stem{stroke:var(--forest-900);stroke-width:1.4;stroke-linecap:round;fill:none}
-.brand__text{display:flex;flex-direction:column;line-height:1}
-.brand__word{
-  font-family:var(--font-head);font-weight:800;font-size:1.2rem;
-  letter-spacing:-.025em;color:var(--forest-900);
-}
-.brand__tag{
-  margin-top:.2rem;font-size:.5625rem;font-weight:600;
-  letter-spacing:.11em;text-transform:uppercase;color:var(--stone-500);
-}
-
 /* Header */
 .header{
   position:sticky;top:0;z-index:50;
-  background:rgb(251 252 250 / .92);
-  border-bottom:1px solid var(--river-200);
-  backdrop-filter:saturate(1.4) blur(10px);
+  background:rgb(252 252 250 / .93);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:saturate(1.3) blur(10px);
 }
 .header__inner{
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   min-height:var(--header-h);
 }
-.header__actions{display:flex;align-items:center;gap:.5rem}
+.header__brand{display:inline-flex;align-items:center;line-height:0}
+.header__logo{width:clamp(92px,10vw,118px);height:auto}
+.header__actions{display:flex;align-items:center;gap:.35rem}
 
 .tel{
   display:inline-flex;align-items:center;gap:.45rem;
-  padding:.5rem .5rem;
+  padding:.5rem;
   font-family:var(--font-head);font-weight:700;font-size:1.0625rem;
-  letter-spacing:-.01em;text-decoration:none;color:var(--forest-900);
+  letter-spacing:-.015em;text-decoration:none;color:var(--ink);
   white-space:nowrap;
 }
-.tel svg{width:1rem;height:1rem;fill:var(--leaf-500)}
-.tel:hover{color:var(--forest-700)}
+.tel svg{width:1rem;height:1rem;fill:var(--forest)}
+.tel:hover{color:var(--forest)}
 
 /* Buttons */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:.8rem 1.4rem;border:2px solid transparent;border-radius:100px;
-  font-family:var(--font-head);font-weight:700;font-size:.9688rem;letter-spacing:-.005em;
+  padding:.85rem 1.5rem;border:1px solid transparent;
+  font-family:var(--font-head);font-weight:600;font-size:.9375rem;letter-spacing:-.005em;
   text-decoration:none;cursor:pointer;white-space:nowrap;
   transition:background var(--t) var(--ease),color var(--t) var(--ease),border-color var(--t) var(--ease);
 }
-.btn--primary{background:var(--forest-700);color:var(--paper);border-color:var(--forest-700)}
-.btn--primary:hover{background:var(--forest-900);border-color:var(--forest-900)}
-.btn--ghost{background:transparent;color:var(--paper);border-color:rgb(251 252 250 / .6)}
-.btn--ghost:hover{background:rgb(251 252 250 / .12);border-color:var(--paper)}
-.btn--sm{padding:.6rem 1.1rem;font-size:.9063rem}
+.btn--primary{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.btn--primary:hover{background:var(--forest-deep);border-color:var(--forest-deep)}
+.btn--sm{padding:.6rem 1.15rem;font-size:.875rem}
 
-/* Narrow screens: keep BOTH header actions. The number collapses to an
-   icon-only tap-to-call target rather than the quote button disappearing. */
-@media (max-width:34rem){
-  .brand__tag{display:none}
-  .brand svg{width:1.9rem;height:1.9rem}
-  .brand__word{font-size:1.0625rem}
-  .header .btn--sm{padding:.55rem .85rem;font-size:.8438rem}
+/* Quiet secondary action — a link, not a second button. */
+.link-arrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--font-head);font-weight:600;font-size:.9375rem;
+  text-decoration:none;color:var(--paper);
+  border-bottom:1px solid rgb(252 252 250 / .45);padding-bottom:.2rem;
 }
-@media (max-width:30rem){
+.link-arrow:hover{border-bottom-color:var(--paper)}
+
+@media (max-width:32rem){
+  :root{--header-h:5rem}
+  .header__actions .btn--sm{padding:.55rem .9rem;font-size:.8125rem}
   .tel{min-width:2.75rem;min-height:2.75rem;justify-content:center;padding:0}
-  .tel svg{width:1.25rem;height:1.25rem}
+  .tel svg{width:1.2rem;height:1.2rem}
   .tel__num{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 
 /* Hero */
-.hero{position:relative;isolation:isolate;background:var(--forest-900)}
+.hero{position:relative;isolation:isolate;background:var(--forest-deep)}
 .hero__media{position:absolute;inset:0;z-index:-2}
 .hero__media img{width:100%;height:100%;object-fit:cover;display:block}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgb(20 17 15 / .30) 0%,rgb(20 17 15 / .22) 35%,rgb(20 17 15 / .78) 100%);
+  background:linear-gradient(180deg,rgb(20 20 18 / .26) 0%,rgb(20 20 18 / .18) 40%,rgb(20 20 18 / .72) 100%);
 }
 .hero__inner{
   display:flex;flex-direction:column;justify-content:flex-end;
-  min-height:clamp(30rem,82svh,46rem);
+  min-height:clamp(30rem,84svh,48rem);
   padding-top:clamp(5rem,14vh,9rem);
-  padding-bottom:clamp(3rem,7vw,5.5rem);
+  padding-bottom:clamp(3.5rem,8vw,6rem);
   color:var(--paper);
 }
 .hero h1{
-  max-width:16ch;
-  font-family:var(--font-head);font-weight:800;
-  font-size:clamp(2.75rem,8.2vw,4.75rem);
+  max-width:15ch;
+  font-family:var(--font-head);font-weight:700;
+  font-size:clamp(2.75rem,8vw,5rem);
   line-height:1.02;letter-spacing:-.035em;text-wrap:balance;
-  text-shadow:0 2px 24px rgb(20 17 15 / .35);
 }
 .hero p{
-  max-width:44ch;margin-top:1.25rem;
-  font-size:clamp(1.0625rem,2.1vw,1.25rem);line-height:1.55;
-  color:var(--river-200);text-wrap:pretty;
+  max-width:42ch;margin-top:1.35rem;
+  font-size:clamp(1.0625rem,2vw,1.1875rem);line-height:1.55;
+  color:rgb(252 252 250 / .82);text-wrap:pretty;
 }
-.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
-@media (max-width:23.5rem){
-  .hero__cta .btn{width:100%}
-}
+.hero__cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.75rem;margin-top:2.25rem}
 </style>
 
 <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -206,6 +182,7 @@ a{color:inherit}
   "description":"Landscaping and property maintenance in Etobicoke, Toronto. Yard cleanups, mulch, river rock and interlock, planting, fence staining and weekly bed maintenance.",
   "telephone":"+1-437-922-8301",
   "url":"https://blandiland.ca/",
+  "logo":"images/logo/blandi-land-full-440.png",
   "image":"images/optimized/hero-front-yard-armour-stone-1200.jpg",
   "address":{"@type":"PostalAddress","addressLocality":"Etobicoke","addressRegion":"ON","addressCountry":"CA"},
   "areaServed":["Etobicoke","The Kingsway","Sunnylea","Mimico","New Toronto","Long Branch","Alderwood","Humber Bay Shores","Markland Wood","Eatonville","Princess Gardens","Islington","Richview","Thistletown","Rexdale"],
@@ -219,17 +196,11 @@ a{color:inherit}
 
 <header class="header">
   <div class="container header__inner">
-    <!-- TODO: swap this inline mark for the real logo asset once images/ is populated. -->
-    <a class="brand" href="#top" aria-label="Blandi Land — home">
-      <svg viewBox="0 0 40 32" aria-hidden="true" focusable="false">
-        <path class="mark-leaf" d="M20 1.5c6.4 4.2 8.6 10.4 4.2 15.6-1.7 2-3.6 3.3-4.2 3.7-.6-.4-2.5-1.7-4.2-3.7C11.4 11.9 13.6 5.7 20 1.5z"/>
-        <path class="mark-stem" d="M20 6.5v13"/>
-        <path class="mark-hill" d="M1 30.5c3.4-6.6 7.6-9.6 12-7.4 3.6 1.8 5.4 4.2 9.6 2.7 4.9-1.7 12.4 1 16.4 4.7z"/>
-      </svg>
-      <span class="brand__text">
-        <span class="brand__word">blandi land</span>
-        <span class="brand__tag">Landscape Design &amp; Maintenance</span>
-      </span>
+    <a class="header__brand" href="#top" aria-label="Blandi Land — home">
+      <img class="header__logo" src="images/logo/blandi-land-lockup-150.png"
+           srcset="images/logo/blandi-land-lockup-150.png 150w, images/logo/blandi-land-lockup-300.png 300w"
+           sizes="118px" width="150" height="85" data-above-fold decoding="async"
+           alt="Blandi Land">
     </a>
 
     <div class="header__actions">
@@ -269,13 +240,13 @@ a{color:inherit}
       <p>Cleanups, mulch, rock, interlock, planting and fence work across Etobicoke. One-time transformations or every-week upkeep.</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="#contact">Get a free quote</a>
-        <a class="btn btn--ghost" href="#work">See our work</a>
+        <a class="link-arrow" href="#work">See our work <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
 
   <!-- ============ BEFORE / AFTER ============ -->
-  <section class="section section--river" aria-labelledby="ba-title">
+  <section class="section section--paper" aria-labelledby="ba-title">
     <div class="container">
       <div class="section-head">
         <h2 id="ba-title">Same backyard. Two weekends apart.</h2>
@@ -289,12 +260,12 @@ a{color:inherit}
               data-srcset="images/optimized/backyard-transformation-before-600.webp 600w,
                       images/optimized/backyard-transformation-before-1200.webp 1200w,
                       images/optimized/backyard-transformation-before-2000.webp 2000w"
-              sizes="(min-width: 76rem) 76rem, 100vw">
+              sizes="(min-width: 74rem) 74rem, 100vw">
             <img data-src="images/optimized/backyard-transformation-before-1200.jpg"
               data-srcset="images/optimized/backyard-transformation-before-600.jpg 600w,
                       images/optimized/backyard-transformation-before-1200.jpg 1200w,
                       images/optimized/backyard-transformation-before-2000.jpg 2000w"
-              sizes="(min-width: 76rem) 76rem, 100vw" width="2000" height="1333"
+              sizes="(min-width: 74rem) 74rem, 100vw" width="2000" height="1333"
               loading="lazy" fetchpriority="low" decoding="async"
               alt="Before: an overgrown Etobicoke backyard with weeds pushing through the paver patio and junk piled in the corner by the fence.">
           </picture>
@@ -305,12 +276,12 @@ a{color:inherit}
                 data-srcset="images/optimized/backyard-transformation-after-600.webp 600w,
                         images/optimized/backyard-transformation-after-1200.webp 1200w,
                         images/optimized/backyard-transformation-after-2000.webp 2000w"
-                sizes="(min-width: 76rem) 76rem, 100vw">
+                sizes="(min-width: 74rem) 74rem, 100vw">
               <img data-src="images/optimized/backyard-transformation-after-1200.jpg"
                 data-srcset="images/optimized/backyard-transformation-after-600.jpg 600w,
                         images/optimized/backyard-transformation-after-1200.jpg 1200w,
                         images/optimized/backyard-transformation-after-2000.jpg 2000w"
-                sizes="(min-width: 76rem) 76rem, 100vw" width="2000" height="1333"
+                sizes="(min-width: 74rem) 74rem, 100vw" width="2000" height="1333"
                 loading="lazy" fetchpriority="low" decoding="async"
                 alt="After: the same backyard cleared and regraded, finished in river rock with hydrangeas planted along a freshly stained cedar fence.">
             </picture>
@@ -331,39 +302,38 @@ a{color:inherit}
           </div>
 
           <noscript>
-<div class="compare__frame compare__frame--static" style="--ba-aspect:2000/1333">
-          <picture>
-            <source type="image/webp"
-              srcset="images/optimized/backyard-transformation-before-600.webp 600w,
-                      images/optimized/backyard-transformation-before-1200.webp 1200w,
-                      images/optimized/backyard-transformation-before-2000.webp 2000w"
-              sizes="(min-width: 76rem) 76rem, 100vw">
-            <img src="images/optimized/backyard-transformation-before-1200.jpg"
-              srcset="images/optimized/backyard-transformation-before-600.jpg 600w,
-                      images/optimized/backyard-transformation-before-1200.jpg 1200w,
-                      images/optimized/backyard-transformation-before-2000.jpg 2000w"
-              sizes="(min-width: 76rem) 76rem, 100vw" width="2000" height="1333"
-              loading="lazy" fetchpriority="low" decoding="async"
-              alt="Before: an overgrown Etobicoke backyard with weeds pushing through the paver patio and junk piled in the corner by the fence.">
-          </picture>
-
-          <div class="compare__after">
-            <picture>
-              <source type="image/webp"
-                srcset="images/optimized/backyard-transformation-after-600.webp 600w,
-                        images/optimized/backyard-transformation-after-1200.webp 1200w,
-                        images/optimized/backyard-transformation-after-2000.webp 2000w"
-                sizes="(min-width: 76rem) 76rem, 100vw">
-              <img src="images/optimized/backyard-transformation-after-1200.jpg"
-                srcset="images/optimized/backyard-transformation-after-600.jpg 600w,
-                        images/optimized/backyard-transformation-after-1200.jpg 1200w,
-                        images/optimized/backyard-transformation-after-2000.jpg 2000w"
-                sizes="(min-width: 76rem) 76rem, 100vw" width="2000" height="1333"
-                loading="lazy" fetchpriority="low" decoding="async"
-                alt="After: the same backyard cleared and regraded, finished in river rock with hydrangeas planted along a freshly stained cedar fence.">
-            </picture>
-          </div>
-          </div>
+            <div class="compare__frame compare__frame--static">
+              <picture>
+                <source type="image/webp"
+                  srcset="images/optimized/backyard-transformation-before-600.webp 600w,
+                          images/optimized/backyard-transformation-before-1200.webp 1200w,
+                          images/optimized/backyard-transformation-before-2000.webp 2000w"
+                  sizes="(min-width: 74rem) 74rem, 100vw">
+                <img src="images/optimized/backyard-transformation-before-1200.jpg"
+                  srcset="images/optimized/backyard-transformation-before-600.jpg 600w,
+                          images/optimized/backyard-transformation-before-1200.jpg 1200w,
+                          images/optimized/backyard-transformation-before-2000.jpg 2000w"
+                  sizes="(min-width: 74rem) 74rem, 100vw" width="2000" height="1333"
+                  loading="lazy" fetchpriority="low" decoding="async"
+                  alt="Before: an overgrown Etobicoke backyard with weeds pushing through the paver patio and junk piled in the corner by the fence.">
+              </picture>
+              <div class="compare__after">
+                <picture>
+                  <source type="image/webp"
+                    srcset="images/optimized/backyard-transformation-after-600.webp 600w,
+                            images/optimized/backyard-transformation-after-1200.webp 1200w,
+                            images/optimized/backyard-transformation-after-2000.webp 2000w"
+                    sizes="(min-width: 74rem) 74rem, 100vw">
+                  <img src="images/optimized/backyard-transformation-after-1200.jpg"
+                    srcset="images/optimized/backyard-transformation-after-600.jpg 600w,
+                            images/optimized/backyard-transformation-after-1200.jpg 1200w,
+                            images/optimized/backyard-transformation-after-2000.jpg 2000w"
+                    sizes="(min-width: 74rem) 74rem, 100vw" width="2000" height="1333"
+                    loading="lazy" fetchpriority="low" decoding="async"
+                    alt="After: the same backyard cleared and regraded, finished in river rock with hydrangeas planted along a freshly stained cedar fence.">
+                </picture>
+              </div>
+            </div>
           </noscript>
         </div>
         <p class="compare__caption">Drag to compare &rarr;</p>
@@ -372,9 +342,10 @@ a{color:inherit}
   </section>
 
   <!-- ============ SERVICES ============ -->
-  <section class="section section--paper" id="services" aria-labelledby="services-title">
+  <section class="section section--stone" id="services" aria-labelledby="services-title">
     <div class="container">
       <div class="section-head">
+        <span class="eyebrow">Services</span>
         <h2 id="services-title">What we do</h2>
         <p>Most jobs are a mix. Tell us what's bothering you about the yard and we'll tell you what it takes.</p>
       </div>
@@ -430,7 +401,7 @@ a{color:inherit}
   </section>
 
   <!-- ============ GALLERY ============ -->
-  <section class="section section--river gallery" id="work" aria-labelledby="work-title">
+  <section class="section section--paper gallery" id="work" aria-labelledby="work-title">
     <div class="container">
       <div class="section-head">
         <h2 id="work-title">Recent work</h2>
@@ -442,24 +413,21 @@ a{color:inherit}
         <div class="gallery-grid">
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/mulch-backyard-japanese-maple-600.webp 600w, images/optimized/mulch-backyard-japanese-maple-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/mulch-backyard-japanese-maple-600.jpg" srcset="images/optimized/mulch-backyard-japanese-maple-600.jpg 600w, images/optimized/mulch-backyard-japanese-maple-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Backyard bed finished in fresh black mulch around a Japanese maple, with a cut edge separating the bed from the lawn.">
+              <source type="image/webp" srcset="images/optimized/mulch-backyard-japanese-maple-600.webp 600w, images/optimized/mulch-backyard-japanese-maple-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/mulch-backyard-japanese-maple-600.jpg" srcset="images/optimized/mulch-backyard-japanese-maple-600.jpg 600w, images/optimized/mulch-backyard-japanese-maple-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Backyard bed finished in fresh black mulch around a Japanese maple, with a cut edge separating the bed from the lawn.">
             </picture>
-            <figcaption>Fresh mulch and a cut edge around a Japanese maple.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/mulch-ring-fabric-during-600.webp 600w, images/optimized/mulch-ring-fabric-during-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/mulch-ring-fabric-during-600.jpg" srcset="images/optimized/mulch-ring-fabric-during-600.jpg 600w, images/optimized/mulch-ring-fabric-during-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Work in progress: landscape fabric pinned down in a ring around a mature tree before the mulch goes on.">
+              <source type="image/webp" srcset="images/optimized/mulch-ring-fabric-during-600.webp 600w, images/optimized/mulch-ring-fabric-during-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/mulch-ring-fabric-during-600.jpg" srcset="images/optimized/mulch-ring-fabric-during-600.jpg 600w, images/optimized/mulch-ring-fabric-during-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Work in progress: landscape fabric pinned down in a ring around a mature tree before the mulch goes on.">
             </picture>
-            <figcaption>Fabric down before the mulch goes on.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/mulch-ring-mature-pine-after-600.webp 600w, images/optimized/mulch-ring-mature-pine-after-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/mulch-ring-mature-pine-after-600.jpg" srcset="images/optimized/mulch-ring-mature-pine-after-600.jpg 600w, images/optimized/mulch-ring-mature-pine-after-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Finished mulch ring around a mature pine, edged in a clean circle against the surrounding lawn.">
+              <source type="image/webp" srcset="images/optimized/mulch-ring-mature-pine-after-600.webp 600w, images/optimized/mulch-ring-mature-pine-after-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/mulch-ring-mature-pine-after-600.jpg" srcset="images/optimized/mulch-ring-mature-pine-after-600.jpg 600w, images/optimized/mulch-ring-mature-pine-after-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Finished mulch ring around a mature pine, edged in a clean circle against the surrounding lawn.">
             </picture>
-            <figcaption>The same ring finished, edged clean.</figcaption>
           </figure>
         </div>
       </div>
@@ -469,24 +437,21 @@ a{color:inherit}
         <div class="gallery-grid">
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/river-rock-shed-bed-600.webp 600w, images/optimized/river-rock-shed-bed-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/river-rock-shed-bed-600.jpg" srcset="images/optimized/river-rock-shed-bed-600.jpg 600w, images/optimized/river-rock-shed-bed-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="River rock bed laid along the base of a garden shed, replacing what was bare soil and weeds.">
+              <source type="image/webp" srcset="images/optimized/river-rock-shed-bed-600.webp 600w, images/optimized/river-rock-shed-bed-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/river-rock-shed-bed-600.jpg" srcset="images/optimized/river-rock-shed-bed-600.jpg 600w, images/optimized/river-rock-shed-bed-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="River rock bed laid along the base of a garden shed, replacing what was bare soil and weeds.">
             </picture>
-            <figcaption>River rock along the base of a shed.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/front-bed-hostas-rock-accent-600.webp 600w, images/optimized/front-bed-hostas-rock-accent-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/front-bed-hostas-rock-accent-600.jpg" srcset="images/optimized/front-bed-hostas-rock-accent-600.jpg 600w, images/optimized/front-bed-hostas-rock-accent-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Front garden bed planted with hostas and finished with a rock accent border against the lawn.">
+              <source type="image/webp" srcset="images/optimized/front-bed-hostas-rock-accent-600.webp 600w, images/optimized/front-bed-hostas-rock-accent-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/front-bed-hostas-rock-accent-600.jpg" srcset="images/optimized/front-bed-hostas-rock-accent-600.jpg 600w, images/optimized/front-bed-hostas-rock-accent-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Front garden bed planted with hostas and finished with a rock accent border against the lawn.">
             </picture>
-            <figcaption>Hostas with a rock accent border out front.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/hero-front-yard-armour-stone-600.webp 600w, images/optimized/hero-front-yard-armour-stone-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/hero-front-yard-armour-stone-600.jpg" srcset="images/optimized/hero-front-yard-armour-stone-600.jpg 600w, images/optimized/hero-front-yard-armour-stone-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Armour stone retaining wall built into a sloped front yard, with mulched beds planted above it.">
+              <source type="image/webp" srcset="images/optimized/hero-front-yard-armour-stone-600.webp 600w, images/optimized/hero-front-yard-armour-stone-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/hero-front-yard-armour-stone-600.jpg" srcset="images/optimized/hero-front-yard-armour-stone-600.jpg 600w, images/optimized/hero-front-yard-armour-stone-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Armour stone retaining wall built into a sloped front yard, with mulched beds planted above it.">
             </picture>
-            <figcaption>Armour stone holding a sloped front yard.</figcaption>
           </figure>
         </div>
       </div>
@@ -496,17 +461,15 @@ a{color:inherit}
         <div class="gallery-grid">
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/foundation-bed-hemlock-600.webp 600w, images/optimized/foundation-bed-hemlock-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/foundation-bed-hemlock-600.jpg" srcset="images/optimized/foundation-bed-hemlock-600.jpg 600w, images/optimized/foundation-bed-hemlock-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Foundation bed along the front of a house planted with hemlock, mulched and edged.">
+              <source type="image/webp" srcset="images/optimized/foundation-bed-hemlock-600.webp 600w, images/optimized/foundation-bed-hemlock-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/foundation-bed-hemlock-600.jpg" srcset="images/optimized/foundation-bed-hemlock-600.jpg 600w, images/optimized/foundation-bed-hemlock-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Foundation bed along the front of a house planted with hemlock, mulched and edged.">
             </picture>
-            <figcaption>Hemlock along a foundation bed.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/new-planting-timber-edge-600.webp 600w, images/optimized/new-planting-timber-edge-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/new-planting-timber-edge-600.jpg" srcset="images/optimized/new-planting-timber-edge-600.jpg 600w, images/optimized/new-planting-timber-edge-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Newly planted bed held by a timber edge, freshly mulched with young shrubs spaced for growth.">
+              <source type="image/webp" srcset="images/optimized/new-planting-timber-edge-600.webp 600w, images/optimized/new-planting-timber-edge-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/new-planting-timber-edge-600.jpg" srcset="images/optimized/new-planting-timber-edge-600.jpg 600w, images/optimized/new-planting-timber-edge-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Newly planted bed held by a timber edge, freshly mulched with young shrubs spaced for growth.">
             </picture>
-            <figcaption>New planting held by a timber edge.</figcaption>
           </figure>
         </div>
       </div>
@@ -516,17 +479,15 @@ a{color:inherit}
         <div class="gallery-grid">
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/cleanup-side-yard-before-600.webp 600w, images/optimized/cleanup-side-yard-before-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/cleanup-side-yard-before-600.jpg" srcset="images/optimized/cleanup-side-yard-before-600.jpg 600w, images/optimized/cleanup-side-yard-before-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Side yard before cleanup, with overgrown weeds and debris crowding the walkway between the house and the fence.">
+              <source type="image/webp" srcset="images/optimized/cleanup-side-yard-before-600.webp 600w, images/optimized/cleanup-side-yard-before-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/cleanup-side-yard-before-600.jpg" srcset="images/optimized/cleanup-side-yard-before-600.jpg 600w, images/optimized/cleanup-side-yard-before-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Side yard before cleanup, with overgrown weeds and debris crowding the walkway between the house and the fence.">
             </picture>
-            <figcaption>A side yard before we cleared it.</figcaption>
           </figure>
           <figure class="reveal">
             <picture>
-              <source type="image/webp" srcset="images/optimized/cedar-hedge-stained-fence-600.webp 600w, images/optimized/cedar-hedge-stained-fence-1200.webp 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw">
-              <img src="images/optimized/cedar-hedge-stained-fence-600.jpg" srcset="images/optimized/cedar-hedge-stained-fence-600.jpg 600w, images/optimized/cedar-hedge-stained-fence-1200.jpg 1200w" sizes="(min-width:60rem) 24rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Trimmed cedar hedge running alongside a freshly stained board fence in a back yard.">
+              <source type="image/webp" srcset="images/optimized/cedar-hedge-stained-fence-600.webp 600w, images/optimized/cedar-hedge-stained-fence-1200.webp 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw">
+              <img src="images/optimized/cedar-hedge-stained-fence-600.jpg" srcset="images/optimized/cedar-hedge-stained-fence-600.jpg 600w, images/optimized/cedar-hedge-stained-fence-1200.jpg 1200w" sizes="(min-width:62rem) 23rem, (min-width:34rem) 45vw, 90vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Trimmed cedar hedge running alongside a freshly stained board fence in a back yard.">
             </picture>
-            <figcaption>Cedars trimmed, fence freshly stained.</figcaption>
           </figure>
         </div>
       </div>
@@ -534,12 +495,12 @@ a{color:inherit}
   </section>
 
   <!-- ============ WHY BLANDI LAND ============ -->
-  <section class="section section--forest" aria-labelledby="why-title">
+  <section class="section section--deep" aria-labelledby="why-title">
     <div class="container why">
       <div>
         <picture>
-          <source type="image/webp" srcset="images/optimized/crew-loaded-bin-junk-removal-600.webp 600w, images/optimized/crew-loaded-bin-junk-removal-1200.webp 1200w" sizes="(min-width:56rem) 36rem, 92vw">
-          <img src="images/optimized/crew-loaded-bin-junk-removal-600.jpg" srcset="images/optimized/crew-loaded-bin-junk-removal-600.jpg 600w, images/optimized/crew-loaded-bin-junk-removal-1200.jpg 1200w" sizes="(min-width:56rem) 36rem, 92vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Blandi Land crew with a bin loaded to the top with brush and debris cleared from a client's yard, ready to be hauled away.">
+          <source type="image/webp" srcset="images/optimized/crew-loaded-bin-junk-removal-600.webp 600w, images/optimized/crew-loaded-bin-junk-removal-1200.webp 1200w" sizes="(min-width:58rem) 34rem, 92vw">
+          <img src="images/optimized/crew-loaded-bin-junk-removal-600.jpg" srcset="images/optimized/crew-loaded-bin-junk-removal-600.jpg 600w, images/optimized/crew-loaded-bin-junk-removal-1200.jpg 1200w" sizes="(min-width:58rem) 34rem, 92vw" width="2000" height="1500" loading="lazy" fetchpriority="low" decoding="async" alt="Blandi Land crew with a bin loaded to the top with brush and debris cleared from a client's yard, ready to be hauled away.">
         </picture>
       </div>
       <div>
@@ -578,25 +539,20 @@ a{color:inherit}
   <!-- ⚠️ END PLACEHOLDER REVIEWS ⚠️ -->
 
   <!-- ============ SERVICE AREA ============ -->
-  <section class="section section--river" aria-labelledby="area-title">
+  <section class="section section--paper" aria-labelledby="area-title">
     <div class="container">
       <div class="section-head">
         <h2 id="area-title">Where we work</h2>
       </div>
-      <ul class="areas">
-        <li>The Kingsway</li><li>Sunnylea</li><li>Mimico</li><li>New Toronto</li>
-        <li>Long Branch</li><li>Alderwood</li><li>Humber Bay Shores</li><li>Markland Wood</li>
-        <li>Eatonville</li><li>Princess Gardens</li><li>Islington</li><li>Richview</li>
-        <li>Thistletown</li><li>Rexdale</li>
-      </ul>
-      <p class="areas-note">All over Etobicoke. Just outside? Ask anyway — we'll tell you straight.</p>
+      <p class="areas-body">All over Etobicoke — <strong>The Kingsway, Sunnylea, Mimico, New Toronto, Long Branch, Alderwood, Humber Bay Shores, Markland Wood, Eatonville, Princess Gardens, Islington, Richview, Thistletown and Rexdale.</strong> Just outside? Ask anyway — we'll tell you straight.</p>
     </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="section section--mulch" id="contact" aria-labelledby="contact-title">
+  <section class="section section--stone" id="contact" aria-labelledby="contact-title">
     <div class="container contact">
       <div class="contact__intro">
+        <span class="eyebrow">Free quote</span>
         <h2 id="contact-title">Tell us about your yard</h2>
         <p>Send a couple of photos and rough measurements if you have them. We'll come back with a quote and a timeline.</p>
         <a class="contact__direct" href="tel:+14379228301">437-922-8301</a>
@@ -662,18 +618,12 @@ a{color:inherit}
 
 <footer class="footer">
   <div class="container">
+    <img class="footer__logo" src="images/logo/blandi-land-full-220.png"
+         srcset="images/logo/blandi-land-full-220.png 220w, images/logo/blandi-land-full-440.png 440w"
+         sizes="210px" width="220" height="149" loading="lazy" fetchpriority="low" decoding="async"
+         alt="Blandi Land — landscape design and maintenance">
+
     <div class="footer__row">
-      <span class="brand">
-        <svg viewBox="0 0 40 32" aria-hidden="true" focusable="false">
-          <path class="mark-leaf" d="M20 1.5c6.4 4.2 8.6 10.4 4.2 15.6-1.7 2-3.6 3.3-4.2 3.7-.6-.4-2.5-1.7-4.2-3.7C11.4 11.9 13.6 5.7 20 1.5z"/>
-          <path class="mark-stem" d="M20 6.5v13"/>
-          <path class="mark-hill" d="M1 30.5c3.4-6.6 7.6-9.6 12-7.4 3.6 1.8 5.4 4.2 9.6 2.7 4.9-1.7 12.4 1 16.4 4.7z"/>
-        </svg>
-        <span class="brand__text">
-          <span class="brand__word">blandi land</span>
-          <span class="brand__tag">Landscape Design &amp; Maintenance</span>
-        </span>
-      </span>
       <a href="tel:+14379228301">437-922-8301</a>
       <span>Etobicoke, Toronto</span>
       <a href="https://www.instagram.com/blandi_land" rel="me noopener">Instagram @blandi_land</a>

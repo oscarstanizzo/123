@@ -1,69 +1,74 @@
 /* Blandi Land — below-the-fold styles. Above-the-fold CSS is inlined in index.html. */
 
-/* ---------- Shared blocks ---------- */
+/* ---------- Section rhythm ---------- */
 
 .section {
-  padding: clamp(4rem, 9vw, 8rem) 0;
+  padding: clamp(4.5rem, 11vw, 10rem) 0;
 }
 
-.section--river { background: var(--river-050); }
+.section--stone { background: var(--stone); }
 .section--paper { background: var(--paper); }
 
-.section--forest {
-  background: var(--forest-900);
+.section--deep {
+  background: var(--forest-deep);
   color: var(--paper);
 }
 
-.section--mulch {
-  background: var(--mulch-950);
-  color: var(--paper);
+.section + .section--paper {
+  border-top: 1px solid var(--line);
 }
 
 .section-head {
-  max-width: 34rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 32rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .section-head p {
-  margin-top: 1rem;
-  color: var(--stone-500);
+  margin-top: 1.15rem;
+  color: var(--muted);
   font-size: 1.0625rem;
 }
 
-.section--forest .section-head p,
-.section--mulch .section-head p {
-  color: var(--river-200);
-}
+.section--deep .section-head p { color: var(--muted-dark); }
 
 h2 {
   font-family: var(--font-head);
-  font-weight: 800;
-  font-size: clamp(2rem, 4.4vw, 3rem);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 
 h3 {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 1.1875rem;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
 }
+
+.eyebrow {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section--deep .eyebrow { color: var(--leaf-light); }
 
 /* ---------- Before / after slider ---------- */
 
-.compare {
-  margin-top: clamp(1.75rem, 4vw, 2.5rem);
-}
+.compare { margin-top: clamp(2rem, 5vw, 3.5rem); }
 
 .compare__frame {
   position: relative;
   aspect-ratio: var(--ba-aspect, 3 / 2);
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  background: var(--river-200);
+  background: var(--line);
   touch-action: pan-y;
   isolation: isolate;
 }
@@ -85,24 +90,22 @@ h3 {
   clip-path: inset(0 0 0 var(--pos, 50%));
 }
 
+/* Plain labels rather than pills — readable on any photo, quieter than a chip. */
 .compare__tag {
   position: absolute;
-  top: 1rem;
+  bottom: 1.1rem;
   z-index: 3;
-  padding: 0.35rem 0.7rem;
-  border-radius: 100px;
-  background: rgb(20 17 15 / 0.72);
   color: var(--paper);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  text-shadow: 0 1px 10px rgb(20 20 18 / 0.85), 0 0 2px rgb(20 20 18 / 0.6);
   pointer-events: none;
-  backdrop-filter: blur(6px);
 }
 
-.compare__tag--before { left: 1rem; }
-.compare__tag--after { right: 1rem; }
+.compare__tag--before { left: 1.1rem; }
+.compare__tag--after { right: 1.1rem; }
 
 .compare__line {
   position: absolute;
@@ -110,10 +113,9 @@ h3 {
   bottom: 0;
   z-index: 4;
   left: var(--pos, 50%);
-  width: 3px;
-  margin-left: -1.5px;
+  width: 2px;
+  margin-left: -1px;
   background: var(--paper);
-  box-shadow: 0 0 0 1px rgb(20 17 15 / 0.18);
   pointer-events: none;
 }
 
@@ -123,19 +125,16 @@ h3 {
   left: 50%;
   display: grid;
   place-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;
+  height: 2.75rem;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: var(--paper);
-  color: var(--forest-700);
-  box-shadow: 0 3px 14px rgb(20 17 15 / 0.3);
+  color: var(--ink);
+  box-shadow: 0 2px 12px rgb(20 20 18 / 0.28);
 }
 
-.compare__grip svg {
-  width: 1.35rem;
-  height: 1.35rem;
-}
+.compare__grip svg { width: 1.15rem; height: 1.15rem; }
 
 /* A real range input drives the slider: pointer, touch, keyboard and AT for free. */
 .compare__range {
@@ -155,13 +154,13 @@ h3 {
 
 .compare__range::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 3rem;
+  width: 2.75rem;
   height: 100%;
   cursor: ew-resize;
 }
 
 .compare__range::-moz-range-thumb {
-  width: 3rem;
+  width: 2.75rem;
   height: 100%;
   border: 0;
   border-radius: 0;
@@ -169,106 +168,83 @@ h3 {
   cursor: ew-resize;
 }
 
+/* The grip sits on an arbitrary photo, so the ring needs to read against
+   anything: light band with a dark halo. */
 .compare__range:focus-visible ~ .compare__line .compare__grip {
   outline: 3px solid var(--paper);
   outline-offset: 2px;
-  box-shadow: 0 0 0 6px rgb(20 17 15 / 0.9);
+  box-shadow: 0 0 0 6px rgb(20 20 18 / 0.9);
 }
 
 .compare__caption {
-  margin-top: 1rem;
-  color: var(--stone-500);
-  font-size: 0.9375rem;
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: 0.875rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* ---------- Services ---------- */
 
+/* No cards, no boxes — a hairline grid and a lot of air. */
 .services {
   display: grid;
-  gap: 1px;
-  background: var(--river-200);
-  border: 1px solid var(--river-200);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  gap: 0;
   grid-template-columns: 1fr;
-}
-
-@media (min-width: 40rem) {
-  .services { grid-template-columns: repeat(2, 1fr); }
-  /* 11 cards leaves one trailing gap at both 2 and 3 columns. */
-  .service:last-child { grid-column: span 2; }
-}
-
-@media (min-width: 64rem) {
-  .services { grid-template-columns: repeat(3, 1fr); }
+  border-top: 1px solid var(--line);
 }
 
 .service {
-  position: relative;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  background: var(--paper);
-}
-
-.service::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2.5rem;
-  height: 3px;
-  background: var(--leaf-500);
-  transition: width var(--t) var(--ease);
-}
-
-@media (hover: hover) {
-  .service:hover::before { width: 100%; }
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .service p {
-  margin-top: 0.6rem;
-  color: var(--stone-500);
+  margin-top: 0.55rem;
+  max-width: 34ch;
+  color: var(--muted);
   font-size: 0.9688rem;
-  line-height: 1.6;
+  line-height: 1.62;
 }
 
 .service__price {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: var(--forest-700);
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--forest);
   font-weight: 600;
   font-size: 0.875rem;
 }
 
-/* ---------- Gallery ---------- */
-
-.gallery-group + .gallery-group {
-  margin-top: clamp(2.5rem, 5vw, 4rem);
+@media (min-width: 44rem) {
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
 }
 
+@media (min-width: 68rem) {
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-group + .gallery-group { margin-top: clamp(3rem, 6vw, 5rem); }
+
 .gallery-group > h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
   margin-bottom: 1.25rem;
-  color: var(--cedar-600);
+  color: var(--muted);
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.gallery-group > h3::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--river-200);
 }
 
 .gallery-grid {
   display: grid;
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  gap: clamp(0.5rem, 1.2vw, 1rem);
   grid-template-columns: 1fr;
 }
 
@@ -276,15 +252,14 @@ h3 {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 62rem) {
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .gallery figure {
   margin: 0;
   overflow: hidden;
-  border-radius: var(--radius);
-  background: var(--river-200);
+  background: var(--line);
 }
 
 .gallery img {
@@ -295,19 +270,13 @@ h3 {
   object-fit: cover;
 }
 
-.gallery figcaption {
-  padding: 0.75rem 0.1rem 0;
-  color: var(--stone-500);
-  font-size: 0.8125rem;
-}
-
 /* Reveal on scroll — the only motion on the page besides the slider.
    Gated on .js-reveal, which reveal.js sets, so a failed script can never
    leave the gallery invisible. */
 .js-reveal .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transform: translateY(12px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .js-reveal .reveal.is-in {
@@ -319,12 +288,12 @@ h3 {
 
 .why {
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 56rem) {
+@media (min-width: 58rem) {
   .why { grid-template-columns: 1fr 1fr; }
 }
 
@@ -334,183 +303,144 @@ h3 {
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: var(--radius-lg);
 }
 
-.why h2 { margin-bottom: 2rem; }
+.why h2 { margin-bottom: 2.5rem; }
 
 .trust {
   list-style: none;
   display: grid;
-  gap: 1.75rem;
+  gap: 0;
 }
 
 .trust li {
-  padding-left: 2.25rem;
-  position: relative;
-  font-size: 1.0625rem;
-  line-height: 1.55;
-  color: var(--river-200);
+  padding: 1.4rem 0;
+  border-top: 1px solid rgb(252 252 250 / 0.16);
+  color: var(--muted-dark);
+  font-size: 1rem;
+  line-height: 1.6;
 }
+
+.trust li:last-child { border-bottom: 1px solid rgb(252 252 250 / 0.16); }
 
 .trust li strong {
   display: block;
+  margin-bottom: 0.35rem;
   color: var(--paper);
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 1.1875rem;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.3rem;
-}
-
-.trust li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.45rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 50%;
-  border: 2px solid var(--leaf-500);
+  font-size: 1.0625rem;
+  letter-spacing: -0.012em;
 }
 
 /* ---------- Testimonials ---------- */
 
 .quotes {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(2rem, 4vw, 3rem);
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 52rem) {
+@media (min-width: 54rem) {
   .quotes { grid-template-columns: repeat(3, 1fr); }
 }
 
 .quote {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  border: 1px solid var(--river-200);
-  border-radius: var(--radius-lg);
-  background: var(--paper);
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--forest);
 }
 
 .quote blockquote {
   margin: 0;
-  flex: 1;
-  font-size: 1.0313rem;
-  line-height: 1.6;
-}
-
-.quote blockquote::before {
-  content: "\201C";
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--cedar-600);
-  font-family: var(--font-head);
-  font-size: 2.75rem;
-  font-weight: 800;
-  line-height: 0.6;
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--ink);
 }
 
 .quote figcaption {
-  margin-top: 1.25rem;
-  color: var(--stone-500);
+  margin-top: 1.15rem;
+  color: var(--muted);
   font-size: 0.875rem;
   font-weight: 600;
 }
 
 /* ---------- Service area ---------- */
 
-.areas {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 2rem 0;
-  max-width: 52rem;
+.areas-body {
+  max-width: 44rem;
+  font-size: clamp(1.0625rem, 1.7vw, 1.25rem);
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 
-.areas li {
-  padding: 0.45rem 0.9rem;
-  border: 1px solid var(--river-200);
-  border-radius: 100px;
-  background: var(--paper);
-  font-size: 0.9375rem;
+.areas-body strong {
   font-weight: 600;
-}
-
-.areas-note {
-  color: var(--stone-500);
-  max-width: 34rem;
+  color: var(--ink);
 }
 
 /* ---------- Contact ---------- */
 
 .contact {
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 5rem);
   grid-template-columns: 1fr;
   align-items: start;
 }
 
-@media (min-width: 56rem) {
-  .contact { grid-template-columns: 0.85fr 1fr; }
-  .contact__intro { position: sticky; top: 7rem; }
+@media (min-width: 58rem) {
+  .contact { grid-template-columns: 0.8fr 1fr; }
+  .contact__intro { position: sticky; top: 8rem; }
 }
 
 .contact__intro p {
-  margin-top: 1rem;
-  color: var(--river-200);
+  margin-top: 1.15rem;
+  max-width: 28rem;
+  color: var(--muted);
   font-size: 1.0625rem;
   line-height: 1.65;
-  max-width: 30rem;
 }
 
 .contact__direct {
+  display: inline-block;
   margin-top: 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-head);
-  font-size: 1.375rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   text-decoration: none;
-  border-bottom: 2px solid var(--leaf-500);
-  padding-bottom: 0.15rem;
+  border-bottom: 2px solid var(--forest);
+  padding-bottom: 0.2rem;
 }
 
-.form {
-  display: grid;
-  gap: 1.25rem;
-  padding: clamp(1.5rem, 3.5vw, 2.5rem);
-  border-radius: var(--radius-lg);
-  background: var(--paper);
-  color: var(--mulch-950);
-}
+.contact__direct:hover { color: var(--forest); }
 
-.field { display: grid; gap: 0.4rem; }
+.form { display: grid; gap: 1.5rem; }
+
+.field { display: grid; gap: 0.45rem; }
 
 .field-row {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.5rem;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 32rem) {
   .field-row { grid-template-columns: 1fr 1fr; }
 }
 
 .form label,
 .form legend {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .form .optional {
-  color: var(--stone-500);
+  color: var(--muted);
   font-weight: 400;
+  letter-spacing: 0;
 }
 
 .form input[type="text"],
@@ -518,10 +448,10 @@ h3 {
 .form input[type="email"],
 .form textarea {
   width: 100%;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid var(--river-200);
-  border-radius: var(--radius-sm);
-  background: var(--river-050);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
   color: inherit;
   font: inherit;
   font-size: 1rem;
@@ -540,18 +470,11 @@ h3 {
 }
 
 .form input::placeholder,
-.form textarea::placeholder { color: var(--stone-500); }
+.form textarea::placeholder { color: var(--muted); }
 
-.form fieldset {
-  border: 0;
-  padding: 0;
-  margin: 0;
-}
+.form fieldset { border: 0; padding: 0; margin: 0; }
 
-.form legend {
-  padding: 0;
-  margin-bottom: 0.6rem;
-}
+.form legend { padding: 0; margin-bottom: 0.75rem; }
 
 .chips {
   display: flex;
@@ -559,9 +482,7 @@ h3 {
   gap: 0.5rem;
 }
 
-.chip {
-  position: relative;
-}
+.chip { position: relative; }
 
 .chip input {
   position: absolute;
@@ -572,19 +493,17 @@ h3 {
 
 .chip span {
   display: block;
-  padding: 0.45rem 0.85rem;
-  border: 1px solid var(--river-200);
-  border-radius: 100px;
-  background: var(--river-050);
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
   font-size: 0.875rem;
-  font-weight: 600;
   cursor: pointer;
   transition: background var(--t) var(--ease), color var(--t) var(--ease), border-color var(--t) var(--ease);
 }
 
 .chip input:checked + span {
-  background: var(--forest-700);
-  border-color: var(--forest-700);
+  background: var(--forest);
+  border-color: var(--forest);
   color: var(--paper);
 }
 
@@ -597,16 +516,16 @@ h3 {
   width: 100%;
   font: inherit;
   font-size: 0.875rem;
-  color: var(--stone-500);
+  color: var(--muted);
 }
 
 .form input[type="file"]::file-selector-button {
   margin-right: 0.75rem;
   padding: 0.5rem 0.9rem;
-  border: 1px solid var(--river-200);
-  border-radius: var(--radius-sm);
-  background: var(--river-050);
-  color: var(--mulch-950);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
   font: inherit;
   font-size: 0.875rem;
   font-weight: 600;
@@ -620,43 +539,82 @@ h3 {
 
 .form .btn { justify-self: start; }
 
-.form-note {
-  font-size: 0.8125rem;
-  color: var(--stone-500);
+.form-status {
+  padding: 0.85rem 1rem;
+  border-left: 2px solid var(--forest);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.form-status.is-error { border-left-color: #9C4321; }
+
+.form button[type="submit"][disabled] {
+  opacity: 0.6;
+  cursor: progress;
 }
 
 /* ---------- Footer ---------- */
 
+/* Light, so the logo sits on the white ground it was drawn for. */
 .footer {
-  padding: clamp(3rem, 6vw, 4.5rem) 0;
-  background: var(--mulch-950);
-  color: var(--river-200);
-  font-size: 0.9375rem;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  text-align: center;
+}
+
+.footer__logo {
+  display: inline-block;
+  width: clamp(160px, 20vw, 210px);
+  height: auto;
 }
 
 .footer__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 1.5rem;
+  justify-content: center;
+  gap: 0.4rem 1.5rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
 }
 
 .footer a {
-  color: var(--river-200);
+  color: var(--ink);
   text-decoration: none;
-  border-bottom: 1px solid rgb(215 219 213 / 0.35);
+  border-bottom: 1px solid var(--line);
 }
 
-.footer a:hover { color: var(--leaf-400); border-bottom-color: var(--leaf-400); }
+.footer a:hover {
+  color: var(--forest);
+  border-bottom-color: var(--forest);
+}
 
 .footer__legal {
-  margin-top: 1.5rem;
-  color: var(--stone-300);
+  margin-top: 1.75rem;
+  color: var(--muted);
   font-size: 0.8125rem;
 }
 
-.footer .brand__word { color: var(--paper); }
-.footer .brand__tag { color: var(--stone-300); }
+/* ---------- No-JS fallback for the compare slider ---------- */
+
+/* Without JS the deferred <picture> elements have no source, and the drag
+   chrome cannot work — show the static <noscript> pair instead. */
+html:not(.js) [data-lazy],
+html:not(.js) .compare__tag,
+html:not(.js) .compare__line,
+html:not(.js) .compare__range {
+  display: none;
+}
+
+.compare__frame--static {
+  position: absolute;
+  inset: 0;
+}
+
+.compare__frame [data-lazy] img:not([src]) { visibility: hidden; }
 
 /* ---------- Motion preference ---------- */
 
@@ -675,48 +633,4 @@ h3 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-.form-status {
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--leaf-500) 16%, transparent);
-  border: 1px solid var(--leaf-500);
-  color: var(--forest-900);
-  font-size: 0.9375rem;
-  font-weight: 600;
-}
-
-.form-status.is-error {
-  background: color-mix(in srgb, var(--cedar-600) 14%, transparent);
-  border-color: var(--cedar-600);
-  color: var(--mulch-950);
-}
-
-.form button[type="submit"][disabled] {
-  opacity: 0.65;
-  cursor: progress;
-}
-
-/* ---------- No-JS fallback for the compare slider ---------- */
-
-/* Without JS the deferred <picture> elements have no source, and the drag
-   chrome cannot work — show the static <noscript> pair instead. */
-html:not(.js) [data-lazy],
-html:not(.js) .compare__tag,
-html:not(.js) .compare__line,
-html:not(.js) .compare__range {
-  display: none;
-}
-
-.compare__frame--static {
-  position: absolute;
-  inset: 0;
-  border-radius: 0;
-}
-
-/* Until the deferred photos attach, the frame reads as a plain grey panel
-   rather than a broken box. */
-.compare__frame [data-lazy] img:not([src]) {
-  visibility: hidden;
 }

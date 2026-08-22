@@ -34,9 +34,9 @@ const targets = [
   ['slider', '.compare'],
   ['services', '#services'],
   ['gallery', '#work'],
-  ['why', '.section--forest'],
+  ['why', '.section--deep'],
   ['testimonials', '.quotes'],
-  ['area', '.areas'],
+  ['area', '.areas-body'],
   ['contact', '#contact'],
 ];
 for (const [name, sel] of targets) {

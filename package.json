@@ -11,7 +11,9 @@
     "perf": "node scripts/measure-perf.mjs",
     "verify": "node scripts/verify-interactions.mjs",
     "shot": "node scripts/screenshot.mjs",
-    "standins": "node scripts/dev-standins.mjs"
+    "standins": "node scripts/dev-standins.mjs",
+    "a11y": "node scripts/audit-a11y.mjs",
+    "logo": "node scripts/extract-logo.mjs"
   },
   "repository": {
     "type": "git",

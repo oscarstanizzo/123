@@ -39,7 +39,7 @@ const hero = imgs.filter((t) => t.includes('fetchpriority="high"'));
 if (hero.length !== 1) problems.push(`expected exactly 1 image with fetchpriority="high", found ${hero.length}`);
 if (hero[0] && /loading="lazy"/.test(hero[0])) problems.push('hero image must not be loading="lazy"');
 
-const belowFold = imgs.filter((t) => !t.includes('fetchpriority="high"'));
+const belowFold = imgs.filter((t) => !t.includes('fetchpriority="high"') && !t.includes('data-above-fold'));
 const notLazy = belowFold.filter((t) => !/loading="lazy"/.test(t));
 if (notLazy.length) problems.push(`${notLazy.length} below-the-fold image(s) missing loading="lazy"`);
 
@@ -61,6 +61,7 @@ const initial = [
   ['js/form.js', size('js/form.js')],
   ['fonts/archivo-var-latin.woff2', size('fonts/archivo-var-latin.woff2')],
   ['fonts/publicsans-var-latin.woff2', size('fonts/publicsans-var-latin.woff2')],
+  ['logo (header, 2x)', size('images/logo/blandi-land-lockup-300.png')],
   ['hero 1200 webp', size('images/optimized/hero-front-yard-armour-stone-1200.webp')],
   ['before 1200 webp', size('images/optimized/backyard-transformation-before-1200.webp')],
   ['after 1200 webp', size('images/optimized/backyard-transformation-after-1200.webp')],
