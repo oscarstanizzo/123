@@ -51,15 +51,18 @@ html = html.replace(/imagesrcset="([^"]*)"/g, (whole, value) => {
   return `imagesrcset="${srcsetFor(slug, 'webp')}"`;
 });
 
-// --- default src, in case its variant no longer exists --------------------
-html = html.replace(/(data-)?src="images\/optimized\/([a-z0-9-]+)-(\d+)\.(jpg|webp)"/g, (whole, dataPrefix, slug, target, ext) => {
+// --- any single-file reference whose variant no longer exists --------------
+// Covers src, data-src, the preload href, og:image and the JSON-LD URLs.
+// Changing the variant set used to silently orphan these: the hero preload
+// still pointed at a -1200 file that the build no longer produced.
+html = html.replace(/images\/optimized\/([a-z0-9-]+)-(\d+)\.(jpg|webp)/g, (whole, slug, target, ext) => {
   const m = manifest[slug];
   if (!m || !m.variants) return whole;
   if (m.variants.some((v) => String(v.target) === target)) return whole;
-  // Fall back to the middle variant.
-  const mid = m.variants[Math.min(1, m.variants.length - 1)];
-  patched.push(`${slug} src -> ${mid.target}`);
-  return `${dataPrefix || ''}src="images/optimized/${slug}-${mid.target}.${ext}"`;
+  // Nearest variant by long-edge target.
+  const near = m.variants.reduce((a, b) => (Math.abs(b.target - target) < Math.abs(a.target - target) ? b : a));
+  patched.push(`${slug} ${target} -> ${near.target}`);
+  return `images/optimized/${slug}-${near.target}.${ext}`;
 });
 
 // --- width / height -------------------------------------------------------

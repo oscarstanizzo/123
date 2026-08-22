@@ -80,33 +80,6 @@
       }
     ]
   },
-  "cleanup-side-yard-before": {
-    "width": 1779,
-    "height": 2000,
-    "aspect": 0.8895,
-    "variants": [
-      {
-        "target": 600,
-        "width": 534,
-        "height": 600
-      },
-      {
-        "target": 1000,
-        "width": 890,
-        "height": 1000
-      },
-      {
-        "target": 1400,
-        "width": 1245,
-        "height": 1400
-      },
-      {
-        "target": 2000,
-        "width": 1779,
-        "height": 2000
-      }
-    ]
-  },
   "hero-front-yard-armour-stone": {
     "width": 1588,
     "height": 2000,
@@ -239,6 +212,33 @@
         "target": 2000,
         "width": 2000,
         "height": 1861
+      }
+    ]
+  },
+  "river-rock-backyard-patio": {
+    "width": 2000,
+    "height": 1994,
+    "aspect": 1.003,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 598
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 997
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1396
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1994
       }
     ]
   }

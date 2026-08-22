@@ -19,7 +19,7 @@
   },
   "backyard-transformation-after": {
     "crop": {
-      "note": "Matched to the before shot.",
+      "note": "Matched to the before shot so the compare slider does not distort. Biased to the top so the neighbouring houses go and the cleared pavers stay.",
       "aspect": 1.3333,
       "bias": 0.8
     }

@@ -8,10 +8,10 @@ const DIR = 'images';
 const MAP = {
   IMG_9148: 'hero-front-yard-armour-stone',
   IMG_0566: 'backyard-transformation-before',
-  IMG_0547: 'backyard-transformation-after',
+  IMG_0580: 'backyard-transformation-after',
   IMG_7969: 'crew-loaded-bin-junk-removal',
   IMG_0543: 'river-rock-shed-bed',
-  IMG_0580: 'cleanup-side-yard-before',
+  IMG_0547: 'river-rock-backyard-patio',
   IMG_0733: 'mulch-backyard-japanese-maple',
   IMG_9337: 'front-bed-hostas-rock-accent',
   IMG_0717: 'foundation-bed-hemlock',
