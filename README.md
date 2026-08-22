@@ -131,5 +131,6 @@ JS-off visitors. Removing that indirection pushes LCP from ~2.0s back over 4s.
       comment) with real Google reviews.
 - [ ] Replace the screenshot-derived logo with a vector original and re-run
       `scripts/extract-logo.mjs`.
-- [ ] Add an email address to the footer and contact section.
-- [ ] Crop the house number and street sign out of the photos that show them.
+- [x] Crop the house number and street sign out of the photos that show them.
+      (Done in `scripts/source-edits.json` — blurred, not cropped, to keep the framing.)
+- [ ] Confirm the spelling of blandilandsscaping@gmail.com (double s).
