@@ -48,6 +48,9 @@ palette PNGs — which beat WebP on this flat artwork.
 | `blandi-land-full-{220,440}.png` | footer (adds rule + tagline) |
 | `blandi-land-mark-{80,160}.png` | spare, mark only |
 
+The script also squares the mark onto the logo's white to produce
+`favicon-32.png` and `apple-touch-icon.png`.
+
 Two things follow from the source being a screenshot:
 
 - **It is low resolution for a logo.** Fine at the sizes used, but replace it
@@ -97,6 +100,12 @@ JS-off visitors. Removing that indirection pushes LCP from ~2.0s back over 4s.
 
 ## Before launch
 
+`npm run check` prints this list on every run, so none of it can ship unnoticed.
+
+- [ ] Replace `SITE_DOMAIN_HERE` (7 occurrences in `index.html`) with the real
+      domain. It feeds the canonical tag, `og:url`, `og:image` and the JSON-LD.
+      A canonical pointing at the wrong host tells search engines the real page
+      is somewhere else, so this one matters more than it looks.
 - [ ] Replace `FORMSPREE_ENDPOINT_HERE` in `index.html` with the real Formspree
       form ID, then submit the form once to confirm delivery.
 - [ ] Replace the placeholder testimonials (marked with a `⚠️ PLACEHOLDER REVIEWS`

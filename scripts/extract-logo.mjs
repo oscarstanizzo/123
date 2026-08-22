@@ -64,4 +64,26 @@ for (const [name, box] of Object.entries(CROPS)) {
     await base.clone().resize({ width: w }).png({ compressionLevel: 9, palette: true, quality: 90 }).toFile(`${OUT}/${name}-${w}.png`);
   }
   console.log(`${name.padEnd(20)} ${W}x${H}  ->  ${SIZES[name].join(', ')}px wide`);
+
+  // Favicons come from the real mark, squared on the logo's own white.
+  if (name === 'blandi-land-mark') {
+    for (const s of [32, 180]) {
+      await sharp({
+        create: { width: s, height: s, channels: 4, background: '#FCFCFA' },
+      })
+        .composite([
+          {
+            input: await base
+              .clone()
+              .resize({ width: Math.round(s * 0.84), height: Math.round(s * 0.84), fit: 'inside' })
+              .png()
+              .toBuffer(),
+            gravity: 'center',
+          },
+        ])
+        .png({ compressionLevel: 9 })
+        .toFile(s === 180 ? 'apple-touch-icon.png' : 'favicon-32.png');
+    }
+    console.log('favicon-32.png, apple-touch-icon.png');
+  }
 }

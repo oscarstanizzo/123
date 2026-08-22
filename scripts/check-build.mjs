@@ -48,6 +48,8 @@ const h1s = [...html.matchAll(/<h1\b/g)].length;
 if (h1s !== 1) problems.push(`expected exactly 1 <h1>, found ${h1s}`);
 
 // --- placeholders that must be replaced before launch ------------------------
+if (html.includes('SITE_DOMAIN_HERE'))
+  notes.push(`site domain is still the placeholder (${[...html.matchAll(/SITE_DOMAIN_HERE/g)].length} occurrences: canonical, og:url, og:image, JSON-LD)`);
 if (html.includes('FORMSPREE_ENDPOINT_HERE')) notes.push('Formspree endpoint is still the placeholder');
 if (html.includes('PLACEHOLDER REVIEWS')) notes.push('testimonials are still marked as placeholders');
 
