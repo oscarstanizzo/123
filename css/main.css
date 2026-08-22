@@ -1,0 +1,722 @@
+/* Blandi Land — below-the-fold styles. Above-the-fold CSS is inlined in index.html. */
+
+/* ---------- Shared blocks ---------- */
+
+.section {
+  padding: clamp(4rem, 9vw, 8rem) 0;
+}
+
+.section--river { background: var(--river-050); }
+.section--paper { background: var(--paper); }
+
+.section--forest {
+  background: var(--forest-900);
+  color: var(--paper);
+}
+
+.section--mulch {
+  background: var(--mulch-950);
+  color: var(--paper);
+}
+
+.section-head {
+  max-width: 34rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-head p {
+  margin-top: 1rem;
+  color: var(--stone-500);
+  font-size: 1.0625rem;
+}
+
+.section--forest .section-head p,
+.section--mulch .section-head p {
+  color: var(--river-200);
+}
+
+h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Before / after slider ---------- */
+
+.compare {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.compare__frame {
+  position: relative;
+  aspect-ratio: var(--ba-aspect, 3 / 2);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--river-200);
+  touch-action: pan-y;
+  isolation: isolate;
+}
+
+.compare__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* The "after" frame is revealed to the right of the handle. */
+.compare__after {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 var(--pos, 50%));
+}
+
+.compare__tag {
+  position: absolute;
+  top: 1rem;
+  z-index: 3;
+  padding: 0.35rem 0.7rem;
+  border-radius: 100px;
+  background: rgb(20 17 15 / 0.72);
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.compare__tag--before { left: 1rem; }
+.compare__tag--after { right: 1rem; }
+
+.compare__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  left: var(--pos, 50%);
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgb(20 17 15 / 0.18);
+  pointer-events: none;
+}
+
+.compare__grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--forest-700);
+  box-shadow: 0 3px 14px rgb(20 17 15 / 0.3);
+}
+
+.compare__grip svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+/* A real range input drives the slider: pointer, touch, keyboard and AT for free. */
+.compare__range {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.compare__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 3rem;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.compare__range::-moz-range-thumb {
+  width: 3rem;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+.compare__range:focus-visible ~ .compare__line .compare__grip {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px rgb(20 17 15 / 0.9);
+}
+
+.compare__caption {
+  margin-top: 1rem;
+  color: var(--stone-500);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* ---------- Services ---------- */
+
+.services {
+  display: grid;
+  gap: 1px;
+  background: var(--river-200);
+  border: 1px solid var(--river-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .services { grid-template-columns: repeat(2, 1fr); }
+  /* 11 cards leaves one trailing gap at both 2 and 3 columns. */
+  .service:last-child { grid-column: span 2; }
+}
+
+@media (min-width: 64rem) {
+  .services { grid-template-columns: repeat(3, 1fr); }
+}
+
+.service {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--paper);
+}
+
+.service::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--leaf-500);
+  transition: width var(--t) var(--ease);
+}
+
+@media (hover: hover) {
+  .service:hover::before { width: 100%; }
+}
+
+.service p {
+  margin-top: 0.6rem;
+  color: var(--stone-500);
+  font-size: 0.9688rem;
+  line-height: 1.6;
+}
+
+.service__price {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--forest-700);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-group + .gallery-group {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.gallery-group > h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+  color: var(--cedar-600);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gallery-group > h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--river-200);
+}
+
+.gallery-grid {
+  display: grid;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 34rem) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 60rem) {
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--river-200);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery figcaption {
+  padding: 0.75rem 0.1rem 0;
+  color: var(--stone-500);
+  font-size: 0.8125rem;
+}
+
+/* Reveal on scroll — the only motion on the page besides the slider.
+   Gated on .js-reveal, which reveal.js sets, so a failed script can never
+   leave the gallery invisible. */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.js-reveal .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Why Blandi Land ---------- */
+
+.why {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 56rem) {
+  .why { grid-template-columns: 1fr 1fr; }
+}
+
+.why img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.why h2 { margin-bottom: 2rem; }
+
+.trust {
+  list-style: none;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.trust li {
+  padding-left: 2.25rem;
+  position: relative;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--river-200);
+}
+
+.trust li strong {
+  display: block;
+  color: var(--paper);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+}
+
+.trust li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--leaf-500);
+}
+
+/* ---------- Testimonials ---------- */
+
+.quotes {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 52rem) {
+  .quotes { grid-template-columns: repeat(3, 1fr); }
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--river-200);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.quote blockquote {
+  margin: 0;
+  flex: 1;
+  font-size: 1.0313rem;
+  line-height: 1.6;
+}
+
+.quote blockquote::before {
+  content: "\201C";
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--cedar-600);
+  font-family: var(--font-head);
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 0.6;
+}
+
+.quote figcaption {
+  margin-top: 1.25rem;
+  color: var(--stone-500);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* ---------- Service area ---------- */
+
+.areas {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  max-width: 52rem;
+}
+
+.areas li {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--river-200);
+  border-radius: 100px;
+  background: var(--paper);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.areas-note {
+  color: var(--stone-500);
+  max-width: 34rem;
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .contact { grid-template-columns: 0.85fr 1fr; }
+  .contact__intro { position: sticky; top: 7rem; }
+}
+
+.contact__intro p {
+  margin-top: 1rem;
+  color: var(--river-200);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 30rem;
+}
+
+.contact__direct {
+  margin-top: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--paper);
+  font-family: var(--font-head);
+  font-size: 1.375rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--leaf-500);
+  padding-bottom: 0.15rem;
+}
+
+.form {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  color: var(--mulch-950);
+}
+
+.field { display: grid; gap: 0.4rem; }
+
+.field-row {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 30rem) {
+  .field-row { grid-template-columns: 1fr 1fr; }
+}
+
+.form label,
+.form legend {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.form .optional {
+  color: var(--stone-500);
+  font-weight: 400;
+}
+
+.form input[type="text"],
+.form input[type="tel"],
+.form input[type="email"],
+.form textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--river-200);
+  border-radius: var(--radius-sm);
+  background: var(--river-050);
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.form textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.form input::placeholder,
+.form textarea::placeholder { color: var(--stone-500); }
+
+.form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.form legend {
+  padding: 0;
+  margin-bottom: 0.6rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+}
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: block;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--river-200);
+  border-radius: 100px;
+  background: var(--river-050);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t) var(--ease), color var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+
+.chip input:checked + span {
+  background: var(--forest-700);
+  border-color: var(--forest-700);
+  color: var(--paper);
+}
+
+.chip input:focus-visible + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.form input[type="file"] {
+  width: 100%;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--stone-500);
+}
+
+.form input[type="file"]::file-selector-button {
+  margin-right: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--river-200);
+  border-radius: var(--radius-sm);
+  background: var(--river-050);
+  color: var(--mulch-950);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form input[type="file"]:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.form .btn { justify-self: start; }
+
+.form-note {
+  font-size: 0.8125rem;
+  color: var(--stone-500);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  background: var(--mulch-950);
+  color: var(--river-200);
+  font-size: 0.9375rem;
+}
+
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.footer a {
+  color: var(--river-200);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(215 219 213 / 0.35);
+}
+
+.footer a:hover { color: var(--leaf-400); border-bottom-color: var(--leaf-400); }
+
+.footer__legal {
+  margin-top: 1.5rem;
+  color: var(--stone-300);
+  font-size: 0.8125rem;
+}
+
+.footer .brand__word { color: var(--paper); }
+.footer .brand__tag { color: var(--stone-300); }
+
+/* ---------- Motion preference ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.form-status {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--leaf-500) 16%, transparent);
+  border: 1px solid var(--leaf-500);
+  color: var(--forest-900);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.form-status.is-error {
+  background: color-mix(in srgb, var(--cedar-600) 14%, transparent);
+  border-color: var(--cedar-600);
+  color: var(--mulch-950);
+}
+
+.form button[type="submit"][disabled] {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+/* ---------- No-JS fallback for the compare slider ---------- */
+
+/* Without JS the deferred <picture> elements have no source, and the drag
+   chrome cannot work — show the static <noscript> pair instead. */
+html:not(.js) [data-lazy],
+html:not(.js) .compare__tag,
+html:not(.js) .compare__line,
+html:not(.js) .compare__range {
+  display: none;
+}
+
+.compare__frame--static {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+/* Until the deferred photos attach, the frame reads as a plain grey panel
+   rather than a broken box. */
+.compare__frame [data-lazy] img:not([src]) {
+  visibility: hidden;
+}

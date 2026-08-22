@@ -1,0 +1,33 @@
+{
+  "name": "blandi-land",
+  "version": "1.0.0",
+  "description": "Marketing site for Blandi Land \u2014 landscaping and property maintenance in Etobicoke, Toronto.",
+  "scripts": {
+    "images": "node scripts/rename-images.mjs && node scripts/optimize-images.mjs && node scripts/sync-dimensions.mjs",
+    "rename": "node scripts/rename-images.mjs",
+    "optimize": "node scripts/optimize-images.mjs",
+    "sync": "node scripts/sync-dimensions.mjs",
+    "check": "node scripts/check-build.mjs",
+    "perf": "node scripts/measure-perf.mjs",
+    "verify": "node scripts/verify-interactions.mjs",
+    "shot": "node scripts/screenshot.mjs",
+    "standins": "node scripts/dev-standins.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarstanizzo/123.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscarstanizzo/123/issues"
+  },
+  "homepage": "https://github.com/oscarstanizzo/123#readme",
+  "dependencies": {
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  },
+  "private": true,
+  "type": "module"
+}
