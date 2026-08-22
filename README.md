@@ -18,16 +18,30 @@ npm run images     # rename -> resize/WebP+JPEG -> sync width/height
 npm run check      # asset existence, alt text, dimensions, page weight
 ```
 
-`npm run images` runs three steps:
+`npm run images` runs five steps:
 
-1. **`rename-images.mjs`** applies the camera-filename → slug mapping. Files that
+1. **`decode-heic.py`** converts iPhone `.heic` to JPEG. sharp cannot read them:
+   libheif rejects HEICs whose iref box holds more references than its security
+   limit allows, and an HDR gain map pushes an iPhone photo past it. Originals
+   move to `images/_originals/` rather than being deleted.
+2. **`rename-images.mjs`** applies the camera-filename → slug mapping. Files that
    are not on the mapping are left untouched and reported, never guessed at.
-2. **`optimize-images.mjs`** resizes every photo to 2000px on the long edge and
-   writes 600 / 1200 / 2000 variants as WebP (q80) and JPEG (q82, mozjpeg) into
-   `images/optimized/`, plus `images/manifest.json` with real dimensions.
-3. **`sync-dimensions.mjs`** rewrites every `<img>` `width`/`height` in
-   `index.html` from that manifest, and sets the before/after slider's aspect
-   ratio, so the markup never lies about a photo's shape.
+3. **`prepare-sources.mjs`** applies the edits in `scripts/source-edits.json`:
+   blurring identifying details, and forcing an aspect ratio so the before/after
+   pair matches. Idempotent, so re-running on a new batch is safe.
+4. **`optimize-images.mjs`** resizes to 2000px on the long edge and writes
+   600 / 1000 / 1400 / 2000 variants as WebP (q80) and JPEG (q82, mozjpeg),
+   plus `images/manifest.json` with every variant's real dimensions.
+5. **`sync-dimensions.mjs`** rewrites `width`/`height` **and every `srcset`** in
+   `index.html` from that manifest, and sets the slider's aspect ratio.
+
+The variant steps are 600/1000/1400/2000 rather than the more usual 600/1200/2000
+because 600 → 1200 is too coarse for a 390px phone at 2x: it needs ~780px, got
+forced up to the 1200 file, and paid about 130 KB for pixels it could not show.
+
+`sync-dimensions` owns the `srcset` descriptors for a reason. The optimizer sizes
+by **long edge**, so a portrait photo's "1200" file is only ~950px wide —
+declaring it `1200w` tells the browser it has more resolution than it does.
 
 ## Logo
 
@@ -81,7 +95,12 @@ npm run perf      # LCP / FCP / CLS under Slow 4G + 4x CPU, mobile viewport
 npm run verify    # slider with JS, <noscript> fallback, prefers-reduced-motion
 npm run shot 390  # screenshots each section at a given width -> shots/
 npm run a11y      # heading outline, focus rings, anchor offsets, overflow
+npm run preview   # bundles everything into one self-contained preview.html
 ```
+
+`npm run preview` inlines CSS, JS, fonts and photos as data URIs for the Artifact
+viewer, whose CSP blocks every external host. Photos not yet supplied become
+labelled placeholders so the layout still reads.
 
 `npm run standins` generates labelled placeholder photos so `perf` and `shot`
 can run before the real images arrive. They are deliberately noisy, so they

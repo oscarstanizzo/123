@@ -1,0 +1,38 @@
+{
+  "hero-front-yard-armour-stone": {
+    "blur": [
+      {
+        "note": "House number and street name carved on the portico frieze.",
+        "left": 1596,
+        "top": 1560,
+        "width": 200,
+        "height": 84
+      }
+    ]
+  },
+  "backyard-transformation-before": {
+    "crop": {
+      "note": "Matched to the after shot so the compare slider does not distort. Biased to the top so the neighbouring houses go and the patio stays.",
+      "aspect": 1.3333,
+      "bias": 0.8
+    }
+  },
+  "backyard-transformation-after": {
+    "crop": {
+      "note": "Matched to the before shot.",
+      "aspect": 1.3333,
+      "bias": 0.8
+    }
+  },
+  "mulch-ring-fabric-during": {
+    "blur": [
+      {
+        "note": "Small sign blade clipped at the top edge above the stop sign \u2014 illegible, blurred as a precaution.",
+        "left": 3750,
+        "top": 0,
+        "width": 170,
+        "height": 70
+      }
+    ]
+  }
+}

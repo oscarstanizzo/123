@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Marketing site for Blandi Land \u2014 landscaping and property maintenance in Etobicoke, Toronto.",
   "scripts": {
-    "images": "node scripts/rename-images.mjs && node scripts/optimize-images.mjs && node scripts/sync-dimensions.mjs",
+    "images": "python3 scripts/decode-heic.py && node scripts/rename-images.mjs && node scripts/prepare-sources.mjs && node scripts/optimize-images.mjs && node scripts/sync-dimensions.mjs",
     "rename": "node scripts/rename-images.mjs",
     "optimize": "node scripts/optimize-images.mjs",
     "sync": "node scripts/sync-dimensions.mjs",
@@ -13,7 +13,10 @@
     "shot": "node scripts/screenshot.mjs",
     "standins": "node scripts/dev-standins.mjs",
     "a11y": "node scripts/audit-a11y.mjs",
-    "logo": "node scripts/extract-logo.mjs"
+    "logo": "node scripts/extract-logo.mjs",
+    "decode": "python3 scripts/decode-heic.py",
+    "prepare": "node scripts/prepare-sources.mjs",
+    "preview": "node scripts/build-preview.mjs"
   },
   "repository": {
     "type": "git",

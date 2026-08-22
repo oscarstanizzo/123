@@ -8,7 +8,10 @@ import { join, extname, basename } from 'node:path';
 
 const SRC = 'images';
 const OUT = join(SRC, 'optimized');
-const WIDTHS = [600, 1200, 2000];
+// Long-edge targets. 1000 and 1400 exist because 600 -> 1200 is too coarse a
+// step for a 390px phone at 2x, which needs ~780px: it was forced up to the
+// 1200 file and paid ~130 KB for pixels it could not show.
+const WIDTHS = [600, 1000, 1400, 2000];
 const PHOTO_EXT = new Set(['.jpg', '.jpeg', '.png', '.heic', '.tif', '.tiff']);
 
 mkdirSync(OUT, { recursive: true });
@@ -68,7 +71,9 @@ for (const file of sources) {
     width: largest.width,
     height: largest.height,
     aspect: +(largest.width / largest.height).toFixed(4),
-    widths: variants.map((v) => v.w),
+    // Real pixel width of each variant — a srcset `w` descriptor must be the
+    // file's actual width, which is not the long-edge target on a portrait.
+    variants: variants.map((v) => ({ target: v.w, width: v.width, height: v.height })),
   };
 
   const kb = (n) => (n / 1024).toFixed(0).padStart(4) + ' KB';

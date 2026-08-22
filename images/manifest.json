@@ -1,0 +1,245 @@
+{
+  "backyard-transformation-after": {
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 450
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1500
+      }
+    ]
+  },
+  "backyard-transformation-before": {
+    "width": 2000,
+    "height": 1500,
+    "aspect": 1.3333,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 450
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1050
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1500
+      }
+    ]
+  },
+  "cedar-hedge-stained-fence": {
+    "width": 2000,
+    "height": 1490,
+    "aspect": 1.3423,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 447
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 745
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1043
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1490
+      }
+    ]
+  },
+  "cleanup-side-yard-before": {
+    "width": 1779,
+    "height": 2000,
+    "aspect": 0.8895,
+    "variants": [
+      {
+        "target": 600,
+        "width": 534,
+        "height": 600
+      },
+      {
+        "target": 1000,
+        "width": 890,
+        "height": 1000
+      },
+      {
+        "target": 1400,
+        "width": 1245,
+        "height": 1400
+      },
+      {
+        "target": 2000,
+        "width": 1779,
+        "height": 2000
+      }
+    ]
+  },
+  "hero-front-yard-armour-stone": {
+    "width": 1588,
+    "height": 2000,
+    "aspect": 0.794,
+    "variants": [
+      {
+        "target": 600,
+        "width": 476,
+        "height": 600
+      },
+      {
+        "target": 1000,
+        "width": 794,
+        "height": 1000
+      },
+      {
+        "target": 1400,
+        "width": 1111,
+        "height": 1400
+      },
+      {
+        "target": 2000,
+        "width": 1588,
+        "height": 2000
+      }
+    ]
+  },
+  "mulch-backyard-japanese-maple": {
+    "width": 1819,
+    "height": 2000,
+    "aspect": 0.9095,
+    "variants": [
+      {
+        "target": 600,
+        "width": 546,
+        "height": 600
+      },
+      {
+        "target": 1000,
+        "width": 910,
+        "height": 1000
+      },
+      {
+        "target": 1400,
+        "width": 1274,
+        "height": 1400
+      },
+      {
+        "target": 2000,
+        "width": 1819,
+        "height": 2000
+      }
+    ]
+  },
+  "mulch-ring-fabric-during": {
+    "width": 2000,
+    "height": 1832,
+    "aspect": 1.0917,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 550
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 916
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1282
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1832
+      }
+    ]
+  },
+  "mulch-ring-mature-pine-after": {
+    "width": 2000,
+    "height": 1796,
+    "aspect": 1.1136,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 539
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 898
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1258
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1796
+      }
+    ]
+  },
+  "new-planting-timber-edge": {
+    "width": 2000,
+    "height": 1861,
+    "aspect": 1.0747,
+    "variants": [
+      {
+        "target": 600,
+        "width": 600,
+        "height": 558
+      },
+      {
+        "target": 1000,
+        "width": 1000,
+        "height": 930
+      },
+      {
+        "target": 1400,
+        "width": 1400,
+        "height": 1303
+      },
+      {
+        "target": 2000,
+        "width": 2000,
+        "height": 1861
+      }
+    ]
+  }
+}

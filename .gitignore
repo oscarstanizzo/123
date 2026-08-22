@@ -1,2 +1,10 @@
 node_modules/
 shots/
+
+# Full-size sources and the preview bundle are generated, not tracked.
+images/*.heic
+images/*.jpg
+images/*.jpeg
+images/_originals/
+images/.*.prepared
+preview.html

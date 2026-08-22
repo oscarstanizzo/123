@@ -55,6 +55,25 @@ if (html.includes('PLACEHOLDER REVIEWS')) notes.push('testimonials are still mar
 
 // --- initial page weight ------------------------------------------------------
 const size = (p) => (existsSync(p) ? statSync(p).size : 0);
+
+// What a 390px phone at 2x actually pulls above the fold: it needs ~780 CSS
+// px of image, so pick each photo's smallest variant at least that wide.
+const NEED = 780;
+const manifestPath = 'images/manifest.json';
+const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
+
+const variantFor = (slug) => {
+  const m = manifest[slug];
+  if (!m || !m.variants) return null;
+  return m.variants.find((v) => v.width >= NEED) || m.variants[m.variants.length - 1];
+};
+
+const photo = (slug, label) => {
+  const v = variantFor(slug);
+  if (!v) return [`${label} (not built yet)`, 0];
+  return [`${label} ${v.width}w webp`, size(`images/optimized/${slug}-${v.target}.webp`)];
+};
+
 const initial = [
   ['index.html', size('index.html')],
   ['css/main.css', size('css/main.css')],
@@ -64,17 +83,17 @@ const initial = [
   ['fonts/archivo-var-latin.woff2', size('fonts/archivo-var-latin.woff2')],
   ['fonts/publicsans-var-latin.woff2', size('fonts/publicsans-var-latin.woff2')],
   ['logo (header, 2x)', size('images/logo/blandi-land-lockup-300.png')],
-  ['hero 1200 webp', size('images/optimized/hero-front-yard-armour-stone-1200.webp')],
-  ['before 1200 webp', size('images/optimized/backyard-transformation-before-1200.webp')],
-  ['after 1200 webp', size('images/optimized/backyard-transformation-after-1200.webp')],
+  photo('hero-front-yard-armour-stone', 'hero'),
+  photo('backyard-transformation-before', 'slider before'),
+  photo('backyard-transformation-after', 'slider after'),
 ];
 
 const total = initial.reduce((a, [, b]) => a + b, 0);
 const kb = (n) => (n / 1024).toFixed(1) + ' KB';
 
-console.log('initial load (mobile viewport, above the fold):');
-for (const [name, bytes] of initial) console.log(`  ${name.padEnd(32)} ${kb(bytes).padStart(10)}`);
-console.log(`  ${'TOTAL'.padEnd(32)} ${kb(total).padStart(10)}   budget 1024.0 KB`);
+console.log('initial load (390px mobile at 2x, above the fold):');
+for (const [name, bytes] of initial) console.log(`  ${name.padEnd(34)} ${kb(bytes).padStart(10)}`);
+console.log(`  ${'TOTAL'.padEnd(34)} ${kb(total).padStart(10)}   budget 1024.0 KB`);
 
 if (total > 1024 * 1024) problems.push(`initial page weight ${kb(total)} exceeds the 1 MB budget`);
 
