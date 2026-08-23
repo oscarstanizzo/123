@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pear — Ora. The phone, reconsidered.</title>
+<meta name="description" content="Pear makes one phone a year. The Ora is forged from a single billet of Grade 5 titanium, faced with sapphire, and finished by hand. Limited to 2,500 pieces.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090a'/%3E%3Cpath d='M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z' fill='%23c9a86a' opacity='.55'/%3E%3Cpath d='M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z' fill='none' stroke='%23c9a86a' stroke-width='2.1'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/publicsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/pear.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ========================= NAV ========================= -->
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="brand" href="#top" aria-label="Pear, home">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z" fill="currentColor" opacity=".55"/>
+        <path d="M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z" fill="none" stroke="currentColor" stroke-width="2.1"/>
+      </svg>
+      <span class="brand__word">PEAR</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#craft">Craft</a>
+      <a href="#finishes">Finishes</a>
+      <a href="#detail">Detail</a>
+      <a href="#specs">Specification</a>
+      <a href="#editions">Editions</a>
+    </nav>
+
+    <div class="nav__act">
+      <a class="link-quiet" href="#atelier">Private viewing</a>
+      <a class="pill" href="#editions"><span>Reserve</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="hero__in">
+    <div class="hero__copy">
+      <p class="eyebrow reveal">Series 07 &nbsp;·&nbsp; 2,500 pieces</p>
+      <h1 class="display reveal" data-delay="1">
+        <span class="display__l">Ora</span>
+        <span class="display__s">The phone, reconsidered.</span>
+      </h1>
+      <p class="lede reveal" data-delay="2">
+        One billet of Grade&nbsp;5 titanium. Eleven hours on the mill.
+        Forty minutes under a hand-held polishing wheel. We make one phone a
+        year, and we make it slowly.
+      </p>
+      <div class="hero__cta reveal" data-delay="3">
+        <a class="pill pill--lg" href="#editions"><span>Reserve from $4,900</span></a>
+        <a class="ghost" href="#craft">See how it is made <em>&rarr;</em></a>
+      </div>
+    </div>
+
+    <div class="hero__stage" id="stage">
+      <div class="stage__pedestal" aria-hidden="true"></div>
+      <div class="stage__tilt" id="tilt">
+        <!-- ---------- device sprite: defined once, instanced with <use> ---------- -->
+        <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+          <defs>
+            <!-- machined titanium: alternating speculars across the width -->
+            <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"    stop-color="var(--f-deep)"/>
+              <stop offset=".025" stop-color="var(--f-lite)"/>
+              <stop offset=".075" stop-color="var(--f-mid)"/>
+              <stop offset=".26"  stop-color="var(--f-dark)"/>
+              <stop offset=".45"  stop-color="var(--f-lite)"/>
+              <stop offset=".56"  stop-color="var(--f-mid)"/>
+              <stop offset=".76"  stop-color="var(--f-dark)"/>
+              <stop offset=".925" stop-color="var(--f-mid)"/>
+              <stop offset=".975" stop-color="var(--f-lite)"/>
+              <stop offset="1"    stop-color="var(--f-deep)"/>
+            </linearGradient>
+            <!-- hand-lapped chamfer: catches light top-left, dies out bottom-right -->
+            <linearGradient id="gChamfer" x1="0" y1="0" x2=".85" y2="1">
+              <stop offset="0"   stop-color="#fff" stop-opacity=".85"/>
+              <stop offset=".18" stop-color="#fff" stop-opacity=".28"/>
+              <stop offset=".46" stop-color="#fff" stop-opacity=".04"/>
+              <stop offset=".72" stop-color="#fff" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="#fff" stop-opacity=".55"/>
+            </linearGradient>
+            <linearGradient id="gSheen" x1=".05" y1="0" x2=".8" y2="1">
+              <stop offset="0"   stop-color="var(--f-mid)" stop-opacity=".26"/>
+              <stop offset=".32" stop-color="var(--f-mid)" stop-opacity=".07"/>
+              <stop offset=".62" stop-color="#000" stop-opacity=".16"/>
+              <stop offset="1"   stop-color="var(--f-lite)" stop-opacity=".10"/>
+            </linearGradient>
+            <linearGradient id="gPlate" x1=".12" y1="0" x2=".88" y2="1">
+              <stop offset="0"   stop-color="var(--f-dark)"/>
+              <stop offset=".38" stop-color="var(--f-back)"/>
+              <stop offset=".78" stop-color="var(--f-deep)"/>
+              <stop offset="1"   stop-color="var(--f-dark)"/>
+            </linearGradient>
+            <linearGradient id="gRail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"   stop-color="var(--f-dark)"/>
+              <stop offset=".5"  stop-color="var(--f-lite)"/>
+              <stop offset="1"   stop-color="var(--f-dark)"/>
+            </linearGradient>
+
+            <!-- the panel itself, before anything is drawn on it -->
+            <radialGradient id="gScreen" cx=".5" cy=".28" r=".95">
+              <stop offset="0"   stop-color="#15181b"/>
+              <stop offset=".55" stop-color="#0b0d0f"/>
+              <stop offset="1"   stop-color="#050607"/>
+            </radialGradient>
+            <!-- wallpaper: two soft blooms tinted by the finish -->
+            <radialGradient id="gBloomA" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="var(--f-glow)" stop-opacity=".92"/>
+              <stop offset=".55" stop-color="var(--f-glow)" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="var(--f-glow)" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="gBloomB" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="var(--f-glow2)" stop-opacity=".75"/>
+              <stop offset=".6"  stop-color="var(--f-glow2)" stop-opacity=".14"/>
+              <stop offset="1"   stop-color="var(--f-glow2)" stop-opacity="0"/>
+            </radialGradient>
+            <!-- the sheet of glass over all of it -->
+            <linearGradient id="gGlass" x1=".1" y1="0" x2=".7" y2="1">
+              <stop offset="0"    stop-color="#fff" stop-opacity=".13"/>
+              <stop offset=".34"  stop-color="#fff" stop-opacity=".05"/>
+              <stop offset=".345" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="1"    stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gGlassEdge" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0"   stop-color="#fff" stop-opacity=".30"/>
+              <stop offset=".3"  stop-color="#fff" stop-opacity=".05"/>
+              <stop offset=".75" stop-color="#fff" stop-opacity=".04"/>
+              <stop offset="1"   stop-color="#fff" stop-opacity=".22"/>
+            </linearGradient>
+
+            <!-- lens barrel + iris -->
+            <linearGradient id="gRing" x1=".15" y1="0" x2=".85" y2="1">
+              <stop offset="0"   stop-color="var(--f-lite)"/>
+              <stop offset=".35" stop-color="var(--f-mid)"/>
+              <stop offset=".62" stop-color="var(--f-deep)"/>
+              <stop offset="1"   stop-color="var(--f-lite)"/>
+            </linearGradient>
+            <radialGradient id="gIris" cx=".38" cy=".32" r=".78">
+              <stop offset="0"   stop-color="#2b3f52"/>
+              <stop offset=".24" stop-color="#101b26"/>
+              <stop offset=".62" stop-color="#05080b"/>
+              <stop offset=".88" stop-color="#0d1620"/>
+              <stop offset="1"   stop-color="#030507"/>
+            </radialGradient>
+            <radialGradient id="gCoat" cx=".62" cy=".7" r=".55">
+              <stop offset="0"   stop-color="#6f8fb8" stop-opacity=".55"/>
+              <stop offset=".6"  stop-color="#3a5f7d" stop-opacity=".16"/>
+              <stop offset="1"   stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+
+            <filter id="fSoft" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="26"/>
+            </filter>
+            <filter id="fSoftSm" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7"/>
+            </filter>
+            <filter id="fCast" x="-45%" y="-30%" width="190%" height="180%">
+              <feDropShadow dx="0" dy="34" stdDeviation="34" flood-color="#000" flood-opacity=".62"/>
+              <feDropShadow dx="0" dy="4"  stdDeviation="6"  flood-color="#000" flood-opacity=".5"/>
+            </filter>
+
+            <clipPath id="clipScreen">
+              <rect x="30" y="30" width="380" height="810" rx="50"/>
+            </clipPath>
+
+            <!-- ============ FRONT ============ -->
+            <symbol id="dev-front" viewBox="0 0 440 870">
+              <g filter="url(#fCast)">
+                <!-- titanium body -->
+                <rect x="1" y="1" width="438" height="868" rx="66" fill="url(#gBody)"/>
+                <!-- polished chamfer running the whole perimeter -->
+                <rect x="2.2" y="2.2" width="435.6" height="865.6" rx="65"
+                      fill="none" stroke="url(#gChamfer)" stroke-width="2.4"/>
+                <!-- the black gasket the glass sits in -->
+                <rect x="20" y="20" width="400" height="830" rx="56" fill="#08090a"/>
+                <rect x="20" y="20" width="400" height="830" rx="56"
+                      fill="none" stroke="#000" stroke-width="1" opacity=".9"/>
+
+                <!-- panel -->
+                <rect x="30" y="30" width="380" height="810" rx="50" fill="url(#gScreen)"/>
+
+                <g clip-path="url(#clipScreen)">
+                  <!-- wallpaper -->
+                  <g filter="url(#fSoft)" opacity="var(--wall-on, 1)">
+                    <ellipse cx="150" cy="250" rx="185" ry="215" fill="url(#gBloomA)"/>
+                    <ellipse cx="330" cy="620" rx="200" ry="180" fill="url(#gBloomB)"/>
+                    <ellipse cx="70"  cy="740" rx="150" ry="140" fill="url(#gBloomA)" opacity=".5"/>
+                  </g>
+
+                  <!-- lock screen furniture -->
+                  <g class="ui" opacity="var(--ui-on, 1)">
+                    <text x="220" y="222" class="ui-time" text-anchor="middle">9:41</text>
+                    <text x="220" y="262" class="ui-date" text-anchor="middle">MONDAY 24 NOVEMBER</text>
+                    <text x="220" y="122" class="ui-mini" text-anchor="middle">ORA · No. 0117 / 2500</text>
+                    <g opacity=".5">
+                      <rect x="60"  y="640" width="320" height="1" fill="#fff" opacity=".14"/>
+                      <rect x="60"  y="672" width="196" height="7" rx="3.5" fill="#fff" opacity=".24"/>
+                      <rect x="60"  y="694" width="128" height="7" rx="3.5" fill="#fff" opacity=".13"/>
+                      <rect x="60"  y="726" width="230" height="7" rx="3.5" fill="#fff" opacity=".16"/>
+                      <rect x="60"  y="748" width="150" height="7" rx="3.5" fill="#fff" opacity=".09"/>
+                    </g>
+                    <rect x="160" y="806" width="120" height="5" rx="2.5" fill="#fff" opacity=".5"/>
+                  </g>
+
+                  <!-- always-on status row -->
+                  <g class="ui" opacity="var(--ui-on, 1)">
+                    <rect x="300" y="52" width="22" height="10" rx="2" fill="#fff" opacity=".5"/>
+                    <rect x="326" y="54" width="3"  height="6"  rx="1" fill="#fff" opacity=".3"/>
+                    <rect x="302" y="54" width="15" height="6"  rx="1" fill="#fff" opacity=".75"/>
+                    <path d="M262 62v-8M270 62v-12M278 62v-16M286 62v-20" stroke="#fff"
+                          stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- glass: one broad reflection, then the edge sheen -->
+                  <path d="M30 30 L410 30 L120 840 L30 840 Z" fill="url(#gGlass)"/>
+                  <rect x="30" y="30" width="380" height="810" rx="50" fill="url(#gGlassEdge)" opacity=".5"/>
+                </g>
+
+                <!-- sensor island -->
+                <g>
+                  <rect x="164" y="46" width="112" height="30" rx="15" fill="#020304"/>
+                  <rect x="164" y="46" width="112" height="30" rx="15" fill="none"
+                        stroke="#fff" stroke-opacity=".07" stroke-width="1"/>
+                  <circle cx="252" cy="61" r="8.5" fill="#04070b"/>
+                  <circle cx="252" cy="61" r="5.6" fill="url(#gIris)"/>
+                  <circle cx="250" cy="58.6" r="1.7" fill="#8fb4d8" opacity=".55"/>
+                  <rect x="182" y="59" width="26" height="4" rx="2" fill="#0a0d10"/>
+                </g>
+
+                <!-- side rails -->
+                <rect x="437.4" y="196" width="3.2" height="58"  rx="1.6" fill="url(#gRail)"/>
+                <rect x="437.4" y="272" width="3.2" height="58"  rx="1.6" fill="url(#gRail)"/>
+                <rect x="-0.6"  y="214" width="3.2" height="104" rx="1.6" fill="url(#gRail)"/>
+                <rect x="-0.6"  y="340" width="3.2" height="42"  rx="1.6" fill="url(#gRail)" opacity=".8"/>
+              </g>
+            </symbol>
+
+            <!-- ============ BACK ============ -->
+            <symbol id="dev-back" viewBox="0 0 440 870">
+              <g filter="url(#fCast)">
+                <rect x="1" y="1" width="438" height="868" rx="66" fill="url(#gBody)"/>
+                <rect x="2.2" y="2.2" width="435.6" height="865.6" rx="65"
+                      fill="none" stroke="url(#gChamfer)" stroke-width="2.4"/>
+                <!-- bead-blasted rear panel, slightly flatter than the rails -->
+                <rect x="13" y="13" width="414" height="844" rx="56" fill="var(--f-back)"/>
+                <rect x="13" y="13" width="414" height="844" rx="56" fill="url(#gSheen)"/>
+                <rect x="13" y="13" width="414" height="844" rx="56"
+                      fill="url(#gGlassEdge)" opacity=".26"/>
+
+                <!-- camera plateau -->
+                <g>
+                  <rect x="38" y="38" width="228" height="228" rx="58" fill="url(#gPlate)"/>
+                  <rect x="39.2" y="39.2" width="225.6" height="225.6" rx="57"
+                        fill="none" stroke="url(#gChamfer)" stroke-width="2.2"/>
+                  <rect x="49" y="49" width="206" height="206" rx="50" fill="#000" opacity=".22"/>
+
+                  <!-- three barrels -->
+                  <g>
+                    <circle cx="106" cy="106" r="52" fill="url(#gRing)"/>
+                    <circle cx="106" cy="106" r="45" fill="#0a0d10"/>
+                    <circle cx="106" cy="106" r="39" fill="url(#gIris)"/>
+                    <circle cx="106" cy="106" r="39" fill="url(#gCoat)"/>
+                    <circle cx="106" cy="106" r="17" fill="#01030a"/>
+                    <circle cx="92"  cy="90"  r="8"  fill="#fff" opacity=".30" filter="url(#fSoftSm)"/>
+                    <circle cx="124" cy="126" r="4"  fill="#a9cdf0" opacity=".35"/>
+                  </g>
+                  <g>
+                    <circle cx="198" cy="106" r="42" fill="url(#gRing)"/>
+                    <circle cx="198" cy="106" r="36" fill="#0a0d10"/>
+                    <circle cx="198" cy="106" r="31" fill="url(#gIris)"/>
+                    <circle cx="198" cy="106" r="31" fill="url(#gCoat)"/>
+                    <circle cx="198" cy="106" r="13" fill="#01030a"/>
+                    <circle cx="187" cy="94"  r="6"  fill="#fff" opacity=".28" filter="url(#fSoftSm)"/>
+                  </g>
+                  <g>
+                    <circle cx="106" cy="198" r="42" fill="url(#gRing)"/>
+                    <circle cx="106" cy="198" r="36" fill="#0a0d10"/>
+                    <circle cx="106" cy="198" r="31" fill="url(#gIris)"/>
+                    <circle cx="106" cy="198" r="31" fill="url(#gCoat)"/>
+                    <circle cx="106" cy="198" r="13" fill="#01030a"/>
+                    <circle cx="95"  cy="186" r="6"  fill="#fff" opacity=".28" filter="url(#fSoftSm)"/>
+                  </g>
+                  <!-- flash + lidar -->
+                  <g>
+                    <circle cx="196" cy="196" r="19" fill="var(--f-deep)"/>
+                    <circle cx="196" cy="196" r="14" fill="#171410"/>
+                    <circle cx="190" cy="190" r="6"  fill="#f6e6c4" opacity=".5"/>
+                    <circle cx="203" cy="203" r="5"  fill="#cfd8e6" opacity=".28"/>
+                  </g>
+                </g>
+
+                <!-- engraving -->
+                <text x="220" y="700" class="ui-etch" text-anchor="middle">PEAR</text>
+                <text x="220" y="732" class="ui-etch-s" text-anchor="middle">ORA · TITANIUM · NEUCHÂTEL</text>
+                <text x="220" y="812" class="ui-etch-s" text-anchor="middle" opacity=".5">No. 0117 / 2500</text>
+
+                <rect x="437.4" y="196" width="3.2" height="58" rx="1.6" fill="url(#gRail)"/>
+                <rect x="437.4" y="272" width="3.2" height="58" rx="1.6" fill="url(#gRail)"/>
+              </g>
+            </symbol>
+          </defs>
+        </svg>
+
+        <!-- ---------- hero instance ---------- -->
+        <div class="dev dev--back"  data-par=".22"><svg viewBox="0 0 440 870"><use href="#dev-back"/></svg></div>
+        <div class="dev dev--front" data-par=".55"><svg viewBox="0 0 440 870"><use href="#dev-front"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__foot">
+    <span class="scroll-cue" aria-hidden="true"><i></i></span>
+    <dl class="hero__facts">
+      <div><dt>Body</dt><dd>Grade 5 titanium</dd></div>
+      <div><dt>Face</dt><dd>2.1 mm sapphire</dd></div>
+      <div><dt>Assembly</dt><dd>By hand, Neuchâtel</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ========================= MARQUEE ========================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Forged, not cast</span><i>·</i><span>Sapphire crystal</span><i>·</i>
+    <span>Hand-lapped chamfers</span><i>·</i><span>Serialised</span><i>·</i>
+    <span>Ten-year service</span><i>·</i><span>Made in Neuchâtel</span><i>·</i>
+    <span>Forged, not cast</span><i>·</i><span>Sapphire crystal</span><i>·</i>
+    <span>Hand-lapped chamfers</span><i>·</i><span>Serialised</span><i>·</i>
+    <span>Ten-year service</span><i>·</i><span>Made in Neuchâtel</span><i>·</i>
+  </div>
+</div>
+
+<!-- ========================= CRAFT ========================= -->
+<section class="sec sec--craft" id="craft">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow reveal">01 &nbsp;—&nbsp; Craft</p>
+      <h2 class="h2 reveal" data-delay="1">We took the long way<br>around a very small object.</h2>
+      <p class="sechead__note reveal" data-delay="2">
+        A phone body is usually cast, because casting is fast. The Ora is milled
+        from solid, because milling is honest. What is left after eleven hours is
+        eight per cent of what we started with — and a shell with no seam, no
+        filler, and no glue.
+      </p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__n">01</span>
+        <h3>The billet</h3>
+        <p>Grade&nbsp;5 titanium, certified to aerospace lot traceability. Each bar is
+           assayed before it earns a serial.</p>
+        <span class="step__m">Ti&nbsp;6Al&#8209;4V</span>
+      </li>
+      <li class="step reveal" data-delay="1">
+        <span class="step__n">02</span>
+        <h3>Eleven hours</h3>
+        <p>Five-axis milling in eleven passes, the last of them cutting two microns
+           at a time. Nothing about this is efficient.</p>
+        <span class="step__m">2&nbsp;µm final pass</span>
+      </li>
+      <li class="step reveal" data-delay="2">
+        <span class="step__n">03</span>
+        <h3>The wheel</h3>
+        <p>Chamfers are lapped by hand against a cotton wheel — forty minutes per
+           body, by one of nine people who are allowed to.</p>
+        <span class="step__m">40 min · by hand</span>
+      </li>
+      <li class="step reveal" data-delay="3">
+        <span class="step__n">04</span>
+        <h3>The face</h3>
+        <p>A 2.1&nbsp;mm sapphire crystal, grown over sixteen days and cut with a
+           diamond wire. It will outlive the phone.</p>
+        <span class="step__m">9 Mohs</span>
+      </li>
+    </ol>
+
+    <div class="figures">
+      <div class="fig reveal"><b data-count="11">0</b><span>hours on the mill</span></div>
+      <div class="fig reveal" data-delay="1"><b data-count="92">0</b><span>per cent cut away</span></div>
+      <div class="fig reveal" data-delay="2"><b data-count="9">0</b><span>hands cleared to finish</span></div>
+      <div class="fig reveal" data-delay="3"><b data-count="2500">0</b><span>pieces, then never again</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= FINISHES ========================= -->
+<section class="sec sec--finish" id="finishes">
+  <div class="wrap finish">
+    <div class="finish__copy">
+      <p class="eyebrow reveal">02 &nbsp;—&nbsp; Finishes</p>
+      <h2 class="h2 reveal" data-delay="1">Four surfaces.<br>One of them is yours.</h2>
+      <p class="lede lede--sm reveal" data-delay="2">
+        Titanium takes colour badly and light beautifully, so we stopped painting it.
+        Each finish is the metal itself — anodised, blasted, or left alone.
+      </p>
+
+      <div class="swatches reveal" data-delay="3" role="radiogroup" aria-label="Finish">
+        <button class="sw is-on" data-finish="titan"  role="radio" aria-checked="true">
+          <i style="--a:#cfd3d6;--b:#75797d"></i><b>Natural</b><small>Brushed Ti</small>
+        </button>
+        <button class="sw" data-finish="champagne" role="radio" aria-checked="false">
+          <i style="--a:#eed9a8;--b:#9d7b38"></i><b>Champagne</b><small>Anodised</small>
+        </button>
+        <button class="sw" data-finish="verdigris" role="radio" aria-checked="false">
+          <i style="--a:#c3d3a3;--b:#54683e"></i><b>Verdigris</b><small>Anodised</small>
+        </button>
+        <button class="sw" data-finish="onyx" role="radio" aria-checked="false">
+          <i style="--a:#5a5e62;--b:#121416"></i><b>Onyx</b><small>Bead-blasted</small>
+        </button>
+      </div>
+
+      <dl class="finish__meta reveal" data-delay="4">
+        <div><dt>Selected</dt><dd id="fName">Natural</dd></div>
+        <div><dt>Process</dt><dd id="fProc">Longitudinal brush, 320 grit</dd></div>
+        <div><dt>Lead time</dt><dd id="fLead">6 weeks</dd></div>
+      </dl>
+    </div>
+
+    <div class="finish__stage reveal" data-delay="2">
+      <div class="finish__halo" aria-hidden="true"></div>
+      <div class="dev dev--show"><svg viewBox="0 0 440 870"><use href="#dev-back"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= DETAIL (sticky) ========================= -->
+<section class="sec sec--detail" id="detail">
+  <div class="wrap detail">
+    <div class="detail__stage">
+      <div class="detail__sticky">
+        <div class="detail__halo" aria-hidden="true"></div>
+        <div class="dev dev--detail"><svg viewBox="0 0 440 870"><use href="#dev-front"/></svg></div>
+      </div>
+    </div>
+
+    <div class="detail__scroll">
+      <p class="eyebrow reveal">03 &nbsp;—&nbsp; Detail</p>
+
+      <article class="panel" data-panel="0">
+        <span class="panel__i">Display</span>
+        <h3>A screen you can read at noon,<br>and sleep beside at midnight.</h3>
+        <p>6.3 inches of LTPO, tuned to 2,600 nits in daylight and one nit at 3 a.m.
+           Below 40 per cent it stops using PWM entirely, because flicker is a
+           physical thing and some people feel it.</p>
+        <ul class="panel__l">
+          <li><b>2,600</b> nits peak</li>
+          <li><b>1–120</b> Hz adaptive</li>
+          <li><b>DC</b> dimming below 40%</li>
+        </ul>
+      </article>
+
+      <article class="panel" data-panel="1">
+        <span class="panel__i">Optics</span>
+        <h3>Three lenses ground in the same<br>shop as our sapphire.</h3>
+        <p>A 1-inch main sensor behind an eight-element glass stack — not plastic,
+           which is why the barrel is deep and the plateau is proud. Colour is
+           calibrated against a physical chart, one phone at a time.</p>
+        <ul class="panel__l">
+          <li><b>1"</b> main sensor</li>
+          <li><b>f/1.6</b> eight-element</li>
+          <li><b>Per-unit</b> colour calibration</li>
+        </ul>
+      </article>
+
+      <article class="panel" data-panel="2">
+        <span class="panel__i">Silicon</span>
+        <h3>Quiet, cool, and none of<br>your business.</h3>
+        <p>The neural engine runs on the device. Transcription, search, photo
+           understanding — none of it leaves the titanium. There is no account to
+           make, and nothing to opt out of.</p>
+        <ul class="panel__l">
+          <li><b>3 nm</b> process</li>
+          <li><b>48 GB</b> unified memory</li>
+          <li><b>On-device</b> inference</li>
+        </ul>
+      </article>
+
+      <article class="panel" data-panel="3">
+        <span class="panel__i">Service</span>
+        <h3>Ten years, and a person<br>who signs their name.</h3>
+        <p>Every Ora is serialised to a watchmaker in Neuchâtel who will service it
+           for a decade. Battery, screen, and camera modules are held in stock for
+           the full term. Send it back; it comes home refinished.</p>
+        <ul class="panel__l">
+          <li><b>10 yr</b> parts held</li>
+          <li><b>Named</b> technician</li>
+          <li><b>Refinish</b> included</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SPECS ========================= -->
+<section class="sec sec--specs" id="specs">
+  <div class="wrap">
+    <div class="sechead sechead--tight">
+      <p class="eyebrow reveal">04 &nbsp;—&nbsp; Specification</p>
+      <h2 class="h2 reveal" data-delay="1">Everything, without the adjectives.</h2>
+    </div>
+
+    <div class="spectable reveal" data-delay="2">
+      <div class="specrow"><span>Body</span><b>Grade 5 titanium, milled from solid</b><em>146.8 × 70.9 × 8.2 mm</em></div>
+      <div class="specrow"><span>Mass</span><b>198 g</b><em>with sapphire face</em></div>
+      <div class="specrow"><span>Face</span><b>Sapphire crystal, 2.1 mm</b><em>9 Mohs · AR coated both sides</em></div>
+      <div class="specrow"><span>Display</span><b>6.3&#8243; LTPO OLED, 2,600 nits</b><em>1–120 Hz · DC dimming</em></div>
+      <div class="specrow"><span>Silicon</span><b>Pear P7, 3 nm</b><em>48 GB unified · on-device inference</em></div>
+      <div class="specrow"><span>Optics</span><b>1&#8243; main · 48 MP wide · 5× periscope</b><em>f/1.6 · eight-element glass</em></div>
+      <div class="specrow"><span>Power</span><b>5,400 mAh silicon-carbon</b><em>1,200 cycles to 90%</em></div>
+      <div class="specrow"><span>Ingress</span><b>IP68</b><em>6 m, 60 min</em></div>
+      <div class="specrow"><span>Service</span><b>Ten years, named technician</b><em>Neuchâtel</em></div>
+      <div class="specrow"><span>Series</span><b>2,500 pieces</b><em>serialised, then retired</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EDITIONS ========================= -->
+<section class="sec sec--editions" id="editions">
+  <div class="wrap">
+    <div class="sechead sechead--tight">
+      <p class="eyebrow reveal">05 &nbsp;—&nbsp; Editions</p>
+      <h2 class="h2 reveal" data-delay="1">Three ways to own one.</h2>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <header>
+          <h3>Ora</h3>
+          <p class="card__sub">Brushed titanium, sapphire face.</p>
+        </header>
+        <p class="card__price"><span>$</span>4,900</p>
+        <ul class="card__l">
+          <li>Natural or Onyx finish</li>
+          <li>256 GB · 48 GB memory</li>
+          <li>Ten-year service</li>
+          <li>Serialised, boxed in ash</li>
+        </ul>
+        <a class="pill pill--out" href="#atelier"><span>Reserve</span></a>
+        <p class="card__fine">6 weeks · 1,118 of 1,400 remaining</p>
+      </article>
+
+      <article class="card card--hero reveal" data-delay="1">
+        <span class="card__flag">Most reserved</span>
+        <header>
+          <h3>Ora Anodised</h3>
+          <p class="card__sub">Champagne or Verdigris, struck to order.</p>
+        </header>
+        <p class="card__price"><span>$</span>5,600</p>
+        <ul class="card__l">
+          <li>All four finishes</li>
+          <li>512 GB · 48 GB memory</li>
+          <li>Ten-year service · one free refinish</li>
+          <li>Hand-cut leather sleeve</li>
+        </ul>
+        <a class="pill" href="#atelier"><span>Reserve</span></a>
+        <p class="card__fine">9 weeks · 812 of 900 remaining</p>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <header>
+          <h3>Ora Atelier</h3>
+          <p class="card__sub">Made with you in the room.</p>
+        </header>
+        <p class="card__price"><span>$</span>12,000</p>
+        <ul class="card__l">
+          <li>Bespoke finish and engraving</li>
+          <li>1 TB · 48 GB memory</li>
+          <li>Lifetime service, transferable</li>
+          <li>Two days in Neuchâtel, for two</li>
+        </ul>
+        <a class="pill pill--out" href="#atelier"><span>Enquire</span></a>
+        <p class="card__fine">By appointment · 200 per year</p>
+      </article>
+    </div>
+
+    <p class="cards__note reveal">
+      Prices in USD, exclusive of duty. A reservation holds your serial for
+      fourteen days and is refundable in full until the billet is cut.
+    </p>
+  </div>
+</section>
+
+<!-- ========================= PRESS ========================= -->
+<section class="sec sec--press">
+  <div class="wrap">
+    <blockquote class="quote reveal">
+      <p>“It is the only phone I have handled that feels like it was finished by
+         someone who expected to meet me.”</p>
+      <cite>Harriet Vance &nbsp;·&nbsp; <span>The Long Object</span></cite>
+    </blockquote>
+    <div class="press">
+      <span class="reveal">The Long Object</span>
+      <span class="reveal" data-delay="1">Fettle Quarterly</span>
+      <span class="reveal" data-delay="2">Machined</span>
+      <span class="reveal" data-delay="3">Neue Werk</span>
+      <span class="reveal" data-delay="4">Object &amp; Interval</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ATELIER ========================= -->
+<section class="sec sec--atelier" id="atelier">
+  <div class="atelier__glow" aria-hidden="true"></div>
+  <div class="wrap atelier">
+    <div class="atelier__copy">
+      <p class="eyebrow reveal">06 &nbsp;—&nbsp; The atelier</p>
+      <h2 class="h2 reveal" data-delay="1">Come and hold one.</h2>
+      <p class="lede lede--sm reveal" data-delay="2">
+        Photographs are not much use for an object whose whole argument is
+        weight and edge. Book an hour in Neuchâtel, London, or New York and we
+        will put all four finishes on the table in front of you.
+      </p>
+      <dl class="atelier__where reveal" data-delay="3">
+        <div><dt>Neuchâtel</dt><dd>Rue du Seyon 14 &nbsp;·&nbsp; Tue–Sat</dd></div>
+        <div><dt>London</dt><dd>Savile Row 31 &nbsp;·&nbsp; Wed–Sat</dd></div>
+        <div><dt>New York</dt><dd>Crosby Street 40 &nbsp;·&nbsp; Thu–Sun</dd></div>
+      </dl>
+    </div>
+
+    <form class="book reveal" data-delay="2" id="book" novalidate>
+      <h3 class="book__h">Request a viewing</h3>
+      <div class="field">
+        <label for="bn">Name</label>
+        <input id="bn" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="be">Email</label>
+        <input id="be" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="bc">Atelier</label>
+        <select id="bc" name="atelier">
+          <option>Neuchâtel</option><option>London</option><option>New York</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bm">Anything we should have ready?</label>
+        <textarea id="bm" name="note" rows="3"></textarea>
+      </div>
+      <button class="pill pill--lg pill--full" type="submit"><span>Request a viewing</span></button>
+      <p class="book__fine" id="bookNote">We reply within one working day. No list, no newsletter.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <a class="brand brand--lg" href="#top" aria-label="Pear, home">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z" fill="currentColor" opacity=".55"/>
+          <path d="M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z" fill="none" stroke="currentColor" stroke-width="2.1"/>
+        </svg>
+        <span class="brand__word">PEAR</span>
+      </a>
+      <p class="foot__line">One phone a year, made slowly, in Neuchâtel.</p>
+    </div>
+
+    <nav class="foot__cols" aria-label="Footer">
+      <div>
+        <h4>Ora</h4>
+        <a href="#craft">Craft</a><a href="#finishes">Finishes</a>
+        <a href="#specs">Specification</a><a href="#editions">Editions</a>
+      </div>
+      <div>
+        <h4>Ownership</h4>
+        <a href="#atelier">Private viewing</a><a href="#atelier">Service</a>
+        <a href="#atelier">Refinishing</a><a href="#atelier">Trade-in</a>
+      </div>
+      <div>
+        <h4>House</h4>
+        <a href="#craft">The workshop</a><a href="#press">Press</a>
+        <a href="#atelier">Contact</a><a href="#atelier">Careers</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap foot__base">
+    <p>© 2026 Pear. A fictional house, made for a design exercise.</p>
+    <p class="foot__legal"><a href="#top">Terms</a><a href="#top">Privacy</a><a href="#top">Serial lookup</a></p>
+  </div>
+</footer>
+
+<script src="js/pear.js" defer></script>
+</body>
+</html>
