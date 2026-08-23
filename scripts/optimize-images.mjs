@@ -3,7 +3,7 @@
 // Writes images/optimized/ plus a manifest of real intrinsic dimensions
 // so the HTML can carry accurate width/height attributes.
 import sharp from 'sharp';
-import { readdirSync, mkdirSync, writeFileSync, statSync } from 'node:fs';
+import { readdirSync, mkdirSync, writeFileSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { join, extname, basename } from 'node:path';
 
 const SRC = 'images';
@@ -15,6 +15,17 @@ const WIDTHS = [600, 1000, 1400, 2000];
 const PHOTO_EXT = new Set(['.jpg', '.jpeg', '.png', '.heic', '.tif', '.tiff']);
 
 mkdirSync(OUT, { recursive: true });
+
+// Per-photo quality overrides, so the LCP image can be encoded harder than the
+// rest without dropping quality across the whole gallery. Encoding once from
+// the full-resolution source beats re-encoding an already-compressed variant.
+const EDITS = existsSync('scripts/source-edits.json')
+  ? JSON.parse(readFileSync('scripts/source-edits.json', 'utf8'))
+  : {};
+const qualityFor = (stem) => ({
+  webp: (EDITS[stem]?.quality?.webp) ?? 80,
+  jpg: (EDITS[stem]?.quality?.jpg) ?? 82,
+});
 
 const sources = readdirSync(SRC)
   .filter((f) => PHOTO_EXT.has(extname(f).toLowerCase()))
@@ -40,6 +51,7 @@ for (const file of sources) {
   const landscape = meta.width >= meta.height;
   const long = Math.max(meta.width, meta.height);
 
+  const q = qualityFor(stem);
   const variants = [];
 
   for (const w of WIDTHS) {
@@ -55,8 +67,8 @@ for (const file of sources) {
     const jpgPath = join(OUT, `${stem}-${w}.jpg`);
 
     const [webpInfo, jpgInfo] = await Promise.all([
-      pipeline.clone().webp({ quality: 80, effort: 6 }).toFile(webpPath),
-      pipeline.clone().jpeg({ quality: 82, mozjpeg: true, progressive: true }).toFile(jpgPath),
+      pipeline.clone().webp({ quality: q.webp, effort: 6 }).toFile(webpPath),
+      pipeline.clone().jpeg({ quality: q.jpg, mozjpeg: true, progressive: true }).toFile(jpgPath),
     ]);
 
     outBytes += webpInfo.size + jpgInfo.size;

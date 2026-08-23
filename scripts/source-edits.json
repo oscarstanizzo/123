@@ -8,7 +8,12 @@
         "width": 200,
         "height": 84
       }
-    ]
+    ],
+    "quality": {
+      "note": "The hero is the LCP element on both builds. q72 measured indistinguishable from q82 at 2x zoom on the foliage, and saves 57 KB at the 794w size that a 390px phone pulls.",
+      "jpg": 72,
+      "webp": 70
+    }
   },
   "backyard-transformation-before": {
     "crop": {
