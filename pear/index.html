@@ -9,7 +9,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090a'/%3E%3Cpath d='M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z' fill='%23c9a86a' opacity='.55'/%3E%3Cpath d='M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z' fill='none' stroke='%23c9a86a' stroke-width='2.1'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/publicsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/pear.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
@@ -18,7 +19,7 @@
 <!-- ========================= NAV ========================= -->
 <header class="nav" id="nav">
   <div class="nav__in">
-    <a class="brand" href="#top" aria-label="Pear, home">
+    <a class="brand" href="index.html" aria-label="Pear, home">
       <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
         <path d="M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z" fill="currentColor" opacity=".55"/>
         <path d="M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z" fill="none" stroke="currentColor" stroke-width="2.1"/>
@@ -27,19 +28,21 @@
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <a href="#craft">Craft</a>
-      <a href="#finishes">Finishes</a>
-      <a href="#detail">Detail</a>
-      <a href="#specs">Specification</a>
-      <a href="#editions">Editions</a>
+      <a href="index.html" aria-current="page">Ora</a>
+      <a href="story/index.html">Story</a>
+      <a href="workshop/index.html">Workshop</a>
+      <a href="index.html#specs">Specification</a>
+      <a href="index.html#editions">Editions</a>
     </nav>
 
     <div class="nav__act">
-      <a class="link-quiet" href="#atelier">Private viewing</a>
-      <a class="pill" href="#editions"><span>Reserve</span></a>
+      <a class="link-quiet" href="index.html#atelier">Private viewing</a>
+      <a class="pill" href="index.html#editions"><span>Reserve</span></a>
     </div>
   </div>
+  <span data-progress aria-hidden="true"></span>
 </header>
+
 
 <main id="main">
 <span id="top"></span>
@@ -54,7 +57,7 @@
       <p class="eyebrow reveal">Series 07 &nbsp;·&nbsp; 2,500 pieces</p>
       <h1 class="display reveal" data-delay="1">
         <span class="display__l">Ora</span>
-        <span class="display__s">The phone, reconsidered.</span>
+        <span class="display__s" data-split>The phone, reconsidered.</span>
       </h1>
       <p class="lede reveal" data-delay="2">
         One billet of Grade&nbsp;5 titanium. Eleven hours on the mill.
@@ -67,7 +70,7 @@
       </div>
     </div>
 
-    <div class="hero__stage" id="stage">
+    <div class="hero__stage" id="stage" data-scrub>
       <div class="stage__pedestal" aria-hidden="true"></div>
       <div class="stage__tilt" id="tilt">
         <!-- ---------- device sprite: defined once, instanced with <use> ---------- -->
@@ -316,9 +319,10 @@
           </defs>
         </svg>
 
+
         <!-- ---------- hero instance ---------- -->
-        <div class="dev dev--back"  data-par=".22"><svg viewBox="0 0 440 870"><use href="#dev-back"/></svg></div>
-        <div class="dev dev--front" data-par=".55"><svg viewBox="0 0 440 870"><use href="#dev-front"/></svg></div>
+        <div class="dev dev--back"><svg viewBox="0 0 440 870"><use href="#dev-back"/></svg></div>
+        <div class="dev dev--front"><svg viewBox="0 0 440 870"><use href="#dev-front"/></svg></div>
       </div>
     </div>
   </div>
@@ -350,7 +354,7 @@
   <div class="wrap">
     <div class="sechead">
       <p class="eyebrow reveal">01 &nbsp;—&nbsp; Craft</p>
-      <h2 class="h2 reveal" data-delay="1">We took the long way<br>around a very small object.</h2>
+      <h2 class="h2" data-split>We took the long way<br>around a very small object.</h2>
       <p class="sechead__note reveal" data-delay="2">
         A phone body is usually cast, because casting is fast. The Ora is milled
         from solid, because milling is honest. What is left after eleven hours is
@@ -404,7 +408,7 @@
   <div class="wrap finish">
     <div class="finish__copy">
       <p class="eyebrow reveal">02 &nbsp;—&nbsp; Finishes</p>
-      <h2 class="h2 reveal" data-delay="1">Four surfaces.<br>One of them is yours.</h2>
+      <h2 class="h2" data-split>Four surfaces.<br>One of them is yours.</h2>
       <p class="lede lede--sm reveal" data-delay="2">
         Titanium takes colour badly and light beautifully, so we stopped painting it.
         Each finish is the metal itself — anodised, blasted, or left alone.
@@ -512,7 +516,7 @@
   <div class="wrap">
     <div class="sechead sechead--tight">
       <p class="eyebrow reveal">04 &nbsp;—&nbsp; Specification</p>
-      <h2 class="h2 reveal" data-delay="1">Everything, without the adjectives.</h2>
+      <h2 class="h2" data-split>Everything, without the adjectives.</h2>
     </div>
 
     <div class="spectable reveal" data-delay="2">
@@ -535,7 +539,7 @@
   <div class="wrap">
     <div class="sechead sechead--tight">
       <p class="eyebrow reveal">05 &nbsp;—&nbsp; Editions</p>
-      <h2 class="h2 reveal" data-delay="1">Three ways to own one.</h2>
+      <h2 class="h2" data-split>Three ways to own one.</h2>
     </div>
 
     <div class="cards">
@@ -600,7 +604,7 @@
 <section class="sec sec--press">
   <div class="wrap">
     <blockquote class="quote reveal">
-      <p>“It is the only phone I have handled that feels like it was finished by
+      <p data-split>“It is the only phone I have handled that feels like it was finished by
          someone who expected to meet me.”</p>
       <cite>Harriet Vance &nbsp;·&nbsp; <span>The Long Object</span></cite>
     </blockquote>
@@ -620,7 +624,7 @@
   <div class="wrap atelier">
     <div class="atelier__copy">
       <p class="eyebrow reveal">06 &nbsp;—&nbsp; The atelier</p>
-      <h2 class="h2 reveal" data-delay="1">Come and hold one.</h2>
+      <h2 class="h2" data-split>Come and hold one.</h2>
       <p class="lede lede--sm reveal" data-delay="2">
         Photographs are not much use for an object whose whole argument is
         weight and edge. Book an hour in Neuchâtel, London, or New York and we
@@ -665,11 +669,11 @@
 <footer class="foot">
   <div class="wrap foot__in">
     <div class="foot__brand">
-      <a class="brand brand--lg" href="#top" aria-label="Pear, home">
+      <a class="brand brand--lg" href="index.html" aria-label="Pear, home">
         <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <path d="M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z" fill="currentColor" opacity=".55"/>
-          <path d="M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z" fill="none" stroke="currentColor" stroke-width="2.1"/>
-        </svg>
+        <path d="M16.4 6.1c1.1-2.3 3-3.6 5.2-3.9.3 2.4-.6 4.5-2.4 5.9-.9.7-1.9 1.1-2.9 1.2z" fill="currentColor" opacity=".55"/>
+        <path d="M16 9.4c4.8 0 8.6 4.6 8.6 10.3 0 5.3-3.6 9.6-8.6 9.6s-8.6-4.3-8.6-9.6C7.4 14 11.2 9.4 16 9.4Z" fill="none" stroke="currentColor" stroke-width="2.1"/>
+      </svg>
         <span class="brand__word">PEAR</span>
       </a>
       <p class="foot__line">One phone a year, made slowly, in Neuchâtel.</p>
@@ -678,27 +682,29 @@
     <nav class="foot__cols" aria-label="Footer">
       <div>
         <h4>Ora</h4>
-        <a href="#craft">Craft</a><a href="#finishes">Finishes</a>
-        <a href="#specs">Specification</a><a href="#editions">Editions</a>
+        <a href="index.html#craft">Craft</a><a href="index.html#finishes">Finishes</a>
+        <a href="index.html#specs">Specification</a><a href="index.html#editions">Editions</a>
+      </div>
+      <div>
+        <h4>The house</h4>
+        <a href="story/index.html">Our story</a><a href="workshop/index.html">The workshop</a>
+        <a href="workshop/index.html#hands">The nine</a><a href="workshop/index.html#ledger">The ledger</a>
       </div>
       <div>
         <h4>Ownership</h4>
-        <a href="#atelier">Private viewing</a><a href="#atelier">Service</a>
-        <a href="#atelier">Refinishing</a><a href="#atelier">Trade-in</a>
-      </div>
-      <div>
-        <h4>House</h4>
-        <a href="#craft">The workshop</a><a href="#press">Press</a>
-        <a href="#atelier">Contact</a><a href="#atelier">Careers</a>
+        <a href="index.html#atelier">Private viewing</a><a href="index.html#atelier">Service</a>
+        <a href="index.html#atelier">Refinishing</a><a href="index.html#atelier">Contact</a>
       </div>
     </nav>
   </div>
   <div class="wrap foot__base">
-    <p>© 2026 Pear. A fictional house, made for a design exercise.</p>
-    <p class="foot__legal"><a href="#top">Terms</a><a href="#top">Privacy</a><a href="#top">Serial lookup</a></p>
+    <p>© 2026 Pear. A fictional house, invented for a design exercise — the
+       people, places, prices and history on this site are not real.</p>
+    <p class="foot__legal"><a href="index.html">Terms</a><a href="index.html">Privacy</a><a href="index.html">Serial lookup</a></p>
   </div>
 </footer>
 
-<script src="js/pear.js" defer></script>
+
+<script type="module" src="js/home.js"></script>
 </body>
 </html>

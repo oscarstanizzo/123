@@ -1,0 +1,245 @@
+        <!-- ---------- device sprite: defined once, instanced with <use> ---------- -->
+        <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+          <defs>
+            <!-- machined titanium: alternating speculars across the width -->
+            <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"    stop-color="var(--f-deep)"/>
+              <stop offset=".025" stop-color="var(--f-lite)"/>
+              <stop offset=".075" stop-color="var(--f-mid)"/>
+              <stop offset=".26"  stop-color="var(--f-dark)"/>
+              <stop offset=".45"  stop-color="var(--f-lite)"/>
+              <stop offset=".56"  stop-color="var(--f-mid)"/>
+              <stop offset=".76"  stop-color="var(--f-dark)"/>
+              <stop offset=".925" stop-color="var(--f-mid)"/>
+              <stop offset=".975" stop-color="var(--f-lite)"/>
+              <stop offset="1"    stop-color="var(--f-deep)"/>
+            </linearGradient>
+            <!-- hand-lapped chamfer: catches light top-left, dies out bottom-right -->
+            <linearGradient id="gChamfer" x1="0" y1="0" x2=".85" y2="1">
+              <stop offset="0"   stop-color="#fff" stop-opacity=".85"/>
+              <stop offset=".18" stop-color="#fff" stop-opacity=".28"/>
+              <stop offset=".46" stop-color="#fff" stop-opacity=".04"/>
+              <stop offset=".72" stop-color="#fff" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="#fff" stop-opacity=".55"/>
+            </linearGradient>
+            <linearGradient id="gSheen" x1=".05" y1="0" x2=".8" y2="1">
+              <stop offset="0"   stop-color="var(--f-mid)" stop-opacity=".26"/>
+              <stop offset=".32" stop-color="var(--f-mid)" stop-opacity=".07"/>
+              <stop offset=".62" stop-color="#000" stop-opacity=".16"/>
+              <stop offset="1"   stop-color="var(--f-lite)" stop-opacity=".10"/>
+            </linearGradient>
+            <linearGradient id="gPlate" x1=".12" y1="0" x2=".88" y2="1">
+              <stop offset="0"   stop-color="var(--f-dark)"/>
+              <stop offset=".38" stop-color="var(--f-back)"/>
+              <stop offset=".78" stop-color="var(--f-deep)"/>
+              <stop offset="1"   stop-color="var(--f-dark)"/>
+            </linearGradient>
+            <linearGradient id="gRail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0"   stop-color="var(--f-dark)"/>
+              <stop offset=".5"  stop-color="var(--f-lite)"/>
+              <stop offset="1"   stop-color="var(--f-dark)"/>
+            </linearGradient>
+
+            <!-- the panel itself, before anything is drawn on it -->
+            <radialGradient id="gScreen" cx=".5" cy=".28" r=".95">
+              <stop offset="0"   stop-color="#15181b"/>
+              <stop offset=".55" stop-color="#0b0d0f"/>
+              <stop offset="1"   stop-color="#050607"/>
+            </radialGradient>
+            <!-- wallpaper: two soft blooms tinted by the finish -->
+            <radialGradient id="gBloomA" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="var(--f-glow)" stop-opacity=".92"/>
+              <stop offset=".55" stop-color="var(--f-glow)" stop-opacity=".22"/>
+              <stop offset="1"   stop-color="var(--f-glow)" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="gBloomB" cx=".5" cy=".5" r=".5">
+              <stop offset="0"   stop-color="var(--f-glow2)" stop-opacity=".75"/>
+              <stop offset=".6"  stop-color="var(--f-glow2)" stop-opacity=".14"/>
+              <stop offset="1"   stop-color="var(--f-glow2)" stop-opacity="0"/>
+            </radialGradient>
+            <!-- the sheet of glass over all of it -->
+            <linearGradient id="gGlass" x1=".1" y1="0" x2=".7" y2="1">
+              <stop offset="0"    stop-color="#fff" stop-opacity=".13"/>
+              <stop offset=".34"  stop-color="#fff" stop-opacity=".05"/>
+              <stop offset=".345" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="1"    stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gGlassEdge" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0"   stop-color="#fff" stop-opacity=".30"/>
+              <stop offset=".3"  stop-color="#fff" stop-opacity=".05"/>
+              <stop offset=".75" stop-color="#fff" stop-opacity=".04"/>
+              <stop offset="1"   stop-color="#fff" stop-opacity=".22"/>
+            </linearGradient>
+
+            <!-- lens barrel + iris -->
+            <linearGradient id="gRing" x1=".15" y1="0" x2=".85" y2="1">
+              <stop offset="0"   stop-color="var(--f-lite)"/>
+              <stop offset=".35" stop-color="var(--f-mid)"/>
+              <stop offset=".62" stop-color="var(--f-deep)"/>
+              <stop offset="1"   stop-color="var(--f-lite)"/>
+            </linearGradient>
+            <radialGradient id="gIris" cx=".38" cy=".32" r=".78">
+              <stop offset="0"   stop-color="#2b3f52"/>
+              <stop offset=".24" stop-color="#101b26"/>
+              <stop offset=".62" stop-color="#05080b"/>
+              <stop offset=".88" stop-color="#0d1620"/>
+              <stop offset="1"   stop-color="#030507"/>
+            </radialGradient>
+            <radialGradient id="gCoat" cx=".62" cy=".7" r=".55">
+              <stop offset="0"   stop-color="#6f8fb8" stop-opacity=".55"/>
+              <stop offset=".6"  stop-color="#3a5f7d" stop-opacity=".16"/>
+              <stop offset="1"   stop-color="#000" stop-opacity="0"/>
+            </radialGradient>
+
+            <filter id="fSoft" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="26"/>
+            </filter>
+            <filter id="fSoftSm" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7"/>
+            </filter>
+            <filter id="fCast" x="-45%" y="-30%" width="190%" height="180%">
+              <feDropShadow dx="0" dy="34" stdDeviation="34" flood-color="#000" flood-opacity=".62"/>
+              <feDropShadow dx="0" dy="4"  stdDeviation="6"  flood-color="#000" flood-opacity=".5"/>
+            </filter>
+
+            <clipPath id="clipScreen">
+              <rect x="30" y="30" width="380" height="810" rx="50"/>
+            </clipPath>
+
+            <!-- ============ FRONT ============ -->
+            <symbol id="dev-front" viewBox="0 0 440 870">
+              <g filter="url(#fCast)">
+                <!-- titanium body -->
+                <rect x="1" y="1" width="438" height="868" rx="66" fill="url(#gBody)"/>
+                <!-- polished chamfer running the whole perimeter -->
+                <rect x="2.2" y="2.2" width="435.6" height="865.6" rx="65"
+                      fill="none" stroke="url(#gChamfer)" stroke-width="2.4"/>
+                <!-- the black gasket the glass sits in -->
+                <rect x="20" y="20" width="400" height="830" rx="56" fill="#08090a"/>
+                <rect x="20" y="20" width="400" height="830" rx="56"
+                      fill="none" stroke="#000" stroke-width="1" opacity=".9"/>
+
+                <!-- panel -->
+                <rect x="30" y="30" width="380" height="810" rx="50" fill="url(#gScreen)"/>
+
+                <g clip-path="url(#clipScreen)">
+                  <!-- wallpaper -->
+                  <g filter="url(#fSoft)" opacity="var(--wall-on, 1)">
+                    <ellipse cx="150" cy="250" rx="185" ry="215" fill="url(#gBloomA)"/>
+                    <ellipse cx="330" cy="620" rx="200" ry="180" fill="url(#gBloomB)"/>
+                    <ellipse cx="70"  cy="740" rx="150" ry="140" fill="url(#gBloomA)" opacity=".5"/>
+                  </g>
+
+                  <!-- lock screen furniture -->
+                  <g class="ui" opacity="var(--ui-on, 1)">
+                    <text x="220" y="222" class="ui-time" text-anchor="middle">9:41</text>
+                    <text x="220" y="262" class="ui-date" text-anchor="middle">MONDAY 24 NOVEMBER</text>
+                    <text x="220" y="122" class="ui-mini" text-anchor="middle">ORA · No. 0117 / 2500</text>
+                    <g opacity=".5">
+                      <rect x="60"  y="640" width="320" height="1" fill="#fff" opacity=".14"/>
+                      <rect x="60"  y="672" width="196" height="7" rx="3.5" fill="#fff" opacity=".24"/>
+                      <rect x="60"  y="694" width="128" height="7" rx="3.5" fill="#fff" opacity=".13"/>
+                      <rect x="60"  y="726" width="230" height="7" rx="3.5" fill="#fff" opacity=".16"/>
+                      <rect x="60"  y="748" width="150" height="7" rx="3.5" fill="#fff" opacity=".09"/>
+                    </g>
+                    <rect x="160" y="806" width="120" height="5" rx="2.5" fill="#fff" opacity=".5"/>
+                  </g>
+
+                  <!-- always-on status row -->
+                  <g class="ui" opacity="var(--ui-on, 1)">
+                    <rect x="300" y="52" width="22" height="10" rx="2" fill="#fff" opacity=".5"/>
+                    <rect x="326" y="54" width="3"  height="6"  rx="1" fill="#fff" opacity=".3"/>
+                    <rect x="302" y="54" width="15" height="6"  rx="1" fill="#fff" opacity=".75"/>
+                    <path d="M262 62v-8M270 62v-12M278 62v-16M286 62v-20" stroke="#fff"
+                          stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- glass: one broad reflection, then the edge sheen -->
+                  <path d="M30 30 L410 30 L120 840 L30 840 Z" fill="url(#gGlass)"/>
+                  <rect x="30" y="30" width="380" height="810" rx="50" fill="url(#gGlassEdge)" opacity=".5"/>
+                </g>
+
+                <!-- sensor island -->
+                <g>
+                  <rect x="164" y="46" width="112" height="30" rx="15" fill="#020304"/>
+                  <rect x="164" y="46" width="112" height="30" rx="15" fill="none"
+                        stroke="#fff" stroke-opacity=".07" stroke-width="1"/>
+                  <circle cx="252" cy="61" r="8.5" fill="#04070b"/>
+                  <circle cx="252" cy="61" r="5.6" fill="url(#gIris)"/>
+                  <circle cx="250" cy="58.6" r="1.7" fill="#8fb4d8" opacity=".55"/>
+                  <rect x="182" y="59" width="26" height="4" rx="2" fill="#0a0d10"/>
+                </g>
+
+                <!-- side rails -->
+                <rect x="437.4" y="196" width="3.2" height="58"  rx="1.6" fill="url(#gRail)"/>
+                <rect x="437.4" y="272" width="3.2" height="58"  rx="1.6" fill="url(#gRail)"/>
+                <rect x="-0.6"  y="214" width="3.2" height="104" rx="1.6" fill="url(#gRail)"/>
+                <rect x="-0.6"  y="340" width="3.2" height="42"  rx="1.6" fill="url(#gRail)" opacity=".8"/>
+              </g>
+            </symbol>
+
+            <!-- ============ BACK ============ -->
+            <symbol id="dev-back" viewBox="0 0 440 870">
+              <g filter="url(#fCast)">
+                <rect x="1" y="1" width="438" height="868" rx="66" fill="url(#gBody)"/>
+                <rect x="2.2" y="2.2" width="435.6" height="865.6" rx="65"
+                      fill="none" stroke="url(#gChamfer)" stroke-width="2.4"/>
+                <!-- bead-blasted rear panel, slightly flatter than the rails -->
+                <rect x="13" y="13" width="414" height="844" rx="56" fill="var(--f-back)"/>
+                <rect x="13" y="13" width="414" height="844" rx="56" fill="url(#gSheen)"/>
+                <rect x="13" y="13" width="414" height="844" rx="56"
+                      fill="url(#gGlassEdge)" opacity=".26"/>
+
+                <!-- camera plateau -->
+                <g>
+                  <rect x="38" y="38" width="228" height="228" rx="58" fill="url(#gPlate)"/>
+                  <rect x="39.2" y="39.2" width="225.6" height="225.6" rx="57"
+                        fill="none" stroke="url(#gChamfer)" stroke-width="2.2"/>
+                  <rect x="49" y="49" width="206" height="206" rx="50" fill="#000" opacity=".22"/>
+
+                  <!-- three barrels -->
+                  <g>
+                    <circle cx="106" cy="106" r="52" fill="url(#gRing)"/>
+                    <circle cx="106" cy="106" r="45" fill="#0a0d10"/>
+                    <circle cx="106" cy="106" r="39" fill="url(#gIris)"/>
+                    <circle cx="106" cy="106" r="39" fill="url(#gCoat)"/>
+                    <circle cx="106" cy="106" r="17" fill="#01030a"/>
+                    <circle cx="92"  cy="90"  r="8"  fill="#fff" opacity=".30" filter="url(#fSoftSm)"/>
+                    <circle cx="124" cy="126" r="4"  fill="#a9cdf0" opacity=".35"/>
+                  </g>
+                  <g>
+                    <circle cx="198" cy="106" r="42" fill="url(#gRing)"/>
+                    <circle cx="198" cy="106" r="36" fill="#0a0d10"/>
+                    <circle cx="198" cy="106" r="31" fill="url(#gIris)"/>
+                    <circle cx="198" cy="106" r="31" fill="url(#gCoat)"/>
+                    <circle cx="198" cy="106" r="13" fill="#01030a"/>
+                    <circle cx="187" cy="94"  r="6"  fill="#fff" opacity=".28" filter="url(#fSoftSm)"/>
+                  </g>
+                  <g>
+                    <circle cx="106" cy="198" r="42" fill="url(#gRing)"/>
+                    <circle cx="106" cy="198" r="36" fill="#0a0d10"/>
+                    <circle cx="106" cy="198" r="31" fill="url(#gIris)"/>
+                    <circle cx="106" cy="198" r="31" fill="url(#gCoat)"/>
+                    <circle cx="106" cy="198" r="13" fill="#01030a"/>
+                    <circle cx="95"  cy="186" r="6"  fill="#fff" opacity=".28" filter="url(#fSoftSm)"/>
+                  </g>
+                  <!-- flash + lidar -->
+                  <g>
+                    <circle cx="196" cy="196" r="19" fill="var(--f-deep)"/>
+                    <circle cx="196" cy="196" r="14" fill="#171410"/>
+                    <circle cx="190" cy="190" r="6"  fill="#f6e6c4" opacity=".5"/>
+                    <circle cx="203" cy="203" r="5"  fill="#cfd8e6" opacity=".28"/>
+                  </g>
+                </g>
+
+                <!-- engraving -->
+                <text x="220" y="700" class="ui-etch" text-anchor="middle">PEAR</text>
+                <text x="220" y="732" class="ui-etch-s" text-anchor="middle">ORA · TITANIUM · NEUCHÂTEL</text>
+                <text x="220" y="812" class="ui-etch-s" text-anchor="middle" opacity=".5">No. 0117 / 2500</text>
+
+                <rect x="437.4" y="196" width="3.2" height="58" rx="1.6" fill="url(#gRail)"/>
+                <rect x="437.4" y="272" width="3.2" height="58" rx="1.6" fill="url(#gRail)"/>
+              </g>
+            </symbol>
+          </defs>
+        </svg>

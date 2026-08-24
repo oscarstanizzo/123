@@ -1,0 +1,280 @@
+/* ============================================================
+   PEAR — base
+   Shared by every page: tokens, reset, atoms, nav, footer, the
+   marquee, and the device drawing. Page-specific rules live in
+   home.css / story.css / workshop.css.
+   ============================================================ */
+
+@font-face{
+  font-family:"Archivo";src:url("../fonts/archivo-var-latin.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"PublicSans";src:url("../fonts/publicsans-var-latin.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+
+/* ---------- tokens ---------- */
+:root{
+  --void:#08090a;
+  --onyx:#0d0f10;
+  --smoke:#131618;
+  --raise:#191d1f;
+  --line:rgba(255,255,255,.09);
+  --line-soft:rgba(255,255,255,.05);
+
+  --ink:#f4f2ee;
+  --ink-2:#c3c6c4;
+  --mute:#82878a;
+  --mute-2:#5b6063;
+
+  --gold:#c9a86a;
+  --gold-lo:#8c7440;
+  --verd:#9fb47a;
+
+  --head:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --body:"PublicSans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  --gut:clamp(20px,5vw,64px);
+  --wrap:1280px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+
+  /* device finish — overwritten by [data-finish] */
+  --f-deep:#3c4145; --f-dark:#6c7276; --f-mid:#9aa0a4; --f-lite:#dfe3e6;
+  --f-back:#23282b; --f-glow:#6f8fa8; --f-glow2:#c9a86a;
+}
+[data-finish="titan"]{
+  --f-deep:#3c4145;--f-dark:#6c7276;--f-mid:#9aa0a4;--f-lite:#e4e8ea;
+  --f-back:#24282b;--f-glow:#7994ab;--f-glow2:#c9a86a;
+}
+[data-finish="champagne"]{
+  --f-deep:#4a3a1c;--f-dark:#98773a;--f-mid:#c9a55f;--f-lite:#f4e3ba;
+  --f-back:#2c2620;--f-glow:#d9b46e;--f-glow2:#8a6a2c;
+}
+[data-finish="verdigris"]{
+  --f-deep:#25311c;--f-dark:#55693f;--f-mid:#8ba06a;--f-lite:#d8e3c0;
+  --f-back:#1f2420;--f-glow:#9fb47a;--f-glow2:#5d7a5f;
+}
+[data-finish="onyx"]{
+  --f-deep:#0e1012;--f-dark:#2a2e31;--f-mid:#474c50;--f-lite:#8e9599;
+  --f-back:#131618;--f-glow:#5d6a74;--f-glow2:#8c7440;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--void);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.62;
+  font-weight:350;letter-spacing:.004em;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+/* film grain — the single cheapest thing that stops a dark page looking flat */
+body::after{
+  content:"";position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,h4{margin:0;font-family:var(--head);font-weight:500;letter-spacing:-.028em;line-height:1.02}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--gold);color:#12100a}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:1000;background:var(--gold);color:#12100a;padding:12px 18px}
+.skip:focus{left:12px;top:12px}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+
+/* ---------- atoms ---------- */
+.eyebrow{
+  font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:22px;
+}
+.h2{font-size:clamp(32px,5.2vw,62px);line-height:1.04}
+.lede{
+  max-width:52ch;color:var(--ink-2);font-size:clamp(16px,1.35vw,19px);line-height:1.62;
+}
+.lede--sm{font-size:16.5px;max-width:46ch}
+.h2+.lede{margin-top:26px}
+
+.pill{
+  --bg:var(--ink);--fg:#0a0b0c;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  padding:13px 26px;border-radius:999px;background:var(--bg);color:var(--fg);
+  font-family:var(--head);font-size:13.5px;font-weight:600;letter-spacing:.02em;
+  border:1px solid transparent;overflow:hidden;isolation:isolate;
+  transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out),color .3s;
+}
+.pill span{position:relative;z-index:2}
+.pill::before{
+  content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;
+  background:linear-gradient(100deg,var(--gold),#e6cf9c 45%,var(--gold-lo));
+  transform:translateY(101%);transition:transform .5s var(--ease-out);
+}
+.pill:hover{transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(201,168,106,.55);color:#12100a}
+.pill:hover::before{transform:translateY(0)}
+.pill--lg{padding:17px 34px;font-size:14.5px}
+.pill--full{width:100%}
+.pill--out{background:transparent;color:var(--ink);border-color:var(--line);--fg:var(--ink)}
+.pill--out:hover{color:#12100a;border-color:transparent}
+
+.ghost{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--head);
+  font-size:13.5px;font-weight:500;color:var(--ink-2);letter-spacing:.01em;
+  border-bottom:1px solid var(--line);padding-bottom:5px;transition:color .3s,border-color .3s;
+}
+.ghost em{font-style:normal;transition:transform .4s var(--ease-out)}
+.ghost:hover{color:var(--gold);border-color:var(--gold-lo)}
+.ghost:hover em{transform:translateX(5px)}
+
+.link-quiet{font-size:13.5px;color:var(--mute);transition:color .3s}
+.link-quiet:hover{color:var(--ink)}
+
+/* reveal-on-scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.09s}
+.reveal[data-delay="2"]{transition-delay:.18s}
+.reveal[data-delay="3"]{transition-delay:.27s}
+.reveal[data-delay="4"]{transition-delay:.36s}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:800;
+  transition:background .5s var(--ease),backdrop-filter .5s,border-color .5s;
+  border-bottom:1px solid transparent;
+}
+.nav.is-stuck{
+  background:rgba(8,9,10,.72);backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);border-bottom-color:var(--line-soft);
+}
+.nav__in{
+  max-width:var(--wrap);margin-inline:auto;padding:20px var(--gut);
+  display:flex;align-items:center;gap:38px;transition:padding .5s var(--ease);
+}
+.nav.is-stuck .nav__in{padding-block:13px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);flex:none}
+.brand__mark{width:26px;height:26px;color:var(--gold)}
+.brand__word{font-family:var(--head);font-weight:600;font-size:16px;letter-spacing:.30em}
+.brand--lg .brand__mark{width:34px;height:34px}
+.brand--lg .brand__word{font-size:20px}
+
+.nav__links{display:flex;gap:30px;margin-inline:auto}
+.nav__links a{
+  position:relative;font-size:13.5px;color:var(--mute);letter-spacing:.01em;transition:color .3s;
+}
+.nav__links a::after{
+  content:"";position:absolute;left:0;bottom:-6px;width:100%;height:1px;background:var(--gold);
+  transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-out);
+}
+.nav__links a:hover{color:var(--ink)}
+.nav__links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav__act{display:flex;align-items:center;gap:22px;flex:none}
+.nav__act .pill{padding:10px 22px;font-size:12.5px}
+
+/* ---------- shared section frame ---------- */
+.sec{position:relative;padding:clamp(88px,12vw,168px) 0;scroll-margin-top:78px}
+.sechead{max-width:var(--wrap);margin-bottom:clamp(52px,7vw,96px)}
+.sechead__note{max-width:56ch;margin-top:26px;color:var(--mute);font-size:16.5px}
+.sechead--tight{margin-bottom:clamp(38px,5vw,64px)}
+.sec--craft{background:linear-gradient(180deg,var(--void),var(--onyx) 55%,var(--void))}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line-soft);padding:19px 0;overflow:hidden;background:var(--onyx)}
+.marquee__track{
+  display:flex;gap:30px;align-items:center;width:max-content;
+  animation:slide 46s linear infinite;
+}
+.marquee span{font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--mute-2);white-space:nowrap}
+.marquee i{color:var(--gold-lo);font-style:normal}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- the device ----------
+   Drawn once as an SVG <symbol> pair and instanced with <use>. Every colour
+   below comes from a custom property, which is what lets one attribute on
+   <html> recolour every instance on the page at once. */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+.dev{position:absolute;will-change:transform}
+.dev svg{width:100%;height:auto;overflow:visible}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -16px}}
+
+/* text drawn inside the device */
+.ui-time{font-family:var(--head);font-size:56px;font-weight:250;fill:#fff;fill-opacity:.93;letter-spacing:-.03em}
+.ui-date{font-family:var(--head);font-size:11px;font-weight:600;fill:#fff;fill-opacity:.45;letter-spacing:.2em}
+.ui-mini{font-family:var(--head);font-size:9px;font-weight:600;fill:var(--f-glow2);fill-opacity:.85;letter-spacing:.18em}
+.ui-etch{font-family:var(--head);font-size:26px;font-weight:600;fill:var(--f-lite);fill-opacity:.30;letter-spacing:.42em}
+.ui-etch-s{font-family:var(--head);font-size:9.5px;font-weight:600;fill:var(--f-lite);fill-opacity:.24;letter-spacing:.22em}
+
+/* ---------- footer ---------- */
+.foot{background:var(--onyx);border-top:1px solid var(--line-soft);padding-top:clamp(60px,8vw,96px)}
+.foot__in{display:grid;grid-template-columns:1.2fr 1.8fr;gap:clamp(34px,6vw,80px);
+  padding-bottom:clamp(48px,6vw,76px)}
+.foot__line{margin-top:22px;font-size:14px;color:var(--mute);max-width:30ch}
+.foot__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.foot__cols h4{font-family:var(--head);font-size:10.5px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mute-2);margin-bottom:20px}
+.foot__cols a{display:block;font-size:14px;color:var(--ink-2);padding:5px 0;transition:color .3s}
+.foot__cols a:hover{color:var(--gold)}
+.foot__base{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-block:26px;border-top:1px solid var(--line-soft);font-size:12.5px;color:var(--mute-2)}
+.foot__legal{display:flex;gap:22px}
+.foot__legal a:hover{color:var(--ink-2)}
+
+/* ---------- scroll primitives ----------
+   Driven by js/scroll.js. Each one resolves to its finished state under
+   prefers-reduced-motion rather than animating. */
+
+/* headings split into words that rise out of a mask */
+[data-split].is-split{--sw-y:105%}
+.sw-m{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em}
+.sw-i{
+  display:inline-block;transform:translateY(var(--sw-y,0));
+  transition:transform 1.05s var(--ease-out);
+}
+[data-split].is-in .sw-i{transform:translateY(0)}
+
+/* vertical drift against the scroll; --par is written per frame */
+[data-par]{transform:translate3d(0,var(--par,0px),0);will-change:transform}
+
+/* page scroll progress, drawn as a hairline under the nav */
+[data-progress]{
+  position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,var(--gold-lo),var(--gold));
+  transform:scaleX(var(--p,0));transform-origin:left;
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.nav.is-stuck [data-progress]{opacity:1}
+
+/* pinned horizontal rail */
+.rail{position:relative;height:var(--rail-h,200vh)}
+.rail__pin{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden}
+.rail__track{display:flex;align-items:stretch;will-change:transform}
+/* with motion off the rail stops pinning and simply scrolls sideways by hand */
+.rail.is-static{height:auto}
+.rail.is-static .rail__pin{position:static;height:auto;overflow-x:auto;padding-block:40px}
+
+@media (prefers-reduced-motion:reduce){
+  .sw-i{transform:none}
+  [data-par]{transform:none}
+}
+
+/* ---------- shared responsive ---------- */
+@media (max-width:1080px){
+  .nav__links{display:none}
+  .foot__in{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .foot__cols{grid-template-columns:1fr 1fr}
+  .nav__act .link-quiet{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}

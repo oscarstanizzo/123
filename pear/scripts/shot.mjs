@@ -13,6 +13,7 @@ await mkdir(out, { recursive: true });
 
 const width = Number(process.argv[2]) || null;
 const section = process.argv[3] || null;
+const page = process.env.PAGE || 'index.html';   // 'story/index.html', ...
 const widths = width ? [width] : [1440, 390];
 
 const site = await serve(8791);
@@ -22,7 +23,7 @@ for (const w of widths) {
   const p = await b.newPage({
     viewport: { width: w, height: w > 800 ? 900 : 844 }, deviceScaleFactor: 2
   });
-  await p.goto(site.url, { waitUntil: 'load' });
+  await p.goto(site.url.replace('index.html', page), { waitUntil: 'load' });
   await p.waitForTimeout(1200);
 
   if (section) {
@@ -35,10 +36,10 @@ for (const w of widths) {
     const el = await p.$(section);
     if (!el) { console.log('no such section: ' + section); await p.close(); continue; }
     await el.scrollIntoViewIfNeeded(); await p.waitForTimeout(900);
-    await el.screenshot({ path: path.join(out, `${w}${section.replace('#', '-')}.png`) });
-    console.log(`shots/${w}${section.replace('#', '-')}.png`);
+    await el.screenshot({ path: path.join(out, `${page.split('/')[0].replace('.html','')}-${w}${section.replace('#','-')}.png`) });
+    console.log(`shots/${page.split('/')[0].replace('.html','')}-${w}${section.replace('#','-')}.png`);
   } else {
-    await p.screenshot({ path: path.join(out, `hero-${w}.png`) });
+    await p.screenshot({ path: path.join(out, `${page.split('/')[0].replace('.html','')}-hero-${w}.png`) });
     const h = await p.evaluate(() => document.body.scrollHeight);
     for (let y = 0; y < h; y += 500) {
       await p.evaluate(v => scrollTo({ top: v, behavior: 'instant' }), y);
@@ -46,8 +47,8 @@ for (const w of widths) {
     }
     await p.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await p.waitForTimeout(500);
-    await p.screenshot({ path: path.join(out, `full-${w}.png`), fullPage: true });
-    console.log(`shots/hero-${w}.png, shots/full-${w}.png (page ${h}px)`);
+    await p.screenshot({ path: path.join(out, `${page.split('/')[0].replace('.html','')}-full-${w}.png`), fullPage: true });
+    console.log(`shots for ${page} at ${w} (page ${h}px)`);
   }
   await p.close();
 }
