@@ -67,7 +67,14 @@ node pear/scripts/shot.mjs       # hero + full page at 1440 and 390
 node pear/scripts/shot.mjs 1440 '#specs'   # one section at one width
 node pear/scripts/finishes.mjs   # four-up contact sheet of the finishes
 node pear/scripts/serve.mjs      # just serve it at :8765 to look at by hand
+node pear/scripts/build-preview.mjs        # -> preview.html, self-contained
 ```
+
+`build-preview.mjs` bundles the page into a single `preview.html` for hosts that
+forbid external requests — CSS, JS and both fonts inlined as data URIs, about
+145 KB and zero network requests. It emits the page's *contents* only, with no
+`<html>`/`<head>`/`<body>` wrapper, because those hosts supply their own. It is
+generated output and is not tracked; rebuild it after any change to the site.
 
 **Serve it — do not open `index.html` from disk.** A `@font-face` fetched over
 `file://` is blocked by CORS, so the page silently falls back to a system face
