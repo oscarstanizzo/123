@@ -88,6 +88,21 @@ the nav, mega menu, filters and sort all still work. The multi-page site under
 `nexday/` stays the source of truth; the bundle is a build output and is not
 committed.
 
+Two flags change what it emits:
+
+```bash
+npm run preview:nexday -- out.html --brand "Kestrel Supply"
+npm run preview:nexday -- out.html --brand "Kestrel Supply" --artifact
+```
+
+`--brand` renames the company everywhere it is visible — the split-colour
+wordmark, the badge initials, the Rewards and Guarantee page names, the
+internal globals — and swaps the banner for one that describes a fictional
+distributor. Use it to show the design to someone without putting a real
+business's name on a shared page. `--artifact` drops the document wrapper for
+hosts that supply their own, and shifts the sticky header onto the safe-area
+inset.
+
 ## Design notes
 
 - **Palette** — navy carries the pages, amber is reserved for actions and the
