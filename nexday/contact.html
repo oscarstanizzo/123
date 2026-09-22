@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us | Request a Wholesale Quote | NexDay Supply</title>
+<meta name="description" content="Talk to a NexDay Supply specialist, open a wholesale trade account, or send your current order guide for a line-by-line quote.">
+<meta name="theme-color" content="#0B1626">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="contact">
+<a class="skip-link" href="#main">Skip to content</a>
+<p class="mock-note">Design concept — an independent redesign mock. Contact details below are placeholders and reach no one.</p>
+
+<div data-layout="header"></div>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <ul class="crumbs">
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Contact Us</li>
+      </ul>
+      <h1>Talk to a supply specialist</h1>
+      <p>Open a trade account, request a quote on your standing list, or ask us to cross-reference
+        what you buy today. Most replies land within a few hours.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2>Request a quote</h2>
+        <p style="margin:.75rem 0 1.75rem;color:var(--muted)">Tell us what you go through in a
+          month and we will price the whole list, not just the headline item.</p>
+
+        <form class="form" onsubmit="return false">
+          <div class="form__row">
+            <p class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required></p>
+            <p class="field"><label for="company">Business name</label><input id="company" name="company" type="text" autocomplete="organization" required></p>
+          </div>
+          <div class="form__row">
+            <p class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></p>
+            <p class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></p>
+          </div>
+          <div class="form__row">
+            <p class="field">
+              <label for="type">Type of operation</label>
+              <select id="type" name="type">
+                <option>Restaurant / foodservice</option>
+                <option>Grocery / retail</option>
+                <option>Hotel / hospitality</option>
+                <option>Building service contractor</option>
+                <option>Healthcare / long-term care</option>
+                <option>Manufacturing / warehouse</option>
+                <option>Other</option>
+              </select>
+            </p>
+            <p class="field">
+              <label for="spend">Approximate monthly spend</label>
+              <select id="spend" name="spend">
+                <option>Under $1,000</option>
+                <option>$1,000 – $5,000</option>
+                <option>$5,000 – $20,000</option>
+                <option>Over $20,000</option>
+              </select>
+            </p>
+          </div>
+          <p class="field">
+            <label for="details">What do you need quoted?</label>
+            <textarea id="details" name="details" placeholder="Paste your order guide, or list the products and pack sizes you go through."></textarea>
+          </p>
+          <p><button class="btn btn--amber" type="submit">Send request</button></p>
+          <p class="form__note">This is a design mock — the form does not submit anywhere.</p>
+        </form>
+      </div>
+
+      <div>
+        <h2>Reach us directly</h2>
+        <dl class="facts" style="margin-top:1rem">
+          <div><dt>Sales &amp; quotes</dt><dd>1-800-555-0199</dd></div>
+          <div><dt>Customer service</dt><dd>1-800-555-0198</dd></div>
+          <div><dt>Email</dt><dd>orders@example.com</dd></div>
+          <div><dt>Hours</dt><dd>Mon–Fri, 7 AM – 7 PM ET</dd></div>
+          <div><dt>Head office</dt><dd>Toronto, Ontario</dd></div>
+        </dl>
+
+        <h3 style="margin:2rem 0 1rem">Distribution centres</h3>
+        <div class="feature-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+          <article class="feature"><h3>Toronto, ON</h3><p>Serving Ontario, Quebec and Atlantic Canada</p></article>
+          <article class="feature"><h3>Vancouver, BC</h3><p>Serving British Columbia and the Yukon</p></article>
+          <article class="feature"><h3>Calgary, AB</h3><p>Serving Alberta and Saskatchewan</p></article>
+          <article class="feature"><h3>Edmonton, AB</h3><p>Serving northern Alberta and the Territories</p></article>
+        </div>
+
+        <h3 style="margin:2rem 0 1rem">Common requests</h3>
+        <div class="faq">
+          <details open><summary>Open a trade account</summary><p>Two minutes online, approved within one business day. Net-30 terms once your references clear.</p></details>
+          <details><summary>Cross-reference my current SKUs</summary><p>Send the list. We match spec, pack size and price, and flag anything where the equivalent is genuinely different.</p></details>
+          <details><summary>Set up multi-site billing</summary><p>One account, separate ship-to addresses, consolidated or per-site invoicing — your choice at setup.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-layout="footer"></div>
+<script src="js/catalog.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>
