@@ -48,6 +48,18 @@ same subcategory always shows the same products, and sorting or reloading
 never reshuffles them. Thumbnails are the department icon on a dot-grid
 placeholder; drop in real photography and the card layout is unchanged.
 
+## The cart
+
+`cart.js` owns the order. Add buttons carry the line data as `data-*`
+attributes, and the click handler is delegated from `document`, because product
+grids re-render underneath it on every sort and filter. Lines mirror to
+`localStorage` so a reload keeps the order; every read and write is wrapped,
+so a private window or blocked site data degrades to a session-only cart
+rather than breaking the page.
+
+The drawer shows line totals, a quantity stepper, a subtotal and progress
+toward the $500 free-freight threshold the rest of the site advertises.
+
 ## Taxonomy source
 
 The live site was unreachable from the environment this was built in (blocked

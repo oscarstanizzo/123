@@ -62,7 +62,7 @@ const css = rebrand(readFileSync(join(root, 'css/site.css'), 'utf8'))
   // The Artifact host supplies safe-area padding; a sticky header must clear it.
   .replace('.masthead {\n  position: sticky; top: 0;', '.masthead {\n  position: sticky; top: env(safe-area-inset-top, 0px);');
 const js = rebrand(
-  ['catalog.js', 'layout.js', 'pages.js']
+  ['catalog.js', 'layout.js', 'cart.js', 'pages.js']
     .map((f) => readFileSync(join(root, 'js', f), 'utf8'))
     .join('\n')
 );

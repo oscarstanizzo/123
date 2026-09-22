@@ -45,7 +45,9 @@
         '<p class="prod__price"><b>' + money(p.price) + '</b>' +
           (save ? '<s>' + money(p.list) + '</s>' : '') + '</p>' +
         '<p class="prod__stock' + (p.stock === 'In stock' ? '' : ' prod__stock--slow') + '">' + p.stock + '</p>' +
-        '<div class="prod__foot"><button class="btn btn--sm btn--block" type="button">Add to order</button></div>' +
+        '<div class="prod__foot"><button class="btn btn--sm btn--block" type="button" data-add' +
+          ' data-sku="' + p.sku + '" data-name="' + p.name.replace(/"/g, '&quot;') + '"' +
+          ' data-pack="' + p.pack + '" data-price="' + p.price + '">Add to order</button></div>' +
       '</div>' +
     '</article>';
   }

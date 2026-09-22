@@ -135,8 +135,9 @@
         '<div class="masthead__tools">' +
           '<a class="tool" href="contact.html">' + icon('headset', 20) + '<span>Support</span></a>' +
           '<a class="tool" href="contact.html">' + icon('user', 20) + '<span>Sign in</span></a>' +
-          '<a class="tool tool--cart" href="products.html">' + icon('cart', 20) +
-            '<span>Cart</span><span class="tool__count">0</span></a>' +
+          '<button class="tool tool--cart" type="button" data-cart-open aria-haspopup="dialog">' +
+            icon('cart', 20) + '<span>Cart</span>' +
+            '<span class="tool__count" hidden>0</span></button>' +
           '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">' +
             icon('menu', 20) + '<span class="visually-hidden">Menu</span></button>' +
         '</div>' +
@@ -256,6 +257,13 @@
 
     var index = CAT.searchIndex();
 
+    // The term is echoed back through innerHTML, so it has to be text, not markup.
+    function esc(text) {
+      return String(text).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
     function render(term) {
       var q = term.trim().toLowerCase();
       if (q.length < 2) { panel.hidden = true; panel.innerHTML = ''; return; }
@@ -269,7 +277,7 @@
             return '<a href="' + h.href + '" role="option"><span>' + h.label +
               '</span><span class="kind">' + h.kind + '</span></a>';
           }).join('')
-        : '<p class="search__empty">No categories match “' + term + '”. Try a product type, ' +
+        : '<p class="search__empty">No categories match “' + esc(term) + '”. Try a product type, ' +
           'a brand or a SKU — or <a href="contact.html">ask our team</a>.</p>';
       panel.hidden = false;
     }
@@ -279,10 +287,35 @@
     document.addEventListener('click', function (e) {
       if (!form.contains(e.target)) panel.hidden = true;
     });
+
+    // Taking a result leaves the panel hanging over the new content wherever
+    // navigation does not reload the document.
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) panel.hidden = true;
+    });
+
     form.addEventListener('submit', function (e) {
-      // Nothing behind this mock searches, so send the first match instead of 404ing.
+      // Never let this submit for real. There is no search backend, and in the
+      // bundled single-file build there is no products.html to post to either —
+      // the browser would navigate the page out from under itself.
+      e.preventDefault();
+
       var first = panel.querySelector('a[role="option"]');
-      if (first) { e.preventDefault(); location.href = first.getAttribute('href'); }
+      if (first) {
+        // Click rather than assign location: a click goes through whatever is
+        // handling links on this page, so it works bundled or as separate files.
+        panel.hidden = true;
+        first.click();
+        return;
+      }
+
+      // No match. Say so and leave the visitor where they are.
+      render(input.value);
+      if (panel.hidden) {
+        panel.innerHTML = '<p class="search__empty">Type at least two characters to search ' +
+          'departments and subcategories.</p>';
+        panel.hidden = false;
+      }
     });
   }
 
