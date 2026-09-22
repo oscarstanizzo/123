@@ -219,6 +219,12 @@
     document.addEventListener('click', function (e) {
       if (!mega.hidden && !mega.contains(e.target) && !btn.contains(e.target)) close();
     });
+
+    // Following a link inside the menu leaves it open over the new content
+    // wherever navigation does not reload the document.
+    mega.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !mega.hidden) { close(); btn.focus(); }
     });
@@ -232,6 +238,13 @@
       var open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
       nav.classList.toggle('is-open', !open);
+    });
+
+    // Same reason as the mega menu: close the drawer once a link is taken.
+    nav.addEventListener('click', function (e) {
+      if (!e.target.closest('a')) return;
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('is-open');
     });
   }
 

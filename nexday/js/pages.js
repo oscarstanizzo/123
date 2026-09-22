@@ -8,6 +8,10 @@
   var CAT = window.NEXDAY;
   var icon = window.NEXDAY_UI.icon;
 
+  function query() {
+    return new URLSearchParams(window.__NEXDAY_QUERY || location.search);
+  }
+
   function money(n) {
     return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
@@ -99,7 +103,7 @@
       '</section>';
     }).join('');
 
-    var q = new URLSearchParams(location.search).get('q');
+    var q = query().get('q');
     var note = document.querySelector('[data-render="query-note"]');
     if (q && note) {
       note.innerHTML = 'Showing the full directory — search for “' +
@@ -113,7 +117,7 @@
     var host = document.querySelector('[data-render="category"]');
     if (!host) return;
 
-    var params = new URLSearchParams(location.search);
+    var params = query();
     var cat = CAT.findCategory(params.get('c') || '') || CAT.categories[0];
     var activeSub = params.get('s');
     if (cat.subs.indexOf(activeSub) === -1) activeSub = null;
@@ -261,6 +265,8 @@
     var page = document.body.getAttribute('data-page');
     if (routes[page]) routes[page]();
   }
+
+  window.NEXDAY_PAGES = { run: run };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
   else run();

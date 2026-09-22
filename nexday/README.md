@@ -73,6 +73,21 @@ npm install
 node scripts/check-nexday.mjs
 ```
 
+## Single-file preview
+
+To click through the whole site without a server — or to hand someone one file
+instead of a directory — build the bundled version:
+
+```bash
+npm run preview:nexday          # writes nexday-preview.html at the repo root
+```
+
+It inlines the stylesheet, the scripts and all nine pages' content, and swaps
+between them with a hash router (`#!category?c=gloves&s=Nitrile%20Gloves`), so
+the nav, mega menu, filters and sort all still work. The multi-page site under
+`nexday/` stays the source of truth; the bundle is a build output and is not
+committed.
+
 ## Design notes
 
 - **Palette** — navy carries the pages, amber is reserved for actions and the
