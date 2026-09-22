@@ -268,7 +268,12 @@
     if (routes[page]) routes[page]();
   }
 
-  window.NEXDAY_PAGES = { run: run };
+  // checkout.js adds its own route here rather than being called from run().
+  window.NEXDAY_PAGES = window.NEXDAY_PAGES || {};
+  window.NEXDAY_PAGES.register = function (name, fn) { routes[name] = fn; };
+
+  window.NEXDAY_PAGES = window.NEXDAY_PAGES || {};
+  window.NEXDAY_PAGES.run = run;
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
   else run();

@@ -21,6 +21,7 @@ live store, and it should not be published anywhere it could be mistaken for it.
 | `rewards.html` | NexDay Rewards — how it works, rates, FAQ |
 | `guarantee.html` | NexDay Guarantee — cut-off, freight, returns FAQ |
 | `about.html` | Company, commitments, `#sustainability` |
+| `checkout.html` | Four-step checkout branching to card or Net-30 / PO |
 | `contact.html` | Quote request form, direct contacts, distribution centres |
 
 ## How it fits together
@@ -59,6 +60,26 @@ rather than breaking the page.
 
 The drawer shows line totals, a quantity stepper, a subtotal and progress
 toward the $500 free-freight threshold the rest of the site advertises.
+
+## Checkout
+
+`checkout.html` runs four steps — contact and address, delivery, payment,
+confirmation — and branches at payment, because a distributor serves both
+kinds of buyer: pay now by card, or place the order against a Net-30 account
+with a PO number and let sales invoice it. The cart drawer links to each path
+directly (`checkout.html?mode=quote` lands on the invoicing one).
+
+Freight follows the delivery choice and honours the $500 free-freight
+threshold; tax follows the selected province. Both rate tables are
+illustrative — a real store gets tax from a tax service and freight from the
+carrier.
+
+**Nothing here takes a payment.** The card fields are readonly demo fields
+behind a notice saying so, no order is recorded anywhere, and the confirmation
+page says plainly that nothing was charged and no email was sent. Taking real
+money needs a payment provider and a server: Stripe, Snipcart or Foxy for a
+static site like this one, or Shopify (full or headless) for inventory and
+accounts too.
 
 ## Taxonomy source
 

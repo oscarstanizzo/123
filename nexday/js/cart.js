@@ -132,8 +132,10 @@
         ? '<footer class="cart-foot">' +
             '<p class="cart-sub"><span>Subtotal</span><b>' + money(sub) + '</b></p>' +
             '<p class="cart-note">Taxes and freight calculated at checkout.</p>' +
-            '<a class="btn btn--amber btn--block" href="contact.html" data-cart-close>Request a quote</a>' +
-            '<button class="btn btn--ghost btn--block" type="button" data-cart-close>Keep shopping</button>' +
+            '<a class="btn btn--amber btn--block" href="checkout.html" data-cart-close>Proceed to checkout</a>' +
+            '<a class="btn btn--ghost btn--block" href="checkout.html?mode=quote" data-cart-close>' +
+              'Request a quote / submit a PO</a>' +
+            '<button class="cart-keep" type="button" data-cart-close>Keep shopping</button>' +
           '</footer>'
         : '');
   }
@@ -209,7 +211,17 @@
     if (e.key === 'Escape' && drawer && !drawer.hidden) close();
   });
 
-  window.NEXDAY_CART = { add: add, count: count, open: open, render: render };
+  function clear() { lines = []; save(); render(); }
+
+  window.NEXDAY_CART = {
+    add: add, count: count, open: open, close: close, render: render,
+    lines: function () { return lines.slice(); },
+    subtotal: subtotal,
+    clear: clear,
+    FREE_FREIGHT: FREE_FREIGHT,
+    money: money,
+    esc: esc
+  };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();
