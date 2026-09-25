@@ -1,0 +1,112 @@
+// Cloud tiers follow the WMO étages: low below 2,000 m, middle 2,000–7,000 m,
+// high above that. Nacreous clouds sit in the stratosphere, so they count as high.
+export const TIERS = [
+  { id: 'all', label: 'All clouds' },
+  { id: 'low', label: 'Low', range: 'below 2,000 m' },
+  { id: 'middle', label: 'Middle', range: '2,000–7,000 m' },
+  { id: 'high', label: 'High', range: 'above 7,000 m' },
+]
+
+export const VARIETIES = [
+  {
+    id: 'quince',
+    kind: 'quince',
+    name: 'Fog Quince',
+    cloud: 'Stratus nebulosus',
+    altitude: 200,
+    tier: 'low',
+    taste: 'Floral and damp, like a garden after rain.',
+    window: 'Dawn, before the fog lifts',
+    brix: 11,
+    crates: 2400,
+    note: 'The only crop you can pick from a ladder. Stratus sits so low that our pickers work from the orchard roof.',
+  },
+  {
+    id: 'plum',
+    kind: 'plum',
+    name: 'Cumulus Plum',
+    cloud: 'Cumulus humilis',
+    altitude: 1200,
+    tier: 'low',
+    taste: 'Cold and faintly fizzy, with a taste of warm stone.',
+    window: '13:00–16:00, while convection lasts',
+    brix: 14,
+    crates: 1800,
+    note: 'Grows on fair-weather cumulus that forms in the afternoon heat. When the sun drops, the cloud evaporates and the plums fall, so the timing matters.',
+  },
+  {
+    id: 'pear',
+    kind: 'pear',
+    name: 'Lenticular Pear',
+    cloud: 'Altocumulus lenticularis',
+    altitude: 4500,
+    tier: 'middle',
+    taste: 'Smooth, vanilla-sweet, almost no bruising.',
+    window: 'Any hour the mountain wave holds',
+    brix: 16,
+    crates: 640,
+    note: 'Lenticular clouds stay still in the lee of mountains while the wind flows through them. The pears ripen evenly because the cloud never moves.',
+  },
+  {
+    id: 'fig',
+    kind: 'fig',
+    name: 'Mammatus Fig',
+    cloud: 'Cumulonimbus mammatus',
+    altitude: 5800,
+    tier: 'middle',
+    taste: 'Dense and jammy, with a thundery bitterness.',
+    window: 'After the storm has passed, never during',
+    brix: 19,
+    crates: 210,
+    note: 'Hangs in pouches under the anvil of a spent thunderstorm. We wait for the lightning to stop, then pick fast before the anvil breaks up.',
+  },
+  {
+    id: 'currant',
+    kind: 'currant',
+    name: 'Cirrus Currant',
+    cloud: 'Cirrus fibratus',
+    altitude: 9000,
+    tier: 'high',
+    taste: 'Sharp and crunchy. Served frozen.',
+    window: 'Clear winter mornings',
+    brix: 9,
+    crates: 380,
+    note: 'Cirrus is made of ice crystals, so the currants never thaw on the way down. Pickers above 7,000 m work on oxygen.',
+  },
+  {
+    id: 'grape',
+    kind: 'grape',
+    name: 'Nacreous Grape',
+    cloud: 'Polar stratospheric cloud',
+    altitude: 22000,
+    tier: 'high',
+    taste: 'Pale, clean, faintly metallic. The skin shimmers.',
+    window: 'Polar winter, just after sunset',
+    brix: 22,
+    crates: 40,
+    note: 'Nacreous clouds only form in polar winter below −78 °C. Our longest tether reaches them twice a year. Forty crates is a good season.',
+  },
+]
+
+export const FORECAST = [
+  { day: 'Mon', date: '28 Sep', oktas: 5, base: 1140, dew: 11, wind: 'SW 14 km/h', ripe: { low: 84, middle: 36, high: 12 }, note: 'Good plum afternoon. The middle tier is too thin to climb.' },
+  { day: 'Tue', date: '29 Sep', oktas: 7, base: 620, dew: 12, wind: 'W 22 km/h', ripe: { low: 91, middle: 58, high: 8 }, note: 'Low base and heavy cover. Fog quince at dawn, plums by noon.' },
+  { day: 'Wed', date: '30 Sep', oktas: 8, base: 380, dew: 13, wind: 'NW 41 km/h', ripe: { low: 46, middle: 88, high: 20 }, note: 'Storm day. Mammatus figs ripen tonight once the lightning stops.' },
+  { day: 'Thu', date: '1 Oct', oktas: 3, base: 4300, dew: 6, wind: 'N 30 km/h', ripe: { low: 18, middle: 79, high: 44 }, note: 'Mountain wave. Lenticular pears are standing over the ridge.' },
+  { day: 'Fri', date: '2 Oct', oktas: 1, base: 9200, dew: 2, wind: 'NE 9 km/h', ripe: { low: 4, middle: 10, high: 73 }, note: 'Almost clear. Only cirrus up high, so it is a currant morning.' },
+]
+
+export const STEPS = [
+  { title: 'Read the sky', body: 'At 05:00 the forecaster logs cloud cover in oktas and the height of the cloud base. We launch only when a tier is at least 70% ripe.' },
+  { title: 'Fly the kite', body: 'A 14 m parafoil kite carries the tether up through the cloud base. On still days a tethered balloon does the job instead.' },
+  { title: 'Send up a picker', body: 'One picker climbs the tether in a heated suit with a mesh bag. Above 7,000 m they carry oxygen.' },
+  { title: 'Pick by touch', body: 'Visibility inside a cloud is often under 10 m, so pickers feel for fruit that has stopped condensing. Ripe fruit is cold and firm.' },
+  { title: 'Lower it slowly', body: 'Bags come down at 2 m per second so the fruit adjusts to ground pressure. Any faster and the grapes pop.' },
+]
+
+export const FAQ = [
+  { q: 'Is cloud fruit safe to eat?', a: 'Yes. Each fruit forms around a grain of pollen, the same way a raindrop forms around dust. Every crate is checked at the packing shed before it leaves.' },
+  { q: 'Why does my delivery date depend on the weather?', a: 'We can only pick when the right cloud is overhead and ripe. If the sky is wrong, your crate waits for the next good day, usually within a week.' },
+  { q: 'Do you use drones?', a: 'No. Rotor wash breaks up the cloud and the fruit drops early. Kites and tethers are slower, but the cloud stays intact.' },
+  { q: 'What happens on a clear day?', a: 'Nothing grows, so nothing is picked. Clear days are for mending kites and re-splicing tethers.' },
+]
