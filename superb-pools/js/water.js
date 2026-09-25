@@ -1,8 +1,8 @@
-// Animated pool-water caustics for the hero, drawn with a small WebGL shader.
-// Falls back to the CSS gradient on .hero when WebGL is unavailable, renders a
-// single still frame for reduced-motion users, and pauses when off screen.
+// Animated caustics for the pool in the hero scene, drawn with a small WebGL
+// shader. Falls back to the CSS gradient on .scene__pool when WebGL is
+// unavailable, renders one still frame for reduced motion, and pauses off screen.
 (function () {
-  var canvas = document.querySelector('.hero-water');
+  var canvas = document.querySelector('[data-water]');
   if (!canvas) return;
 
   var gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power' });
@@ -23,16 +23,17 @@
     '  c/=5.;c=1.17-pow(c,1.4);return pow(abs(c),8.);',
     '}',
     'void main(){',
-    '  vec2 uv=gl_FragCoord.xy/r.y*.55;',
-    '  float time=t*.22+23.;',
-    '  float c=caustic(uv,time);',
     '  vec2 st=gl_FragCoord.xy/r;',
-    '  vec3 deep=vec3(.035,.20,.25);',
-    '  vec3 mid=vec3(.11,.45,.52);',
-    '  vec3 shallow=vec3(.30,.66,.70);',
-    '  vec3 base=mix(deep,mid,smoothstep(0.,1.,st.y*.9+st.x*.35));',
-    '  base=mix(base,shallow,smoothstep(.55,1.2,st.x+st.y*.3)*.55);',
-    '  vec3 col=base+vec3(.75,.92,.9)*clamp(c,0.,1.)*.55;',
+    '  vec2 uv=gl_FragCoord.xy/r.y*1.15;',
+    '  float c=caustic(uv,t*.3+23.);',
+    // Daylight pool: bright turquoise, a touch deeper away from the steps.
+    '  vec3 shallow=vec3(.56,.87,.91);',
+    '  vec3 deep=vec3(.13,.60,.73);',
+    '  vec3 base=mix(shallow,deep,smoothstep(.05,1.,st.x*.85+(1.-st.y)*.35));',
+    // Walls read slightly darker, like depth at the edges.
+    '  vec2 e=min(st,1.-st);float edge=smoothstep(0.,.08,min(e.x,e.y*1.7));',
+    '  base*=mix(.86,1.,edge);',
+    '  vec3 col=base+vec3(1.)*clamp(c,0.,1.)*.5;',
     '  gl_FragColor=vec4(col,1.);',
     '}'
   ].join('\n');
@@ -65,7 +66,7 @@
   var uTime = gl.getUniformLocation(prog, 't');
 
   // Caustics are soft; rendering below device resolution keeps it cheap on phones.
-  var scale = Math.min(window.devicePixelRatio || 1, 1.5) * 0.6;
+  var scale = Math.min(window.devicePixelRatio || 1, 2) * 0.75;
   function resize() {
     var w = Math.max(1, Math.round(canvas.clientWidth * scale));
     var h = Math.max(1, Math.round(canvas.clientHeight * scale));
