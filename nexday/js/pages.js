@@ -21,10 +21,6 @@
     return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
   }
 
-  function thumbFor(cat) {
-    return '<div class="prod__thumb">' + icon(cat ? cat.icon : 'box', 42) + '</div>';
-  }
-
   function productCard(p, cat) {
     var save = p.list > p.price ? Math.round((1 - p.price / p.list) * 100) : 0;
     var flags = '';
@@ -32,8 +28,12 @@
     if (p.eco) flags += '<span class="badge badge--eco">Eco</span>';
     if (save >= 20) flags += '<span class="badge badge--save">-' + save + '%</span>';
 
+    var shot = cat && cat.image
+      ? '<img src="' + cat.image + '" alt="" loading="lazy" decoding="async" width="720" height="540">'
+      : icon(cat ? cat.icon : 'box', 42);
+
     return '<article class="prod">' +
-      '<div class="prod__thumb">' + icon(cat ? cat.icon : 'box', 42) +
+      '<div class="prod__thumb">' + shot +
         (flags ? '<div class="prod__flags">' + flags + '</div>' : '') +
       '</div>' +
       '<div class="prod__body">' +
@@ -55,6 +55,10 @@
   function categoryCard(cat) {
     var chips = cat.subs.slice(0, 4).map(function (s) { return '<li>' + s + '</li>'; }).join('');
     return '<a class="cat-card" href="category.html?c=' + cat.slug + '">' +
+      (cat.image
+        ? '<span class="cat-card__shot"><img src="' + cat.image + '" alt="" loading="lazy" ' +
+          'decoding="async" width="720" height="540"></span>'
+        : '') +
       '<span class="cat-card__ico">' + icon(cat.icon, 22) + '</span>' +
       '<h3>' + cat.name + '</h3>' +
       '<p>' + cat.blurb + '</p>' +

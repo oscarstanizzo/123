@@ -15,6 +15,7 @@
       name: 'Foodservice, Restaurant & Grocery',
       short: 'Foodservice',
       icon: 'cup',
+      image: 'images/dept-foodservice.webp',
       blurb: 'Take-out packaging, cups, cutlery and front-of-house disposables for restaurants, cafés, caterers and grocery retail.',
       subs: [
         'Take-Out & To-Go Containers',
@@ -36,6 +37,7 @@
       name: 'Food Packaging & Labels',
       short: 'Packaging & Labels',
       icon: 'label',
+      image: 'images/dept-food-packaging.webp',
       blurb: 'Scale labels, date coding, band-it straps and barrier film for processors, butchers, delis and bakeries.',
       subs: [
         'Food Packaging Labels',
@@ -55,6 +57,7 @@
       name: 'Janitorial & Cleaning Tools',
       short: 'Janitorial',
       icon: 'broom',
+      image: 'images/dept-cleaning-tools.webp',
       blurb: 'The cart, the mop and everything on it — commercial cleaning tools built for daily custodial routes.',
       subs: [
         'Brooms, Brushes & Dust Pans',
@@ -74,6 +77,7 @@
       name: 'Cleaning Chemicals & Sanitizers',
       short: 'Chemicals',
       icon: 'bottle',
+      image: 'images/dept-chemicals.webp',
       blurb: 'Disinfectants, degreasers, floor care and dilution control — with the SDS sheet on every product page.',
       subs: [
         'Disinfectants & Sanitizers',
@@ -93,6 +97,7 @@
       name: 'Paper Products & Dispensers',
       short: 'Paper & Dispensers',
       icon: 'roll',
+      image: 'images/dept-paper-products.webp',
       blurb: 'Hand towels, bath tissue, facial and the dispensers they lock into — matched systems, not orphan refills.',
       subs: [
         'Paper Hand Towels',
@@ -112,6 +117,7 @@
       name: 'Disposable Gloves',
       short: 'Gloves',
       icon: 'glove',
+      image: 'images/dept-gloves.webp',
       blurb: 'Nitrile, vinyl, latex and poly in every mil and size — food-safe, medical grade and general purpose.',
       subs: [
         'Nitrile Gloves',
@@ -131,6 +137,7 @@
       name: 'Safety Supplies & Protective Gear',
       short: 'Safety',
       icon: 'helmet',
+      image: 'images/dept-safety.webp',
       blurb: 'CSA and ANSI rated protection for the plant floor, the job site and the loading dock.',
       subs: [
         'Face Masks & Respirators',
@@ -150,6 +157,7 @@
       name: 'Medical & Healthcare Supplies',
       short: 'Medical',
       icon: 'cross',
+      image: 'images/dept-medical.webp',
       blurb: 'Clinic, dental and long-term care consumables, stocked for repeat weekly replenishment.',
       subs: [
         'Exam Room Supplies',
@@ -167,6 +175,7 @@
       name: 'Waste Receptacles & Can Liners',
       short: 'Waste & Liners',
       icon: 'bin',
+      image: 'images/dept-waste.webp',
       blurb: 'Liners by the skid, plus the indoor, outdoor and organics containers that go under them.',
       subs: [
         'Can Liners & Garbage Bags',
@@ -184,6 +193,7 @@
       name: 'Washroom & Guest Amenities',
       short: 'Guest Amenities',
       icon: 'soap',
+      image: 'images/dept-amenities.webp',
       blurb: 'Bath and body amenities, vanity kits and feminine care for hotels, motels, B&Bs and short-term rentals.',
       subs: [
         'Bath & Body Amenities',
@@ -203,6 +213,7 @@
       name: 'Hotel, Motel & Hospitality',
       short: 'Hospitality',
       icon: 'bed',
+      image: 'images/dept-hospitality.webp',
       blurb: 'Housekeeping carts, linens, in-room service and the collateral that turns a room over on schedule.',
       subs: [
         'Housekeeping Carts & Caddies',
@@ -220,6 +231,7 @@
       name: 'Warehouse, Shipping & Facility',
       short: 'Warehouse & Facility',
       icon: 'box',
+      image: 'images/dept-warehouse.webp',
       blurb: 'Corrugate, stretch wrap, matting and grounds maintenance — the back-of-house half of the order.',
       subs: [
         'Corrugated Boxes & Mailers',

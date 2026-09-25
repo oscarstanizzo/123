@@ -61,6 +61,31 @@ rather than breaking the page.
 The drawer shows line totals, a quantity stepper, a subtotal and progress
 toward the $500 free-freight threshold the rest of the site advertises.
 
+## Photography
+
+The hero and the twelve department photographs were generated with Higgsfield
+(`z_image`) and optimized to WebP by `scripts/optimize-nexday-images.mjs` —
+720×540 for the department shots, 1920 and 960 wide for the hero, 316 KB for
+the set. The ~3 MB source PNGs live in `nexday/images/src/` and are gitignored;
+only the WebP ships.
+
+Each department names its own photograph in `catalog.js`, so one file feeds the
+category cards, the product thumbnails and the department pages. Product cards
+fall back to the department icon when a photograph is missing, which is how the
+build check caught two departments before their images had been generated.
+
+Prompts asked for blank, unbranded goods on a seamless grey-white background.
+Worth knowing if you regenerate any: the first passes put invented brand text
+on the chemical bottles and hotel amenities, which had to be reshot with an
+explicit "no letters, no words, nothing printed" instruction. Check any new
+image for invented lettering before shipping it.
+
+To regenerate after adding or replacing a source PNG:
+
+```bash
+node scripts/optimize-nexday-images.mjs
+```
+
 ## Checkout
 
 `checkout.html` runs four steps — contact and address, delivery, payment,

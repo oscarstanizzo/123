@@ -11,3 +11,6 @@ preview.html
 
 # Build output of `npm run preview:nexday`
 nexday-preview.html
+
+# Higgsfield source PNGs (~3 MB each); the shipped WebP is generated from them
+nexday/images/src/
