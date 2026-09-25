@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { TIERS, VARIETIES } from '../data.js'
 import { Fruit } from './Art.jsx'
+import { img } from '../images.js'
 
 const fmt = (n) => n.toLocaleString('en-GB')
 
@@ -60,13 +61,24 @@ export default function Varieties() {
                 whileTap={{ scale: 0.98 }}
                 aria-haspopup="dialog"
               >
-                <motion.span
-                  className="variety-art"
-                  variants={{ hover: { y: -6, rotate: -8 } }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 12 }}
-                >
-                  <Fruit kind={v.kind} size={58} />
-                </motion.span>
+                {img(v.id) ? (
+                  <span className="variety-photo">
+                    <motion.img
+                      src={img(v.id)}
+                      alt=""
+                      variants={{ hover: { scale: 1.07, y: -4 } }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                    />
+                  </span>
+                ) : (
+                  <motion.span
+                    className="variety-art"
+                    variants={{ hover: { y: -6, rotate: -8 } }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 12 }}
+                  >
+                    <Fruit kind={v.kind} size={58} />
+                  </motion.span>
+                )}
                 <span className="variety-alt mono">{fmt(v.altitude)} m</span>
                 <span className="variety-name">{v.name}</span>
                 <span className="variety-cloud">{v.cloud}</span>
@@ -117,6 +129,16 @@ function Detail({ v, onClose }) {
           animate={{ opacity: 1, transition: { delay: 0.12 } }}
           exit={{ opacity: 0, transition: { duration: 0.08 } }}
         >
+          {img(v.id) && (
+            <motion.img
+              src={img(v.id)}
+              alt={`Illustration of ${v.name} hanging from ${v.cloud}`}
+              className="modal-photo"
+              initial={{ scale: 1.12 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.9, ease: 'easeOut' }}
+            />
+          )}
           <div className="modal-top">
             <motion.span
               initial={{ rotate: -20, scale: 0.6 }}

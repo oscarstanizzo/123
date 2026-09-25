@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Basket, Cloud, Fruit } from './Art.jsx'
+import { img } from '../images.js'
 
 const CLOUDS = [
   { id: 'a', kind: 'plum', name: 'Cumulus Plum', left: '4%', top: 34, width: 200, bob: 7 },
@@ -126,7 +127,18 @@ export default function Hero() {
       </div>
 
       <div className="sky" role="group" aria-label="Try it: pick fruit from the clouds">
-        <div className="sun" aria-hidden="true" />
+        {img('landscape') ? (
+          <motion.img
+            src={img('landscape')}
+            alt=""
+            className="sky-art"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2.4, ease: 'easeOut' }}
+          />
+        ) : (
+          <div className="sun" aria-hidden="true" />
+        )}
         {CLOUDS.map((c, i) => (
           <motion.div
             key={c.id}

@@ -1079,3 +1079,51 @@ select {
 .footer p {
   margin: 0.25rem 0;
 }
+
+/* Higgsfield illustrations */
+.sky-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: -1;
+}
+.variety-photo {
+  display: block;
+  width: calc(100% + 2.7rem);
+  margin: -1.35rem -1.35rem 0.9rem;
+  aspect-ratio: 4 / 3;
+  max-width: none;
+  overflow: hidden;
+  border-radius: 21px 21px 0 0;
+  background: var(--line);
+}
+.variety-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-photo {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.picker-frame {
+  overflow: hidden;
+  border-radius: 26px;
+  aspect-ratio: 3 / 4;
+  max-width: 100%;
+  background: var(--line);
+  box-shadow: var(--shadow);
+}
+.picker-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
