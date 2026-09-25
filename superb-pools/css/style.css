@@ -115,46 +115,43 @@ section[id], main[id] { scroll-margin-top: calc(var(--header-h) + 1rem); }
 @media (max-width: 23rem) { .brand__sub { letter-spacing: .12em; } }
 
 /* ---------- Hero ---------- */
-.hero { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3.5rem, 8vw, 6.5rem); background: var(--paper); }
-.hero__grid { display: grid; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; grid-template-columns: 1fr; }
-@media (min-width: 60rem) { .hero__grid { grid-template-columns: 1fr 1.15fr; } }
-
+.hero { position: relative; isolation: isolate; background: var(--blue-deep); --focus: var(--blue-light); }
+.hero__media { position: absolute; inset: 0; z-index: -2; }
+.hero__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 45% 60%; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  /* Darken only where the copy sits (lower left) so the photo stays bright. */
+  background:
+    linear-gradient(90deg, rgb(8 26 32 / .74) 0%, rgb(8 26 32 / .58) 30%, rgb(8 26 32 / .22) 50%, transparent 66%),
+    linear-gradient(180deg, transparent 60%, rgb(8 26 32 / .3) 100%);
+}
+@media (max-width: 40rem) {
+  .hero::after { background: linear-gradient(180deg, rgb(8 26 32 / .1) 0%, rgb(8 26 32 / .35) 35%, rgb(8 26 32 / .8) 100%); }
+}
+.hero__inner {
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+  min-height: clamp(32rem, 86svh, 50rem);
+  padding-top: clamp(5rem, 14vh, 9rem); padding-bottom: clamp(3.5rem, 8vw, 6rem);
+  color: var(--paper);
+}
+.hero .eyebrow { color: var(--paper); text-shadow: 0 1px 10px rgb(8 26 32 / .6); }
 .hero h1 {
-  max-width: 13ch;
+  max-width: 14ch;
   font-family: var(--font-head); font-weight: 700;
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-size: clamp(2.75rem, 7.5vw, 5rem);
   line-height: 1.02; letter-spacing: -.035em; text-wrap: balance;
+  text-shadow: 0 2px 24px rgb(8 26 32 / .35);
 }
-.hero__copy > p { max-width: 42ch; margin-top: 1.35rem; font-size: clamp(1.0625rem, 1.8vw, 1.1875rem); line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+.hero__inner > p { max-width: 42ch; margin-top: 1.35rem; font-size: clamp(1.0625rem, 2vw, 1.1875rem); line-height: 1.55; color: rgb(252 252 250 / .88); text-wrap: pretty; }
 .hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; margin-top: 2.25rem; }
+.link-arrow--light { color: var(--paper); border-bottom-color: rgb(252 252 250 / .45); }
+.link-arrow--light:hover { color: var(--paper); border-bottom-color: var(--paper); }
 .hero__rating {
-  display: inline-flex; align-items: center; gap: .6rem; margin-top: 2.25rem; padding-top: 1.5rem;
-  border-top: 1px solid var(--line); text-decoration: none; color: var(--muted); font-size: .9375rem;
+  display: inline-flex; align-items: center; gap: .6rem; margin-top: 2rem;
+  text-decoration: none; color: rgb(252 252 250 / .82); font-size: .9375rem;
 }
-.hero__rating strong { color: var(--ink); font-family: var(--font-head); }
+.hero__rating strong { color: var(--paper); font-family: var(--font-head); }
 .stars { color: var(--star); letter-spacing: .1em; }
-
-/* Aerial backyard: two SVG layers with the live water sandwiched between.
-   Every position is a percentage of the 700 x 620 artboard. */
-.scene { position: relative; aspect-ratio: 700 / 620; overflow: hidden; background: #9CC476; }
-.scene__layer { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.scene__pool {
-  position: absolute; left: 11.714%; top: 20%; width: 57.143%; height: 39.355%;
-  border-radius: .35rem; overflow: hidden;
-  background: linear-gradient(135deg, #8BD9E6, #2FA3BE 60%, #1A86A2);
-  box-shadow: inset 0 0 0 3px rgb(255 255 255 / .25), inset 0 10px 24px rgb(8 60 78 / .25);
-}
-.scene__spa {
-  position: absolute; left: 70%; top: 20.323%; width: 14.286%; height: 16.129%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 45% 40%, #B4ECF2, #43B3CB 55%, #1E8BA7);
-  box-shadow: inset 0 4px 12px rgb(8 60 78 / .3);
-}
-.water { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.bubbles circle { animation: bubble 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-.bubbles circle:nth-child(2n) { animation-delay: -.8s; }
-.bubbles circle:nth-child(3n) { animation-delay: -1.6s; }
-@keyframes bubble { 0%, 100% { opacity: .2; transform: scale(.6); } 50% { opacity: .9; transform: scale(1.15); } }
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(4.5rem, 10vw, 8.5rem) 0; }
@@ -211,19 +208,18 @@ h3 { font-family: var(--font-head); font-weight: 700; font-size: 1.125rem; line-
 @media (min-width: 34rem) { .styles { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 64rem) { .styles { grid-template-columns: repeat(4, 1fr); } }
 .style { margin: 0; }
-.style svg { display: block; width: 100%; height: auto; }
+.style { overflow: hidden; }
+.style img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--line); }
 .style figcaption { padding-top: 1.1rem; }
 .style p { margin-top: .4rem; color: var(--muted); font-size: .9375rem; line-height: 1.55; }
-.defs { position: absolute; }
 
 /* ---------- Why ---------- */
 .why { display: grid; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 58rem) { .why { grid-template-columns: 1fr 1fr; } }
-.mission { margin: 0; padding-left: clamp(1.25rem, 3vw, 2rem); border-left: 3px solid var(--blue-light); }
-.mission blockquote { margin: 0; }
-.mission p { font-family: var(--font-head); font-weight: 500; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.3; letter-spacing: -.02em; text-wrap: pretty; }
-.mission figcaption { margin-top: 1.5rem; color: var(--blue-light); font-size: .8125rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.why h2 { margin-bottom: 2.25rem; }
+.why img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.mission { margin: 0 0 2rem; padding-left: 1.25rem; border-left: 3px solid var(--blue-light); }
+.mission p { color: var(--paper); font-family: var(--font-head); font-weight: 500; font-size: clamp(1.125rem, 1.8vw, 1.3rem); line-height: 1.45; letter-spacing: -.012em; text-wrap: pretty; }
+.why h2 { margin-bottom: 1.75rem; }
 .trust { list-style: none; margin: 0; padding: 0; }
 .trust li { padding: 1.3rem 0; border-top: 1px solid rgb(252 252 250 / .16); color: var(--muted-dark); font-size: 1rem; line-height: 1.6; }
 .trust li:last-child { border-bottom: 1px solid rgb(252 252 250 / .16); }

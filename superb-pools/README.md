@@ -18,7 +18,7 @@ superb-pools/
   index.html      all content and sections
   css/style.css   design tokens at the top (colours, fonts)
   fonts/          Archivo + Public Sans, same files as the Blandi Land site
-  js/water.js     animated water in the hero pool (WebGL, pauses off screen)
+  images/         photos as WebP + JPEG at 600-2000px wide
   js/main.js      card reveals and the contact form
 ```
 
@@ -28,10 +28,14 @@ superb-pools/
   `index.html` to a form service URL (Formspree, Basin, Netlify Forms) to get
   requests by email. Until then, "Send request" opens a pre-filled text message
   to (416) 305-7444, which works on phones but not on most desktops.
-- **Project photos.** The hero is an illustrated aerial view of a backyard pool
-  with live water, not a photo. Real photos of finished pools are the single
-  biggest upgrade: a photo can replace the `.scene` block in the hero, and the
-  "Designed around your yard" cards are the natural place for a gallery.
+- **Photos are AI-generated placeholders.** All six photos in `images/` (the
+  hero, the four "Designed around your yard" cards and the evening pool in
+  "Why Superb") were generated with Higgsfield (Z Image model). They are not
+  Superb Pools & Spa projects, and the page never presents them as such.
+  Replace them with photos of real finished pools as soon as possible, and
+  never caption an AI image as the company's own work. Keep the same file
+  names and widths (hero 800/1400/2000; cards 600/1000; evening 800/1400) and
+  the markup needs no changes.
 - **Hours.** Only "closes 7 p.m." was known, so the page says "Open until 7 p.m.".
   Add the full weekly hours to the Contact section once confirmed.
 - **Reviews.** The two quotes and the 5.0 rating are from the Google listing.

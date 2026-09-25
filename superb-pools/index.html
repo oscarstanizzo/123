@@ -15,6 +15,9 @@
 
 <link rel="preload" href="fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/publicsans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" fetchpriority="high" href="images/hero-1400.webp"
+      imagesrcset="images/hero-800.webp 800w, images/hero-1400.webp 1400w, images/hero-2000.webp 2000w"
+      imagesizes="100vw" type="image/webp">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.className += ' js';</script>
 
@@ -77,135 +80,30 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero__grid">
-      <div class="hero__copy">
-        <span class="eyebrow">Pool &amp; spa contractor · Mississauga</span>
-        <h1 id="hero-title">Custom pools, built to stay crystal clear.</h1>
-        <p>Creative, functional pool and spa design and installation, built around top-of-the-line cleaning and filtration systems. More time relaxing, less time maintaining.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#contact">Book a consultation</a>
-          <a class="link-arrow" href="#services">See what we do <span aria-hidden="true">&rarr;</span></a>
-        </div>
-        <a class="hero__rating" href="#reviews">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <span><strong>5.0</strong> on Google</span>
-        </a>
+    <div class="hero__media">
+      <picture>
+        <source type="image/webp"
+          srcset="images/hero-800.webp 800w, images/hero-1400.webp 1400w, images/hero-2000.webp 2000w"
+          sizes="100vw">
+        <img src="images/hero-1400.jpg"
+          srcset="images/hero-800.jpg 800w, images/hero-1400.jpg 1400w, images/hero-2000.jpg 2000w"
+          sizes="100vw" width="2000" height="1125"
+          fetchpriority="high" decoding="async"
+          alt="Rectangular in-ground pool with light stone coping and a pale paver deck behind a two-storey home, with a cedar hedge and lounge chairs on the lawn.">
+      </picture>
+    </div>
+    <div class="container hero__inner">
+      <span class="eyebrow">Pool &amp; spa contractor · Mississauga</span>
+      <h1 id="hero-title">Custom pools, built to stay crystal clear.</h1>
+      <p>Creative, functional pool and spa design and installation, built around top-of-the-line cleaning and filtration systems.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#contact">Book a consultation</a>
+        <a class="link-arrow link-arrow--light" href="#services">See what we do <span aria-hidden="true">&rarr;</span></a>
       </div>
-
-      <!-- Aerial view of a finished backyard. The pool water is a live canvas. -->
-      <div class="scene" aria-hidden="true">
-        <svg class="scene__layer" viewBox="0 0 700 620" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <pattern id="pavers" width="56" height="56" patternUnits="userSpaceOnUse">
-              <rect width="56" height="56" fill="#EFEAE2"/>
-              <path d="M0 .5h56M.5 0v56M28 28h28M28 28v28" stroke="#E2DBD0" stroke-width="1"/>
-            </pattern>
-            <linearGradient id="lawn" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#A9CB82"/>
-              <stop offset="1" stop-color="#8CB86A"/>
-            </linearGradient>
-            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="5" dy="8" stdDeviation="6" flood-color="#2B3A2F" flood-opacity=".22"/>
-            </filter>
-            <filter id="lift" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2B3A2F" flood-opacity=".14"/>
-            </filter>
-          </defs>
-
-          <rect width="700" height="620" fill="url(#lawn)"/>
-          <!-- deck -->
-          <path d="M30 70h600v470H30z" fill="url(#pavers)"/>
-          <!-- hedge along the back -->
-          <g fill="#6E9A50" filter="url(#lift)">
-            <circle cx="30" cy="36" r="34"/><circle cx="92" cy="30" r="32"/><circle cx="152" cy="38" r="30"/>
-            <circle cx="212" cy="30" r="33"/><circle cx="276" cy="36" r="31"/><circle cx="338" cy="30" r="33"/>
-            <circle cx="400" cy="38" r="30"/><circle cx="460" cy="30" r="32"/><circle cx="520" cy="36" r="30"/>
-          </g>
-          <g fill="#86B062" opacity=".7">
-            <circle cx="84" cy="22" r="14"/><circle cx="206" cy="22" r="15"/><circle cx="332" cy="22" r="14"/><circle cx="454" cy="22" r="14"/>
-          </g>
-          <!-- pool coping -->
-          <rect x="70" y="112" width="424" height="268" rx="12" fill="#FAF8F4" filter="url(#lift)"/>
-          <!-- spa coping -->
-          <circle cx="540" cy="176" r="62" fill="#FAF8F4" filter="url(#lift)"/>
-          <rect x="484" y="160" width="30" height="32" fill="#FAF8F4"/>
-        </svg>
-
-        <div class="scene__pool">
-          <canvas class="water" data-water></canvas>
-        </div>
-        <div class="scene__spa"></div>
-
-        <svg class="scene__layer" viewBox="0 0 700 620" preserveAspectRatio="xMidYMid slice">
-          <!-- entry steps in the shallow end -->
-          <g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2">
-            <path d="M84 150h44a8 8 0 0 1 8 8v164a8 8 0 0 1-8 8H84"/>
-            <path d="M84 170h24a6 6 0 0 1 6 6v128a6 6 0 0 1-6 6H84"/>
-          </g>
-          <!-- spillover lip -->
-          <path d="M492 166v20" stroke="#fff" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
-          <!-- spa bubbles -->
-          <g fill="#fff" fill-opacity=".75" class="bubbles">
-            <circle cx="526" cy="164" r="2.6"/><circle cx="548" cy="172" r="2"/><circle cx="536" cy="190" r="2.8"/>
-            <circle cx="556" cy="192" r="1.8"/><circle cx="520" cy="182" r="1.6"/><circle cx="542" cy="154" r="1.8"/>
-          </g>
-
-          <!-- lounge chairs -->
-          <g filter="url(#soft)">
-            <g transform="translate(112 420)">
-              <rect width="58" height="118" rx="8" fill="#FFFFFF" stroke="#DCD4C8"/>
-              <path d="M6 34h46" stroke="#E6DFD4"/>
-              <rect x="10" y="8" width="38" height="20" rx="5" fill="#F3EFE8"/>
-            </g>
-            <g transform="translate(192 420)">
-              <rect width="58" height="118" rx="8" fill="#FFFFFF" stroke="#DCD4C8"/>
-              <path d="M6 34h46" stroke="#E6DFD4"/>
-              <rect x="10" y="8" width="38" height="20" rx="5" fill="#F3EFE8"/>
-              <rect x="6" y="52" width="46" height="40" rx="3" fill="#0E6E86" opacity=".85"/>
-              <path d="M6 60h46M6 68h46" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
-            </g>
-            <g transform="translate(272 420)">
-              <rect width="58" height="118" rx="8" fill="#FFFFFF" stroke="#DCD4C8"/>
-              <path d="M6 34h46" stroke="#E6DFD4"/>
-              <rect x="10" y="8" width="38" height="20" rx="5" fill="#F3EFE8"/>
-            </g>
-            <!-- side table -->
-            <circle cx="358" cy="446" r="14" fill="#C8B79C"/>
-          </g>
-
-          <!-- umbrella -->
-          <g filter="url(#soft)">
-            <path d="M452 424l44 18 18 44-18 44-44 18-44-18-18-44 18-44z" fill="#F6F1E7" stroke="#E0D6C4"/>
-            <path d="M452 424v124M390 486h124M408 442l88 88M496 442l-88 88" stroke="#E0D6C4" stroke-width="1.4"/>
-            <circle cx="452" cy="486" r="5" fill="#C8B79C"/>
-          </g>
-
-          <!-- planters -->
-          <g filter="url(#soft)">
-            <rect x="572" y="286" width="48" height="48" rx="4" fill="#D6CCBC"/>
-            <circle cx="596" cy="310" r="21" fill="#6E9A50"/>
-            <circle cx="590" cy="303" r="9" fill="#89B366"/>
-            <rect x="572" y="360" width="48" height="48" rx="4" fill="#D6CCBC"/>
-            <circle cx="596" cy="384" r="21" fill="#6E9A50"/>
-            <circle cx="590" cy="377" r="9" fill="#89B366"/>
-          </g>
-
-          <!-- tree canopy, top right -->
-          <g filter="url(#soft)">
-            <circle cx="656" cy="70" r="70" fill="#5E8C45"/>
-            <circle cx="620" cy="40" r="38" fill="#6F9E53"/>
-            <circle cx="676" cy="110" r="40" fill="#6F9E53"/>
-            <circle cx="632" cy="44" r="14" fill="#8DB86C"/>
-            <circle cx="684" cy="104" r="12" fill="#8DB86C"/>
-          </g>
-          <!-- shrubs, bottom left -->
-          <g filter="url(#soft)">
-            <circle cx="30" cy="590" r="46" fill="#6E9A50"/>
-            <circle cx="84" cy="606" r="30" fill="#7AA75A"/>
-            <circle cx="24" cy="576" r="14" fill="#8DB86C"/>
-          </g>
-        </svg>
-      </div>
+      <a class="hero__rating" href="#reviews">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>5.0</strong> on Google</span>
+      </a>
     </div>
   </section>
 
@@ -320,88 +218,62 @@
 
       <div class="styles">
         <figure class="style reveal">
-          <svg viewBox="0 0 320 220" aria-hidden="true" focusable="false">
-            <rect width="320" height="220" fill="#EFEAE2"/>
-            <rect x="40" y="40" width="240" height="140" rx="6" fill="#FAF8F4"/>
-            <rect x="50" y="50" width="220" height="120" rx="3" fill="url(#w)"/>
-            <rect x="50" y="50" width="220" height="120" rx="3" fill="url(#rip)"/>
-          </svg>
+          <picture>
+            <source type="image/webp" srcset="images/style-geometric-600.webp 600w, images/style-geometric-1000.webp 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw">
+            <img src="images/style-geometric-600.jpg" srcset="images/style-geometric-600.jpg 600w, images/style-geometric-1000.jpg 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw"
+              width="1000" height="750" loading="lazy" decoding="async"
+              alt="Rectangular pool with bright white coping on a light grey porcelain deck beside black-framed glass doors.">
+          </picture>
           <figcaption><h3>Modern geometric</h3><p>Clean lines and crisp coping for contemporary homes.</p></figcaption>
         </figure>
         <figure class="style reveal">
-          <svg viewBox="0 0 320 220" aria-hidden="true" focusable="false">
-            <rect width="320" height="220" fill="#EFEAE2"/>
-            <rect x="40" y="40" width="240" height="140" fill="#FAF8F4"/>
-            <rect x="50" y="50" width="230" height="120" fill="url(#w)"/>
-            <rect x="50" y="50" width="230" height="120" fill="url(#rip)"/>
-            <rect x="280" y="40" width="40" height="140" fill="url(#vista)"/>
-            <path d="M280 50v120" stroke="#fff" stroke-width="2"/>
-          </svg>
-          <figcaption><h3>Vanishing edge</h3><p>A water line that seems to fall away into the view.</p></figcaption>
+          <picture>
+            <source type="image/webp" srcset="images/style-garden-600.webp 600w, images/style-garden-1000.webp 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw">
+            <img src="images/style-garden-600.jpg" srcset="images/style-garden-600.jpg 600w, images/style-garden-1000.jpg 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw"
+              width="1000" height="750" loading="lazy" decoding="async"
+              alt="Long rectangular pool with a tiled edge and stone deck, set against a lawn and dense mature trees.">
+          </picture>
+          <figcaption><h3>Garden lap pool</h3><p>A long, clean line of water framed by mature trees.</p></figcaption>
         </figure>
         <figure class="style reveal">
-          <svg viewBox="0 0 320 220" aria-hidden="true" focusable="false">
-            <rect width="320" height="220" fill="#EFEAE2"/>
-            <path d="M70 60c40-40 120-30 170-10s40 80 0 110-110 40-160 10-50-70-10-110z" fill="#FAF8F4"/>
-            <path d="M80 68c38-34 112-26 156-8s36 70 0 98-104 36-150 8-42-64-6-98z" fill="url(#w)"/>
-            <path d="M80 68c38-34 112-26 156-8s36 70 0 98-104 36-150 8-42-64-6-98z" fill="url(#rip)"/>
-            <circle cx="266" cy="172" r="14" fill="#7AA75A"/><circle cx="284" cy="158" r="9" fill="#8DB86C"/>
-          </svg>
-          <figcaption><h3>Natural freeform</h3><p>Organic curves that sit comfortably in the landscape.</p></figcaption>
+          <picture>
+            <source type="image/webp" srcset="images/style-freeform-600.webp 600w, images/style-freeform-1000.webp 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw">
+            <img src="images/style-freeform-600.jpg" srcset="images/style-freeform-600.jpg 600w, images/style-freeform-1000.jpg 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw"
+              width="1000" height="750" loading="lazy" decoding="async"
+              alt="Curved freeform pool with flagstone coping, armour stone boulders, a small waterfall, hydrangeas and a Japanese maple.">
+          </picture>
+          <figcaption><h3>Natural freeform</h3><p>Organic curves, armour stone and a waterfall.</p></figcaption>
         </figure>
         <figure class="style reveal">
-          <svg viewBox="0 0 320 220" aria-hidden="true" focusable="false">
-            <rect width="320" height="220" fill="#EFEAE2"/>
-            <rect x="40" y="50" width="170" height="120" rx="6" fill="#FAF8F4"/>
-            <rect x="50" y="60" width="150" height="100" rx="3" fill="url(#w)"/>
-            <rect x="50" y="60" width="150" height="100" rx="3" fill="url(#rip)"/>
-            <circle cx="248" cy="110" r="44" fill="#FAF8F4"/>
-            <rect x="200" y="100" width="12" height="20" fill="#FAF8F4"/>
-            <circle cx="248" cy="110" r="35" fill="url(#spaFill)"/>
-            <g fill="#fff" fill-opacity=".7"><circle cx="238" cy="100" r="2.2"/><circle cx="256" cy="106" r="1.8"/><circle cx="246" cy="120" r="2.4"/><circle cx="260" cy="122" r="1.6"/></g>
-          </svg>
-          <figcaption><h3>Plunge pool &amp; spa</h3><p>A compact pool paired with a warm spa. Ideal for smaller yards.</p></figcaption>
+          <picture>
+            <source type="image/webp" srcset="images/style-plunge-600.webp 600w, images/style-plunge-1000.webp 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw">
+            <img src="images/style-plunge-600.jpg" srcset="images/style-plunge-600.jpg 600w, images/style-plunge-1000.jpg 1000w" sizes="(min-width: 64rem) 17rem, (min-width: 34rem) 45vw, 92vw"
+              width="1000" height="750" loading="lazy" decoding="async"
+              alt="Compact plunge pool with a raised spa spilling water into it, surrounded by a cedar fence and light pavers.">
+          </picture>
+          <figcaption><h3>Plunge pool &amp; spa</h3><p>A compact pool with a raised spa spilling into it.</p></figcaption>
         </figure>
       </div>
-
-      <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="w" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#8FDAE6"/>
-            <stop offset=".6" stop-color="#3AA9C2"/>
-            <stop offset="1" stop-color="#1E88A3"/>
-          </linearGradient>
-          <linearGradient id="vista" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#3AA9C2"/>
-            <stop offset="1" stop-color="#CFEFF4" stop-opacity=".4"/>
-          </linearGradient>
-          <radialGradient id="spaFill">
-            <stop offset="0" stop-color="#A5E3EC"/>
-            <stop offset="1" stop-color="#2796B0"/>
-          </radialGradient>
-          <pattern id="rip" width="48" height="14" patternUnits="userSpaceOnUse">
-            <path d="M0 7c6 0 6-4 12-4s6 4 12 4 6-4 12-4 6 4 12 4" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1"/>
-          </pattern>
-        </defs>
-      </svg>
     </div>
   </section>
 
   <!-- ============ WHY ============ -->
   <section class="section section--deep" aria-labelledby="why-title">
     <div class="container why">
-      <figure class="mission">
-        <blockquote>
-          <p>“Our goal is to elevate the relaxation and well-being of our clients to the next level, with sophisticated ideas and practical solutions.”</p>
-        </blockquote>
-        <figcaption>Superb Pools &amp; Spa</figcaption>
-      </figure>
+      <picture>
+        <source type="image/webp" srcset="images/evening-800.webp 800w, images/evening-1400.webp 1400w" sizes="(min-width: 58rem) 36rem, 92vw">
+        <img src="images/evening-800.jpg" srcset="images/evening-800.jpg 800w, images/evening-1400.jpg 1400w" sizes="(min-width: 58rem) 36rem, 92vw"
+          width="1400" height="1050" loading="lazy" decoding="async"
+          alt="A backyard pool at dusk, lit from underwater, with steam drifting off the water and warm light from the house.">
+      </picture>
       <div>
         <h2 id="why-title">Why Superb Pools &amp; Spa</h2>
+        <blockquote class="mission">
+          <p>“Our goal is to elevate the relaxation and well-being of our clients to the next level, with sophisticated ideas and practical solutions.”</p>
+        </blockquote>
         <ul class="trust">
           <li><strong>Trustworthy, quality work.</strong> It’s the first thing our clients mention, and the standard we hold on every job.</li>
           <li><strong>Straightforward and easy to deal with.</strong> Clear answers, honest options, and a friendly team from the first call.</li>
-          <li><strong>Creative, but functional.</strong> Designs that look exceptional and still make sense for everyday use and upkeep.</li>
           <li><strong>Systems first.</strong> What keeps the water clean gets as much attention as how the pool looks.</li>
         </ul>
       </div>
@@ -568,7 +440,6 @@
   </div>
 </footer>
 
-<script src="js/water.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
